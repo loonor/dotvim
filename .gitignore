@@ -1,0 +1,4 @@
+vimrc.local
+updatebundle.sh
+tmp/
+bundle/
