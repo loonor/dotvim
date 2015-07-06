@@ -28,6 +28,7 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strf
 set laststatus=2    " 启动显示状态行(1),总是显示状态行(2)  
 "set foldenable      " 允许折叠  
 ""set foldmethod=manual   " 手动折叠  
+set fdm=indent ""更多的缩进表示更高级别的折叠
 set nocompatible  "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限  
 " 显示中文帮助
 if version >= 603
@@ -766,10 +767,15 @@ let NERDTreeIgnore=['\.pyc']
 
 " YCM settings
 
-"let g:ycm_key_list_select_completion = [' ', '']
-
-"let g:ycm_key_list_previous_completion = ['']
-
+"" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"Do not ask when starting vim
+let g:ycm_confirm_extra_conf = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:ycm_autoclose_preview_window_after_completion=1
 "let g:ycm_key_invoke_completion = '<C-Space>'
 
 "let g:ycm_min_num_of_chars_for_completion = 2
@@ -779,7 +785,8 @@ let NERDTreeIgnore=['\.pyc']
 "let g:ycm_auto_trigger = 1
 
 "let g:ycm_filetype_whitelist = { '*': 1 }
-
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>   “按,jd 会跳转到定义
+let g:ycm_collect_identifiers_from_tag_files = 1 "使用ctags生成的tags文件
 "let g:ycm_filetype_blacklist = {
 "      \ 'tagbar' : 1,
 ""      \ 'qf' : 1,
@@ -793,19 +800,11 @@ let NERDTreeIgnore=['\.pyc']
 ""      \ 'mail' : 1
 ""      \}
 """不自动完成的项
-let g:ycm_filetype_specific_completion_to_disable = {
-      \ 'gitcommit': 1
-      \}
-
-
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-"Do not ask when starting vim
-let g:ycm_confirm_extra_conf = 0
-let g:syntastic_always_populate_loc_list = 1
+"let g:ycm_filetype_specific_completion_to_disable = {
+"     \ 'gitcommit': 1
+"      \}
+"
+"
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
@@ -813,6 +812,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
 
 " vim-go custom mappings
 
