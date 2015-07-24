@@ -26,9 +26,9 @@ set showcmd         " 输入的命令显示出来，看的清楚些
 set scrolloff=3     " 光标移动到buffer的顶部和底部时保持3行距离  
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
 set laststatus=2    " 启动显示状态行(1),总是显示状态行(2)  
-"set foldenable      " 允许折叠  
-""set foldmethod=manual   " 手动折叠  
-set fdm=indent ""更多的缩进表示更高级别的折叠
+set foldenable      " 允许折叠  
+"set foldmethod=manual   " 手动折叠  
+set fdm=marker ""indent ""更多的缩进表示更高级别的折叠
 set nocompatible  "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限  
 " 显示中文帮助
 if version >= 603
@@ -109,7 +109,7 @@ set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030,latin-1
 
 """colorscheme
 colorscheme desert
-set guifont=DejaVu\ Sans\ Mono\ 11
+
 
 filetype plugin indent on 
 """"""""""""""""""""基本设置}
@@ -132,7 +132,17 @@ else
     endif
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if g:isWIN
 
+    set guifont=Microsoft\ Yahei\ 13,WenQuanYi\ Zen\ Hei\ 13
+
+else
+    
+    set guifont=DejaVu\ Sans\ Mono\ 13 
+
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function AddCDict()
     if g:isWIN
         set dict+=$VIM/vimfiles/dict/c.txt
@@ -237,32 +247,32 @@ function AddCSSDict()
     endif
     set complete+=k
 endfunction
-"C，C++ 按F5编译运行
-func! CompileRunGcc()
-    exec "w"
-    if &filetype == 'c'
-        exec "!g++ % -o %<"
-        exec "!time ./%<"
-    elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
-        exec "!time ./%<"
-    elseif &filetype == 'java' 
-        exec "!javac %" 
-        exec "!time java %<"
-    elseif &filetype == 'sh'
-        :!time bash %
-    elseif &filetype == 'python'
-        exec "!time python2.7 %"
-    elseif &filetype == 'html'
-        exec "!firefox % &"
-    elseif &filetype == 'go'
-"        exec "!go build %<"
-        exec "!time go run %"
-    elseif &filetype == 'mkd'
-        exec "!~/.vim/markdown.pl % > %.html &"
-        exec "!firefox %.html &"
-    endif
-endfunc
+"C，C++ 按F6编译运行
+"func! CompileRunGcc()
+"    exec "w"
+"    if &filetype == 'c'
+"        exec "!g++ % -o %<"
+"        exec "!time ./%<"
+"    elseif &filetype == 'cpp'
+"        exec "!g++ % -o %<"
+"        exec "!time ./%<"
+"    elseif &filetype == 'java' 
+"        exec "!javac %" 
+"        exec "!time java %<"
+"    elseif &filetype == 'sh'
+"        :!time bash %
+"    elseif &filetype == 'python'
+"        exec "!time python2.7 %"
+"    elseif &filetype == 'html'
+"        exec "!firefox % &"
+"    elseif &filetype == 'go'
+""        exec "!go build %<"
+"        exec "!time go run %"
+"    elseif &filetype == 'mkd'
+"        exec "!~/.vim/markdown.pl % > %.html &"
+"        exec "!firefox %.html &"
+"    endif
+"endfunc
 
 "<F8>C,C++的调试
 
@@ -314,7 +324,7 @@ endfunc
 
 " ======= 编译 && 运行 && 模板 ======= "
 
-" 编译并运行
+" 编译并运行<F7>
 func! Compile_Run_Code()
     exec "w"
     if &filetype == "c"
@@ -423,6 +433,9 @@ func! Compile_Run_Code()
         exec "!node %:t"
     elseif &filetype == "sh"
         exec "!bash %:t"
+    elseif &filetype == "mkd"
+        exec "!~/.vim/markdown.pl % > %.html &"
+        exec "!firefox %.html &"
     endif
 endfunc
 
@@ -447,28 +460,20 @@ func SetTitle()
     else 
         call setline(1, "/* =========================================================*") 
         call append(line("."),   "  * File Name: ".expand("%")) 
-        call append(line(".")+1, "  * Author: ") 
-        call append(line(".")+2, "  * Mail: ") 
-        call append(line(".")+3, "  * Created Time: ".strftime("%c")) 
-        call append(line(".")+4, "  *=========================================================*/") 
-        call append(line(".")+5, "/* -------------------------------------------------- */")
+        call append(line(".")+1, "  * Author: loonor") 
+        call append(line(".")+2, "  * Mail: loonor@163.com") 
+        call append(line(".")+3, "  * Created Time: ".strftime("%c"))
+        call append(line(".")+4, "  * Discription:")
+        call append(line(".")+5, "  *=========================================================*/") 
     endif
     if expand("%:e") == 'cpp'
-        call append(line(".")+6, "#include<iostream>")
-        call append(line(".")+7, "using namespace std;")
+        call append(line(".")+6, "//#include<iostream>")
+        call append(line(".")+7, "//using namespace std;")
         call append(line(".")+8, "")
-        call append(line(".")+9, "/* ===================================================================== *")
-        call append(line(".")+10, " * vim modeline                                                          *")
-        call append(line(".")+11, " * vim:se fdm=expr foldexpr=getline(v\:lnum)=~'^\\S.*{'?'>1'\:1:         *")
-        call append(line(".")+12, " * ===================================================================== */")
     endif
     if &filetype == 'c'
-        call append(line(".")+6, "#include<stdio.h>")
-        call append(line(".")+7, "")        
-        call append(line(".")+8, "/* ===================================================================== *")
-        call append(line(".")+9, " * vim modeline                                                          *")
-        call append(line(".")+10, " * vim:se fdm=expr foldexpr=getline(v\:lnum)=~'^\\S.*{'?'>1'\:1:         *")
-        call append(line(".")+11, " * ===================================================================== */")
+        call append(line(".")+6, "//#include<stdio.h>")
+        call append(line(".")+7, "") 
     endif
     if expand("%:e") == 'h'
         call append(line(".")+6, "#ifndef _".toupper(expand("%:r"))."_H")
@@ -498,11 +503,114 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-
+Plugin 'mileszs/ack.vim'
+Plugin 'vim-scripts/Auto-Pairs'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'vim-scripts/CaptureClipboard'
+Plugin 'wincent/command-t'
+Plugin 'chrisbra/csv.vim'
+Plugin 'tacahiroy/ctrlp-funky' 
+Plugin 'vim-scripts/ctrlp-modified.vim'
+Plugin 'vim-scripts/ctrlp.vim'
+Plugin 'dart-lang/dart-vim-Plugin'
+Plugin 'vim-scripts/Django-Projects' 
+Plugin 'vim-scripts/django_templates.vim' 
+Plugin 'mattn/emmet-vim'
+Plugin 'vim-scripts/fencview.vim' 
+Plugin 'vim-scripts/FuzzyFinder'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'vim-scripts/gtk-vim-syntax'
+Plugin 'sjl/gundo.vim'
+Plugin 'raichoo/haskell-vim'
+Plugin 'othree/html5.vim'
+Plugin 'Yggdroot/indentLine' 
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'vim-scripts/Javascript-OmniCompletion-with-YUI-and-j'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'vim-scripts/jsbeautify' 
+Plugin 'vim-scripts/jslint.vim'
+Plugin 'JuliaLang/julia-vim'
+Plugin 'udalov/kotlin-vim'
+Plugin 'vim-scripts/L9'
+Plugin 'vim-scripts/last_edit_marker.vim'
+Plugin 'Valloric/ListToggle'
+Plugin 'scrooloose/nerdtree'
+"""Plugin 'vim-scripts/nimrod.vim' 
+Plugin 'shawncplus/phpcomplete.vim' 
+Plugin 'spf13/PIV'
+Plugin 'edkolev/promptline.vim'
+Plugin 'kevinw/pyflakes-vim'
+Plugin 'vim-scripts/python-imports.vim'
+Plugin 'klen/python-mode'
+Plugin 'phildawes/racer'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/neomru.vim'
+Plugin 'rust-lang/rust.vim' 
+Plugin 'rhysd/rust-doc.vim'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'rstacruz/sparkup'
+Plugin 'vim-scripts/SQLComplete.vim'
+Plugin 'ervandew/supertab'
+Plugin 'vim-scripts/synmark.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'godlygeek/tabular'
+Plugin 'majutsushi/tagbar'
+Plugin 'vim-scripts/taglist.vim' 
+Plugin 'vim-scripts/The-NERD-Commenter' 
+Plugin 'tomtom/tlib_vim'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'SirVer/ultisnips'
+Plugin 'jdonaldson/vaxe'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'bling/vim-airline'
+Plugin 'xsbeats/vim-blade'
+Plugin 'vim-scripts/VimClojure'
+Plugin 'rmartinho/vim-cpp11'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'OrangeT/vim-csharp'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'skammer/vim-css-color'
+Plugin 'bartlomiejdanek/vim-dart'
+Plugin 'becaning/vimdoccn'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'oscarh/vimerl'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-projectionist'
+Plugin 'fsharp/vim-fsharp'
+Plugin 'fatih/vim-go'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'andreimaxim/vim-io'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'bpdp/vim-java'
+Plugin 'pangloss/vim-javascript'
+Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'jason0x43/vim-js-indent'
+Plugin 'leshill/vim-json'
+Plugin 'briancollins/vim-jst'
+Plugin 'groenewege/vim-less'
+Plugin 'ninegrid/vim-livescript'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'fatih/vim-nginx'
+Plugin 'tpope/vim-pathogen'
+Plugin 'vim-perl/vim-perl'
+Plugin 'wlangstroth/vim-racket'
+Plugin 'tpope/vim-rails'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'vim-scripts/Vim-Script-Updater'
 Plugin 'honza/vim-snippets'
-Plugin 'Valloric/YouCompleteMe'
-
+Plugin 'tpope/vim-surround'
+Plugin 'kballard/vim-swift'
+Plugin 'evidens/vim-twig'
+Plugin 'vimwiki/vimwiki' 
+"""Plugin 'gmarik/Vundle.vim'
+Plugin 'zah/nim.vim'
+Plugin 'burnettk/vim-angular'
+Plugin 'claco/jasmine.vim'
+Plugin 'matthewsimo/angular-vim-snippets'
+Plugin 'Valloric/YouCompleteMe' 
+Plugin 'mtth/scratch.vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -610,8 +718,8 @@ filetype plugin indent on
 let mapleader = ","
 
 "列出当前目录文件  
-map <F3> :NERDTreeToggle<CR>
-imap <F3> <ESC> :NERDTreeToggle<CR>
+map <F6> :NERDTreeToggle<CR>
+imap <F6> <ESC> :NERDTreeToggle<CR>
 if has("autocmd")
       autocmd BufReadPost *
           \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -624,14 +732,16 @@ autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 
-"C，C++ 按F5编译运行
-map <F5> :call CompileRunGcc()<CR>
+"C，C++ 按F6编译运行
+"map <F6> :call CompileRunGcc()<CR>
 
 "代码格式优化化
 
-map <F6> :call FormartSrc()<CR><CR>
+map <F5> :call FormartSrc()<CR><CR>
 
-:nmap <silent>  <F7> <ESC>:GundoToggle<RETURN>
+:nmap <silent>  <F12> <ESC>:GundoToggle<RETURN>
+
+map <F7> :call Compile_Run_Code()<CR><CR>
 
 "C,C++的调试
 map <F8> :call Rungdb()<CR>
@@ -813,7 +923,21 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""
+"fun! JumpToDef()
+"  if exists("*GotoDefinition_" . &filetype)
+"    call GotoDefinition_{&filetype}()
+"  else
+"    exe "norm! \<C-]>"
+"  endif
+"endf
+"
+"" Jump to tag
+"nn <M-g> :call JumpToDef()<cr>
+"ino <M-g> <esc>:call JumpToDef()<cr>i
+""""""""""""""""""""""""""""""""""""""""""""""
+"
 " vim-go custom mappings
 
 au FileType go nmap <Leader>s <Plug>(go-implements)
@@ -843,6 +967,10 @@ au FileType go nmap <Leader>e <Plug>(go-rename)
 let g:go_fmt_command = "goimports"
 
 " ======= 自定义快捷键 ======= "
+" 保存存不好用
+nmap <silent> <C-S> :update<CR>
+imap <silent> <C-S> <ESC>:update<CR>
+vmap <silent> <C-S> <ESC>:update<CR>
 
 " Ctrl + ]            tags选择性跳转
 nmap <c-]> g<c-]>
@@ -855,6 +983,11 @@ map <c-j> <c-w><c-j>
 imap <c-k> <ESC><Up>A
 map <c-k> <c-w><c-k>
 
+" Alt + e
+"imap <m-e> <ESC><End>A
+" Alt + a
+imap <m-a> <Home>
+nmap <m-a> <Home>
 " Alt  + H            光标左移一格
 imap <m-h> <Left>
 
@@ -949,7 +1082,7 @@ vmap <leader>rr <ESC>:call Compile_Run_Code()<CR>
 set hidden
 let g:racer_cmd = "$HOME/github/racer/target/release/racer"
 let $RUST_SRC_PATH="/home/loonor/github/rust-lang/rust/src/"
-
+let g:rust_doc#downloaded_rust_doc_dir = '~/.multirust/toolchains/nightly'
 autocmd FileType apache set commentstring=#\ %s
 
 augroup VimCSS3Syntax
