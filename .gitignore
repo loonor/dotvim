@@ -1,4 +1,4 @@
 vimrc.local
 updatebundle.sh
 tmp/
-bundle/
+./bundle
