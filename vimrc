@@ -105,8 +105,8 @@ set matchtime=1
 set iskeyword+=.
 set termencoding=utf-8
 set encoding=utf8
-set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030,latin-1
-
+set fileencodings=utf8,gbk,cp936,gb2312,gb18030,latin-1
+set nobomb
 """colorscheme
 colorscheme desert
 
@@ -467,18 +467,19 @@ func SetTitle()
         call append(line(".")+5, "  *=========================================================*/") 
     endif
     if expand("%:e") == 'cpp'
-        call append(line(".")+6, "//#include<iostream>")
+        call append(line(".")+6, "//#include <iostream>")
         call append(line(".")+7, "//using namespace std;")
         call append(line(".")+8, "")
     endif
     if &filetype == 'c'
-        call append(line(".")+6, "//#include<stdio.h>")
+        call append(line(".")+6, "//#include <stdio.h>")
         call append(line(".")+7, "") 
     endif
     if expand("%:e") == 'h'
-        call append(line(".")+6, "#ifndef _".toupper(expand("%:r"))."_H")
-        call append(line(".")+7, "#define _".toupper(expand("%:r"))."_H")
-        call append(line(".")+8, "#endif")
+        call append(line(".")+8, "#ifndef _".toupper(expand("%:r"))."_H")
+        call append(line(".")+9, "#define _".toupper(expand("%:r"))."_H")
+        call append(line(".")+10,"")
+        call append(line(".")+11, "#endif")
     endif
     if &filetype == 'java'
         call append(line(".")+6,"public class ".expand("%:r"))
@@ -968,9 +969,9 @@ let g:go_fmt_command = "goimports"
 
 " ======= 自定义快捷键 ======= "
 " 保存存不好用
-nmap <silent> <C-S> :update<CR>
-imap <silent> <C-S> <ESC>:update<CR>
-vmap <silent> <C-S> <ESC>:update<CR>
+nmap <c-s> :update<CR>
+imap <c-s> <ESC>:update<CR>
+vmap <c-s> <ESC>:update<CR>
 
 " Ctrl + ]            tags选择性跳转
 nmap <c-]> g<c-]>
