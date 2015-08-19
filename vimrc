@@ -27,8 +27,8 @@ set scrolloff=3     " 光标移动到buffer的顶部和底部时保持3行距离
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
 set laststatus=2    " 启动显示状态行(1),总是显示状态行(2)  
 set foldenable      " 允许折叠  
-"set foldmethod=manual   " 手动折叠  
-set fdm=marker ""indent ""更多的缩进表示更高级别的折叠
+set foldmethod=manual   " 手动折叠  
+"set fdm=marker ""indent ""更多的缩进表示更高级别的折叠
 set nocompatible  "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限  
 " 显示中文帮助
 if version >= 603
@@ -108,7 +108,7 @@ set encoding=utf8
 set fileencodings=utf8,gbk,cp936,gb2312,gb18030,latin-1
 set nobomb
 """colorscheme
-colorscheme desert
+colorscheme solarized
 
 
 filetype plugin indent on 
@@ -602,6 +602,7 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'vim-scripts/Vim-Script-Updater'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-git'
 Plugin 'kballard/vim-swift'
 Plugin 'evidens/vim-twig'
 Plugin 'vimwiki/vimwiki' 
@@ -617,6 +618,8 @@ Plugin 'Shougo/neocomplcache.vim'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/neosnippet-snippets'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'cespare/vim-toml'
 """
 Plugin 'mtth/scratch.vim'
 Plugin 'airblade/vim-gitgutter'
