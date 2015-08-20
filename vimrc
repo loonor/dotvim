@@ -1065,7 +1065,7 @@ au FileType go nmap <Leader>e <Plug>(go-rename)
 let g:go_fmt_command = "goimports"
 
 " ======= 自定义快捷键 ======= "
-" 保存存不好用
+" 保存在terminal模式下不好用,gvim时好使
 nmap <c-s> :update<CR>
 imap <c-s> <ESC>:update<CR>
 vmap <c-s> <ESC>:update<CR>
@@ -1213,7 +1213,9 @@ let g:haskell_enable_pattern_synonyms = 1 ""to enable highlighting of pattern
 let g:haskell_enable_typeroles = 1 ""to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1 ""to enable highlighting of static
 
-
+;;set vim-clang
+let g:clang_c_options = '-std=gnu11'
+let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
 " assuming you want to use snipmate snippet engine
 
 call pathogen#infect()
