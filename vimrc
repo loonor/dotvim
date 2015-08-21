@@ -620,6 +620,7 @@ Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'cespare/vim-toml'
+Plugin 'justmao945/vim-clang'
 """
 Plugin 'mtth/scratch.vim'
 Plugin 'airblade/vim-gitgutter'
@@ -1216,6 +1217,7 @@ let g:haskell_enable_static_pointers = 1 ""to enable highlighting of static
 """set vim-clang
 let g:clang_c_options = '-std=gnu11'
 let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+let g:clang_compilation_database = './build'
 " assuming you want to use snipmate snippet engine
 
 call pathogen#infect()
