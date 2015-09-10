@@ -107,6 +107,10 @@ set termencoding=utf-8
 set encoding=utf8
 set fileencodings=utf8,gbk,cp936,gb2312,gb18030,latin-1
 set nobomb
+
+"""自动保存
+set autowriteall
+
 """colorscheme
 colorscheme solarized
 
@@ -625,6 +629,8 @@ Plugin 'justmao945/vim-clang'
 Plugin 'mtth/scratch.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'tpope/vim-dispatch.git'
 call vundle#end()
 filetype plugin indent on
 
@@ -1180,7 +1186,7 @@ vmap <leader>rr <ESC>:call Compile_Run_Code()<CR>
 
 set hidden
 let g:racer_cmd = "$HOME/github/racer/target/release/racer"
-let $RUST_SRC_PATH="/home/loonor/github/rust-lang/rust/src/"
+let $RUST_SRC_PATH="/home/loonor/github/rust/src/"
 let g:rust_doc#downloaded_rust_doc_dir = '~/.multirust/toolchains/nightly'
 autocmd FileType apache set commentstring=#\ %s
 
@@ -1219,6 +1225,8 @@ let g:clang_c_options = '-std=gnu11'
 let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
 "let g:clang_compilation_database = './build'
 " assuming you want to use snipmate snippet engine
+
+let g:OmniSharp_selector_ui = 'ctrlp'
 
 call pathogen#infect()
 call pathogen#helptags()
