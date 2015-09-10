@@ -1,4 +1,4 @@
- """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ""基本设置{}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
@@ -508,7 +508,17 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
+
+Plugin 'EasyGrep'
+Plugin 'a.vim'
+Plugin 'cscope_macros.vim'
+Plugin 'jsfaint/gen_tags.vim'
+Plugin 'Mark--Karkat'
+Plugin 'matchit.zip'
+Plugin 'jQuery'
 Plugin 'mileszs/ack.vim'
+Plugin 'mhinz/vim-signify'
+Plugin 'mhinz/vim-startify'
 Plugin 'vim-scripts/Auto-Pairs'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/CaptureClipboard'
@@ -528,51 +538,53 @@ Plugin 'vim-scripts/gtk-vim-syntax'
 Plugin 'sjl/gundo.vim'
 Plugin 'raichoo/haskell-vim'
 Plugin 'othree/html5.vim'
-Plugin 'Yggdroot/indentLine' 
+Plugin 'yggdroot/indentline' 
 Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'vim-scripts/Javascript-OmniCompletion-with-YUI-and-j'
+Plugin 'vim-scripts/javascript-omnicompletion-with-yui-and-j'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/jsbeautify' 
 Plugin 'vim-scripts/jslint.vim'
-Plugin 'JuliaLang/julia-vim'
+Plugin 'julialang/julia-vim'
 Plugin 'udalov/kotlin-vim'
-Plugin 'vim-scripts/L9'
+Plugin 'vim-scripts/l9'
 Plugin 'vim-scripts/last_edit_marker.vim'
-Plugin 'Valloric/ListToggle'
+Plugin 'valloric/listtoggle'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+
 """Plugin 'vim-scripts/nimrod.vim' 
 Plugin 'shawncplus/phpcomplete.vim' 
-Plugin 'spf13/PIV'
+Plugin 'spf13/piv'
 Plugin 'edkolev/promptline.vim'
 Plugin 'kevinw/pyflakes-vim'
 Plugin 'vim-scripts/python-imports.vim'
 Plugin 'klen/python-mode'
 Plugin 'phildawes/racer'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/neomru.vim'
 Plugin 'rust-lang/rust.vim' 
 Plugin 'rhysd/rust-doc.vim'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'rstacruz/sparkup'
-Plugin 'vim-scripts/SQLComplete.vim'
+Plugin 'vim-scripts/sqlcomplete.vim'
 Plugin 'ervandew/supertab'
 Plugin 'vim-scripts/synmark.vim'
 Plugin 'scrooloose/syntastic'
+
+" tabular: 自动对齐
 Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-scripts/taglist.vim' 
-Plugin 'vim-scripts/The-NERD-Commenter' 
+Plugin 'vim-scripts/the-nerd-commenter' 
 Plugin 'tomtom/tlib_vim'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'SirVer/ultisnips'
+Plugin 'sirver/ultisnips'
 Plugin 'jdonaldson/vaxe'
-Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'marcweber/vim-addon-mw-utils'
 Plugin 'bling/vim-airline'
 Plugin 'xsbeats/vim-blade'
-Plugin 'vim-scripts/VimClojure'
+Plugin 'vim-scripts/vimclojure'
 Plugin 'rmartinho/vim-cpp11'
 Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'OrangeT/vim-csharp'
+Plugin 'oranget/vim-csharp'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'skammer/vim-css-color'
 Plugin 'bartlomiejdanek/vim-dart'
@@ -581,6 +593,7 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'oscarh/vimerl'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-speeddating'
 Plugin 'fsharp/vim-fsharp'
 Plugin 'fatih/vim-go'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -588,7 +601,7 @@ Plugin 'andreimaxim/vim-io'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'bpdp/vim-java'
 Plugin 'pangloss/vim-javascript'
-Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'glench/vim-jinja2-syntax'
 Plugin 'jason0x43/vim-js-indent'
 Plugin 'leshill/vim-json'
 Plugin 'briancollins/vim-jst'
@@ -603,33 +616,47 @@ Plugin 'wlangstroth/vim-racket'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'derekwyatt/vim-scala'
-Plugin 'vim-scripts/Vim-Script-Updater'
+Plugin 'vim-scripts/vim-script-updater'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-git'
 Plugin 'kballard/vim-swift'
 Plugin 'evidens/vim-twig'
 Plugin 'vimwiki/vimwiki' 
-"""Plugin 'gmarik/Vundle.vim'
+"""Plugin 'gmarik/vundle.vim'
 Plugin 'zah/nim.vim'
 Plugin 'burnettk/vim-angular'
 Plugin 'claco/jasmine.vim'
 Plugin 'matthewsimo/angular-vim-snippets'
 """
-"Plugin 'Valloric/YouCompleteMe' 
-Plugin 'vim-scripts/AutoComplPop'
-Plugin 'Shougo/neocomplcache.vim'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
-Plugin 'Shougo/vimproc.vim'
+"Plugin 'valloric/youcompleteme' 
+Plugin 'vim-scripts/autocomplpop'
+Plugin 'osyo-manga/unite-quickfix'
+Plugin 'tsukkee/unite-tag'
+Plugin 'xml.vim'
+Plugin 'shougo/unite-help'
+Plugin 'shougo/unite-outline'
+Plugin 'shougo/vimshell.vim'
+Plugin 'shougo/unite.vim'
+Plugin 'shougo/neomru.vim'
+Plugin 'shougo/neocomplcache.vim'
+if has('lua')
+    Plugin 'shougo/neocomplete.vim'
+    Plugin 'shougo/neosnippet.vim'
+endif 
+Plugin 'shougo/neosnippet-snippets'
+Plugin 'shougo/vimproc.vim', { 'build' : { 'unix' : 'make -f make_unix.mak',  },  }
 Plugin 'cespare/vim-toml'
 Plugin 'justmao945/vim-clang'
-"""
 Plugin 'mtth/scratch.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
-Plugin 'OmniSharp/omnisharp-vim'
+" commentary: 快速注释。
+Plugin 'tpope/vim-commentary'
+" matlab/matlab-fold: matlab 语法高亮及代码折叠插件。
+Plugin 'djoshea/vim-matlab'
+Plugin 'djoshea/vim-matlab-fold'
+Plugin 'omnisharp/omnisharp-vim'
 Plugin 'tpope/vim-dispatch.git'
 call vundle#end()
 filetype plugin indent on
@@ -639,35 +666,35 @@ let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
-autocmd FileType html,css EmmetInstall
+autocmd filetype html,css emmetinstall
 
  """"""""""
 " 对部分语言设置单独的缩进
-au FileType groovy,scala,clojure,scheme,racket,lisp,lua,ruby,eruby,slim,elixir,julia,dart,haxe,coffee,jade,sh set shiftwidth=2
-au FileType groovy,scala,clojure,scheme,racket,lisp,lua,ruby,eruby,slim,elixir,julia,dart,haxe,coffee,jade,sh set tabstop=2
+au filetype groovy,scala,clojure,scheme,racket,lisp,lua,ruby,eruby,slim,elixir,julia,dart,haxe,coffee,jade,sh set shiftwidth=2
+au filetype groovy,scala,clojure,scheme,racket,lisp,lua,ruby,eruby,slim,elixir,julia,dart,haxe,coffee,jade,sh set tabstop=2
 
 " 根据后缀名指定文件类型
-au BufRead,BufNewFile *.h        setlocal ft=c
-au BufRead,BufNewFile *.m        setlocal ft=objc
-au BufRead,BufNewFile *.di       setlocal ft=d
-au BufRead,BufNewFile *.cl       setlocal ft=lisp
-au BufRead,BufNewFile *.phpt     setlocal ft=php
-au BufRead,BufNewFile *.inc      setlocal ft=php
-au BufRead,BufNewFile *.sql      setlocal ft=mysql
-au BufRead,BufNewFile *.tpl      setlocal ft=smarty
-au BufRead,BufNewFile *.txt      setlocal ft=txt
-au BufRead,BufNewFile *.log      setlocal ft=conf
-au BufRead,BufNewFile hosts      setlocal ft=conf
-au BufRead,BufNewFile http*.conf setlocal ft=apache
-au BufRead,BufNewFile *.conf     setlocal ft=nginx
-au BufRead,BufNewFile *.ini      setlocal ft=dosini
+au bufread,bufnewfile *.h        setlocal ft=c
+au bufread,bufnewfile *.m        setlocal ft=objc
+au bufread,bufnewfile *.di       setlocal ft=d
+au bufread,bufnewfile *.cl       setlocal ft=lisp
+au bufread,bufnewfile *.phpt     setlocal ft=php
+au bufread,bufnewfile *.inc      setlocal ft=php
+au bufread,bufnewfile *.sql      setlocal ft=mysql
+au bufread,bufnewfile *.tpl      setlocal ft=smarty
+au bufread,bufnewfile *.txt      setlocal ft=txt
+au bufread,bufnewfile *.log      setlocal ft=conf
+au bufread,bufnewfile hosts      setlocal ft=conf
+au bufread,bufnewfile http*.conf setlocal ft=apache
+au bufread,bufnewfile *.conf     setlocal ft=nginx
+au bufread,bufnewfile *.ini      setlocal ft=dosini
 "markdown配置
-au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd
-au BufRead,BufNewFile *.{go}   set filetype=go
-au BufRead,BufNewFile *.{js}   set filetype=javascript
+au bufread,bufnewfile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd
+au bufread,bufnewfile *.{go}   set filetype=go
+au bufread,bufnewfile *.{js}   set filetype=javascript
 
 "golang
-"Processing... % (ctrl+c to stop)
+"processing... % (ctrl+c to stop)
 let g:fencview_autodetect=0
 set rtp+=~/go/gopath/src/github.com/nsf/gocode/vim
 
@@ -702,35 +729,35 @@ let g:tagbar_type_go = {
 " """""""""""""""""""""""""""""""""""""""""""
 
 " 针对部分语言加减指定字符的单词属性
-au FileType clojure  set iskeyword-=.
-au FileType clojure  set iskeyword-=>
-au FileType perl,php set iskeyword-=.
-au FileType perl,php set iskeyword-=$
-au FileType perl,php set iskeyword-=-
-au FileType ruby     set iskeyword+=!
-au FileType ruby     set iskeyword+=?
+au filetype clojure  set iskeyword-=.
+au filetype clojure  set iskeyword-=>
+au filetype perl,php set iskeyword-=.
+au filetype perl,php set iskeyword-=$
+au filetype perl,php set iskeyword-=-
+au filetype ruby     set iskeyword+=!
+au filetype ruby     set iskeyword+=?
 
 
 
 " 针对部分语言添加字典补全
-"au FileType c          call AddCDict()
-"au FileType cpp        call AddCPPDict()
-"au FileType java       call AddJavaDict()
-"au FileType lua        call AddLuaDict()
-"au FileType perl       call AddPerlDict()
-"au FileType php        call AddPHPDict()
-"au FileType python     call AddPythonDict()
-"au FileType ruby       call AddRubyDict()
-"au FileType scala      call AddScalaDict()
-"au FileType javascript call AddJavaScriptDict()
-"au FileType css        call AddCSSDict()
+"au filetype c          call addcdict()
+"au filetype cpp        call addcppdict()
+"au filetype java       call addjavadict()
+"au filetype lua        call addluadict()
+"au filetype perl       call addperldict()
+"au filetype php        call addphpdict()
+"au filetype python     call addpythondict()
+"au filetype ruby       call addrubydict()
+"au filetype scala      call addscaladict()
+"au filetype javascript call addjavascriptdict()
+"au filetype css        call addcssdict()
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "键盘命令
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " quickfix模式
-autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
+autocmd filetype c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
 "代码补全 
 set completeopt=preview,menu 
 filetype plugin indent on 
@@ -750,84 +777,82 @@ endif
 autocmd vimenter * if !argc() | NERDTree | endif
 " 只剩 NERDTree时自动关闭
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-
-"C，C++ 按F6编译运行
-"map <F6> :call CompileRunGcc()<CR>
+"c，c++ 按f6编译运行
+"map <f6> :call compilerungcc()<cr>
 
 "代码格式优化化
 
-map <F5> :call FormartSrc()<CR><CR>
+map <f5> :call formartsrc()<cr><cr>
 
-:nmap <silent>  <F12> <ESC>:GundoToggle<RETURN>
+:nmap <silent>  <f12> <esc>:gundotoggle<return>
 
-map <F7> :call Compile_Run_Code()<CR><CR>
+map <f7> :call compile_run_code()<cr><cr>
 
-"C,C++的调试
-map <F8> :call Rungdb()<CR>
+"c,c++的调试
+map <f8> :call rungdb()<cr>
 
-:nmap <silent> <F9> <ESC>:TagbarToggle<RETURN>
+:nmap <silent> <f9> <esc>:tagbartoggle<return>
 " shift tab pages
-map <S-Left> :tabp<CR>
-map <S-Right> :tabn<CR>
-map <C-A> ggVG$"+y
-" 选中状态下 Ctrl+c 复制
-vmap <C-c> "+y 
+map <s-left> :tabp<cr>
+map <s-right> :tabn<cr>
+map <c-a> ggvg$"+y
+" 选中状态下 ctrl+c 复制
+vmap <c-c> "+y 
 
-"rkdown to HTML  
-nmap md :!~/.vim/markdown.pl % > %.html <CR><CR>
-nmap fi :!firefox %.html & <CR><CR>
+"rkdown to html  
+nmap md :!~/.vim/markdown.pl % > %.html <cr><cr>
+nmap fi :!firefox %.html & <cr><cr>
 nmap \ \cc
 vmap \ \cc
 
 "将tab替换为空格
-nmap tt :%s/\t/    /g<CR>
+nmap tt :%s/\t/    /g<cr>
 
 
 " 加载pathogen插件管理器
 execute pathogen#infect()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"snipMate Tag智能补全
+"snipmate tag智能补全
 "let g:snips_author = 'loonor'
-"if g:isWIN
-"    let g:snippets_dir = $VIM.'/snippets/'
+"if g:iswin
+"    let g:snippets_dir = $vim.'/snippets/'
 "else
 ""    let g:snippets_dir = '~/.vim/snippets/'
 "endif
-"let g:snipMate                             = {}
+"let g:snipmate                             = {}
 " 不使用插件自带的默认继承
-"let g:snipMate.no_default_aliases          = 1
-" 设置补全项之间的继承关系，比如 PHP补全继承HTML的补全
-"let g:snipMate.scope_aliases               = {}
-"let g:snipMate.scope_aliases['c']          = 'cpp,gtk'
-"let g:snipMate.scope_aliases['objc']       = 'objc,cpp'
-"let g:snipMate.scope_aliases['scheme']     = 'racket'
-"let g:snipMate.scope_aliases['php']        = 'php,html'
-"let g:snipMate.scope_aliases['typescript'] = 'typescript,javascript'
-"let g:snipMate.scope_aliases['scss']       = 'scss,css'
-"let g:snipMate.scope_aliases['less']       = 'less,css'
-"let g:snipMate.scope_aliases['xhtml']      = 'html'
-"let g:snipMate.scope_aliases['blade']      = 'blade,html'
-"let g:snipMate.scope_aliases['html.twig']  = 'twig,html'
-"let g:snipMate.scope_aliases['jinja.twig'] = 'twig,html'
-"let g:snipMate.scope_aliases['jinja']      = 'jinja,html'
-"let g:snipMate.scope_aliases['eruby']      = 'eruby,html'
-"let g:snipMate.scope_aliases['jst']        = 'jst,html'
-"let g:snipMate.scope_aliases['mustache']   = 'mustache,html'
+"let g:snipmate.no_default_aliases          = 1
+" 设置补全项之间的继承关系，比如 php补全继承html的补全
+"let g:snipmate.scope_aliases               = {}
+"let g:snipmate.scope_aliases['c']          = 'cpp,gtk'
+"let g:snipmate.scope_aliases['objc']       = 'objc,cpp'
+"let g:snipmate.scope_aliases['scheme']     = 'racket'
+"let g:snipmate.scope_aliases['php']        = 'php,html'
+"let g:snipmate.scope_aliases['typescript'] = 'typescript,javascript'
+"let g:snipmate.scope_aliases['scss']       = 'scss,css'
+"let g:snipmate.scope_aliases['less']       = 'less,css'
+"let g:snipmate.scope_aliases['xhtml']      = 'html'
+"let g:snipmate.scope_aliases['blade']      = 'blade,html'
+"let g:snipmate.scope_aliases['html.twig']  = 'twig,html'
+"let g:snipmate.scope_aliases['jinja.twig'] = 'twig,html'
+"let g:snipmate.scope_aliases['jinja']      = 'jinja,html'
+"let g:snipmate.scope_aliases['eruby']      = 'eruby,html'
+"let g:snipmate.scope_aliases['jst']        = 'jst,html'
+"let g:snipmate.scope_aliases['mustache']   = 'mustache,html'
 
 
-" NERD_commenter      注释处理插件
-let NERDSpaceDelims = 1                        " 自动添加前置空格
+" nerd_commenter      注释处理插件
+let nerdspacedelims = 1                        " 自动添加前置空格
 
-" Indent_guides       显示对齐线
+" indent_guides       显示对齐线
 let g:indent_guides_enable_on_vim_startup = 0  " 默认关闭
 let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 
-" AirLine             彩色状态栏
+" airline             彩色状态栏
 let g:airline_theme = 'badwolf'                " 设置主题
 
-" Promptline          终端辅助工具
+" promptline          终端辅助工具
 let g:promptline_powerline_symbols = 0         " 关闭特殊符号
 let g:promptline_preset = {
         \'a'    : [ '\u' ],
@@ -836,7 +861,7 @@ let g:promptline_preset = {
         \'warn' : [ promptline#slices#last_exit_code() ]
         \}                                     " 自定义命令行显示
 
-" GitGutter           Git辅助插件
+" gitgutter           git辅助插件
 let g:gitgutter_enabled               = 0      " 默认不开启
 let g:gitgutter_signs                 = 0      " 默认不开启提示
 let g:gitgutter_highlight_lines       = 0      " 默认不高亮行
@@ -857,19 +882,19 @@ let g:syntastic_mode_map      = {'mode': 'active',
 " 自定义编译器和编译参数
 let g:syntastic_c_compiler = 'gcc'
 let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_c_compiler_options = '-std=c11 -Wall'
-let g:syntastic_cpp_compiler_options = '-std=c++14 -Wall'
+let g:syntastic_c_compiler_options = '-std=c11 -wall'
+let g:syntastic_cpp_compiler_options = '-std=c++14 -wall'
 
-" javascript-libraries-syntax                    指定需要高亮的JS库
+" javascript-libraries-syntax                    指定需要高亮的js库
 let g:used_javascript_libs = 'jquery,requirejs,backbone,underscore,prelude,angularjs,angularui,react'
 
 " minibufexpl插件的一般设置
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1  
-nmap tl :Tlist<cr>
-nmap tb :TagbarToggle<CR>
+let g:minibufexplmapwindownavvim = 1
+let g:minibufexplmapwindownavarrows = 1
+let g:minibufexplmapctabswitchbufs = 1
+let g:minibufexplmodseltarget = 1  
+nmap tl :tlist<cr>
+nmap tb :tagbartoggle<cr>
 "python补全
 "let g:pydiction_location = '~/.vim/after/complete-dict'
 "let g:pydiction_menu_height = 20
@@ -969,9 +994,9 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.png,*.jpg,*.gif     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc,*.png,*.jpg,*.gif  " Windows
 
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = '\v\.(exe|so|dll)$'
-let g:ctrlp_extensions = ['funky']
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"let g:ctrlp_custom_ignore = '\v\.(exe|so|dll)$'
+"let g:ctrlp_extensions = ['funky']
 
 let NERDTreeIgnore=['\.pyc']
 
@@ -1021,9 +1046,9 @@ let NERDTreeIgnore=['\.pyc']
 "
 "
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsExpandTrigger = "<C-Space>"
+let g:UltiSnipsJumpForwardTrigger = "<c-b>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -1123,7 +1148,7 @@ nmap <leader>nt :NERDTree<CR>
 nmap <leader>fe :FencView<CR>
 
 " ,ff                 打开文件搜索窗口，在最下方显示 [CtrlP插件]
-nmap <leader>ff :CtrlPMixed<CR>
+"nmap <leader>ff :CtrlPMixed<CR>
 
 
 " \gi                 开启或关闭GitGutter [GitGutter插件]
@@ -1226,7 +1251,7 @@ let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
 "let g:clang_compilation_database = './build'
 " assuming you want to use snipmate snippet engine
 
-let g:OmniSharp_selector_ui = 'ctrlp'
+let g:OmniSharp_selector_ui = 'unite'
 
 call pathogen#infect()
 call pathogen#helptags()
