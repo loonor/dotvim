@@ -1,7 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ""基本设置{}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax on
 set sw=4
 set ts=4
 set et
@@ -59,12 +58,6 @@ set langmenu=zh_CN.UTF-8
 set helplang=cn
 " 总是显示状态行
 set cmdheight=2
-" 侦测文件类型
-filetype on
-" 载入文件类型插件
-filetype plugin on
-" 为特定文件类型载入相关缩进文件
-filetype indent on
 " 保存全局变量
 set viminfo+=!
 " 带有如下符号的单词不要被换行分割
@@ -115,7 +108,6 @@ set autowriteall
 colorscheme solarized
 
 
-filetype plugin indent on 
 """"""""""""""""""""基本设置}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -777,21 +769,19 @@ endif
 autocmd vimenter * if !argc() | NERDTree | endif
 " 只剩 NERDTree时自动关闭
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-"c，c++ 按f6编译运行
-"map <f6> :call compilerungcc()<cr>
 
 "代码格式优化化
 
-map <f5> :call formartsrc()<cr><cr>
+map <f5> :call Formartsrc()<cr><cr>
 
-:nmap <silent>  <f12> <esc>:gundotoggle<return>
+:nmap <silent>  <f12> <esc>:Gundotoggle<return>
 
-map <f7> :call compile_run_code()<cr><cr>
+map <f7> :call Compile_Run_Code()<cr><cr>
 
 "c,c++的调试
-map <f8> :call rungdb()<cr>
+map <f8> :call Rungdb()<cr>
 
-:nmap <silent> <f9> <esc>:tagbartoggle<return>
+:nmap <silent> <f9> <esc>:TagbarToggle<return>
 " shift tab pages
 map <s-left> :tabp<cr>
 map <s-right> :tabn<cr>
@@ -816,9 +806,9 @@ execute pathogen#infect()
 "snipmate tag智能补全
 "let g:snips_author = 'loonor'
 "if g:iswin
-"    let g:snippets_dir = $vim.'/snippets/'
+"    let g:snippets_dir = '~/.vim/bundle/vim-snippets/snippets'
 "else
-""    let g:snippets_dir = '~/.vim/snippets/'
+    let g:snippets_dir = '~/.vim/bundle/vim-snippets/snippets/'
 "endif
 "let g:snipmate                             = {}
 " 不使用插件自带的默认继承
@@ -893,8 +883,8 @@ let g:minibufexplmapwindownavvim = 1
 let g:minibufexplmapwindownavarrows = 1
 let g:minibufexplmapctabswitchbufs = 1
 let g:minibufexplmodseltarget = 1  
-nmap tl :tlist<cr>
-nmap tb :tagbartoggle<cr>
+nmap tl :Tlist<cr>
+nmap tb :TagbarToggle<cr>
 "python补全
 "let g:pydiction_location = '~/.vim/after/complete-dict'
 "let g:pydiction_menu_height = 20
@@ -941,7 +931,7 @@ function! s:my_cr_function()
   "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 endfunction
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
@@ -1003,56 +993,16 @@ let NERDTreeIgnore=['\.pyc']
 ""neocomplete  不起用
 """let g:neocomplcache_enable_at_startup = 0
 
-" YCM settings
-
-"" make YCM compatible with UltiSnips (using supertab)
-"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-"let g:SuperTabDefaultCompletionType = '<C-n>'
-"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-""Do not ask when starting vim
-"let g:ycm_confirm_extra_conf = 0
-"let g:syntastic_always_populate_loc_list = 1
-"let g:ycm_autoclose_preview_window_after_completion=1
-"let g:ycm_server_use_vim_stdout = 1
-"let g:ycm_server_log_level = 'debug'
-"let g:ycm_key_invoke_completion = '<C-Space>'
-
-"let g:ycm_min_num_of_chars_for_completion = 2
-
-"let g:ycm_min_num_identifier_candidate_chars = 0
-
-"let g:ycm_auto_trigger = 1
-
-"let g:ycm_filetype_whitelist = { '*': 1 }
-"nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>   “按,jd 会跳转到定义
-"let g:ycm_collect_identifiers_from_tag_files = 1 "使用ctags生成的tags文件
-"let g:ycm_filetype_blacklist = {
-"      \ 'tagbar' : 1,
-""      \ 'qf' : 1,
-""      \ 'notes' : 1,
-""      \ 'markdown' : 1,
-""      \ 'unite' : 1,
-""      \ 'text' : 1,
-""      \ 'vimwiki' : 1,
-""      \ 'pandoc' : 1,
-""      \ 'infolog' : 1,
-""      \ 'mail' : 1
-""      \}
-"""不自动完成的项
-"let g:ycm_filetype_specific_completion_to_disable = {
-"     \ 'gitcommit': 1
-"      \}
-"
 "
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<C-Space>"
-let g:UltiSnipsJumpForwardTrigger = "<c-b>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
-
+let g:UltiSnipsExpandTrigger = "<s-tab>"
+let g:UltiSnipsJumpForwardTrigger = "<c-n>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
+let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+"let g:SuperTabDefaultCompletionType = "<c-n>"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""
 "fun! JumpToDef()
@@ -1255,14 +1205,21 @@ let g:OmniSharp_selector_ui = 'unite'
 
 call pathogen#infect()
 call pathogen#helptags()
-syntax enable
-filetype plugin indent on
+"syntax enable
+"filetype plugin indent on
 " 当前目录文件很多时，会导致第一次保存非常慢
 call pymode#default('g:pymode_rope_autoimport', 0)
 let g:pymode_rope = 0 
 "新建.c,.h,.sh,.java文件，自动插入文件头 
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py,*.go exec ":call SetTitle()" 
 
+syntax on ""
+" 侦测文件类型
+filetype on
+" 载入文件类型插件
+filetype plugin on
+" 为特定文件类型载入相关缩进文件
+filetype indent on
 "Use local vimrc if available {
 if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local 
