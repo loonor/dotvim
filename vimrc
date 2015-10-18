@@ -105,9 +105,12 @@ set nobomb
 set autowriteall
 
 """colorscheme
-colorscheme solarized
+"colorscheme solarized
 
 
+syntax on ""
+" 侦测文件类型
+filetype on
 """"""""""""""""""""基本设置}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -451,8 +454,16 @@ func SetTitle()
         call append(line("."),"# encoding: utf-8")
         call append(line(".")+1, "")
 
-"    elseif &filetype == 'mkd'
-"        call setline(1,"<head><meta charset=\"UTF-8\"></head>")
+    elseif &filetype == 'html'
+        call setline(1,"<!DOCTYPE html>")
+        call append(line("."), "<html>")
+        call append(line(".")+1, "<head>")
+        call append(line(".")+2, "<title>   </title>")
+        call append(line(".")+3, "</head>")
+        call append(line(".")+4, "<body>")
+        call append(line(".")+5, "")
+        call append(line(".")+6, "</body>")
+        call append(line(".")+7, "</html>")
     else 
         call setline(1, "/* =========================================================*") 
         call append(line("."),   "  * File Name: ".expand("%")) 
@@ -461,6 +472,7 @@ func SetTitle()
         call append(line(".")+3, "  * Created Time: ".strftime("%c"))
         call append(line(".")+4, "  * Discription:")
         call append(line(".")+5, "  *=========================================================*/") 
+        call append(line(".")+6, "")
     endif
     if expand("%:e") == 'cpp'
         call append(line(".")+6, "//#include <iostream>")
@@ -494,171 +506,229 @@ endfunc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"vundle
 """"""""""""""""""""""""""""""""""""""""""
-set nocompatible              " be iMproved, required
-filetype off                  " required
+"set nocompatible              " be iMproved, required
+"filetype off                  " required
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
 
-Plugin 'EasyGrep'
-Plugin 'a.vim'
-Plugin 'cscope_macros.vim'
-Plugin 'jsfaint/gen_tags.vim'
-Plugin 'Mark--Karkat'
-Plugin 'matchit.zip'
-Plugin 'jQuery'
-Plugin 'mileszs/ack.vim'
-Plugin 'mhinz/vim-signify'
-Plugin 'mhinz/vim-startify'
-Plugin 'vim-scripts/Auto-Pairs'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'vim-scripts/CaptureClipboard'
-Plugin 'wincent/command-t'
-Plugin 'chrisbra/csv.vim'
-Plugin 'tacahiroy/ctrlp-funky' 
-Plugin 'vim-scripts/ctrlp-modified.vim'
-Plugin 'vim-scripts/ctrlp.vim'
-Plugin 'dart-lang/dart-vim-Plugin'
-Plugin 'vim-scripts/Django-Projects' 
-Plugin 'vim-scripts/django_templates.vim' 
-Plugin 'mattn/emmet-vim'
-Plugin 'vim-scripts/fencview.vim' 
-Plugin 'vim-scripts/FuzzyFinder'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'vim-scripts/gtk-vim-syntax'
-Plugin 'sjl/gundo.vim'
-Plugin 'raichoo/haskell-vim'
-Plugin 'othree/html5.vim'
-Plugin 'yggdroot/indentline' 
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'vim-scripts/javascript-omnicompletion-with-yui-and-j'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'vim-scripts/jsbeautify' 
-Plugin 'vim-scripts/jslint.vim'
-Plugin 'julialang/julia-vim'
-Plugin 'udalov/kotlin-vim'
-Plugin 'vim-scripts/l9'
-Plugin 'vim-scripts/last_edit_marker.vim'
-Plugin 'valloric/listtoggle'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
 
-"""Plugin 'vim-scripts/nimrod.vim' 
-Plugin 'shawncplus/phpcomplete.vim' 
-Plugin 'spf13/piv'
-Plugin 'edkolev/promptline.vim'
-Plugin 'kevinw/pyflakes-vim'
-Plugin 'vim-scripts/python-imports.vim'
-Plugin 'klen/python-mode'
-Plugin 'phildawes/racer'
-Plugin 'rust-lang/rust.vim' 
-Plugin 'rhysd/rust-doc.vim'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'rstacruz/sparkup'
-Plugin 'vim-scripts/sqlcomplete.vim'
-Plugin 'ervandew/supertab'
-Plugin 'vim-scripts/synmark.vim'
-Plugin 'scrooloose/syntastic'
+
+ " Note: Skip initialization for vim-tiny or vim-small.
+ if 0 | endif
+
+ if has('vim_starting')
+   if &compatible
+     set nocompatible               " Be iMproved
+   endif
+
+   " Required:
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+ endif
+
+ " Required:
+ call neobundle#begin(expand('~/.vim/bundle/'))
+
+ " Let NeoBundle manage NeoBundle
+ " Required:
+ NeoBundleFetch 'Shougo/neobundle.vim'
+"""NeoBundleFetch 'gmarik/vundle.vim'
+ " My Bundles here:
+ " Refer to |:NeoBundle-examples|.
+ " Note: You don't set neobundle setting in .gvimrc!
+
+NeoBundleFetch 'a.vim'
+NeoBundleFetch 'andreimaxim/vim-io'
+NeoBundleFetch 'bling/vim-airline'
+NeoBundleFetch 'bartlomiejdanek/vim-dart'
+NeoBundleFetch 'becaning/vimdoccn'
+"NeoBundleFetch 'bpdp/vim-java'
+NeoBundleFetch 'briancollins/vim-jst'
+NeoBundleFetch 'burnettk/vim-angular'
+
+NeoBundleFetch 'claco/jasmine.vim'
+NeoBundleFetch 'cscope_macros.vim'
+NeoBundleFetch 'cakebaker/scss-syntax.vim'
+NeoBundleFetch 'chrisbra/csv.vim'
+NeoBundleFetch 'airblade/vim-gitgutter'
+NeoBundleFetch 'cespare/vim-toml'
+
+NeoBundleFetch 'dart-lang/dart-vim-plugin'
+NeoBundleFetch 'davidhalter/jedi-vim'
+NeoBundleFetch 'digitaltoad/vim-jade'
+NeoBundleFetch 'derekwyatt/vim-scala'
+NeoBundleFetch 'djoshea/vim-matlab'   " matlab/matlab-fold: matlab 语法高亮及代码折叠插件。
+NeoBundleFetch 'djoshea/vim-matlab-fold'
+"NeoBundleFetch 'dbext.vim'
+
+NeoBundleFetch 'eagletmt/ghcmod-vim'
+NeoBundleFetch 'EasyGrep'
+NeoBundleFetch 'elixir-lang/vim-elixir'
+NeoBundleFetch 'edkolev/promptline.vim'
+"NeoBundleFetch 'ervandew/supertab'
+NeoBundleFetch 'evidens/vim-twig'
+
+"NeoBundleFetch 'fsharp/vim-fsharp'
+NeoBundleFetch 'fatih/vim-go'
+NeoBundleFetch 'fatih/vim-nginx'
 
 " tabular: 自动对齐
-Plugin 'godlygeek/tabular'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-scripts/taglist.vim' 
-Plugin 'vim-scripts/the-nerd-commenter' 
-Plugin 'tomtom/tlib_vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'sirver/ultisnips'
-Plugin 'jdonaldson/vaxe'
-Plugin 'marcweber/vim-addon-mw-utils'
-Plugin 'bling/vim-airline'
-Plugin 'xsbeats/vim-blade'
-Plugin 'vim-scripts/vimclojure'
-Plugin 'rmartinho/vim-cpp11'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'oranget/vim-csharp'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'skammer/vim-css-color'
-Plugin 'bartlomiejdanek/vim-dart'
-Plugin 'becaning/vimdoccn'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'oscarh/vimerl'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-projectionist'
-Plugin 'tpope/vim-speeddating'
-Plugin 'fsharp/vim-fsharp'
-Plugin 'fatih/vim-go'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'andreimaxim/vim-io'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'bpdp/vim-java'
-Plugin 'pangloss/vim-javascript'
-Plugin 'glench/vim-jinja2-syntax'
-Plugin 'jason0x43/vim-js-indent'
-Plugin 'leshill/vim-json'
-Plugin 'briancollins/vim-jst'
-Plugin 'groenewege/vim-less'
-Plugin 'ninegrid/vim-livescript'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'fatih/vim-nginx'
-Plugin 'tpope/vim-pathogen'
-Plugin 'vim-perl/vim-perl'
-Plugin 'wlangstroth/vim-racket'
-Plugin 'tpope/vim-rails'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'vim-scripts/vim-script-updater'
-Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-git'
-Plugin 'kballard/vim-swift'
-Plugin 'evidens/vim-twig'
-Plugin 'vimwiki/vimwiki' 
-"""Plugin 'gmarik/vundle.vim'
-Plugin 'zah/nim.vim'
-Plugin 'burnettk/vim-angular'
-Plugin 'claco/jasmine.vim'
-Plugin 'matthewsimo/angular-vim-snippets'
-"""
-"Plugin 'valloric/youcompleteme' 
-Plugin 'vim-scripts/autocomplpop'
-Plugin 'osyo-manga/unite-quickfix'
-Plugin 'tsukkee/unite-tag'
-Plugin 'xml.vim'
-Plugin 'shougo/unite-help'
-Plugin 'shougo/unite-outline'
-Plugin 'shougo/vimshell.vim'
-Plugin 'shougo/unite.vim'
-Plugin 'shougo/neomru.vim'
-Plugin 'shougo/neocomplcache.vim'
+NeoBundleFetch 'godlygeek/tabular'
+NeoBundleFetch 'glench/vim-jinja2-syntax'
+NeoBundleFetch 'groenewege/vim-less'
+"NeoBundleFetch 'garbas/vim-snipmate'
+NeoBundleFetch 'hail2u/vim-css3-syntax'
+NeoBundleFetch 'honza/vim-snippets'
+NeoBundleFetch 'jsfaint/gen_tags.vim'
+NeoBundleFetch 'jlanzarotta/bufexplorer'
+NeoBundleFetch 'jQuery'
+NeoBundleFetch 'julialang/julia-vim'
+NeoBundleFetch 'jdonaldson/vaxe'
+NeoBundleFetch 'jason0x43/vim-js-indent'
+NeoBundleFetch 'justmao945/vim-clang'
+
+NeoBundleFetch 'kevinw/pyflakes-vim'
+NeoBundleFetch 'klen/python-mode'
+"NeoBundleFetch 'kballard/vim-swift'
+
+NeoBundleFetch 'leafgarland/typescript-vim'
+NeoBundleFetch 'leshill/vim-json'
+
+NeoBundleFetch 'mtth/scratch.vim'
+NeoBundleFetch 'marcweber/vim-addon-mw-utils'
+NeoBundleFetch 'Mark--Karkat'
+NeoBundleFetch 'matchit.zip'
+NeoBundleFetch 'majutsushi/tagbar'
+NeoBundleFetch 'mileszs/ack.vim'
+NeoBundleFetch 'mhinz/vim-signify'
+NeoBundleFetch 'mhinz/vim-startify'
+NeoBundleFetch 'mattn/emmet-vim'
+NeoBundleFetch 'mustache/vim-mustache-handlebars'
+NeoBundleFetch 'matthewsimo/angular-vim-snippets'
+
+NeoBundleFetch 'nathanaelkane/vim-indent-guides'
+NeoBundleFetch 'ninegrid/vim-livescript'
+
+"NeoBundleFetch 'omnisharp/omnisharp-vim'
+NeoBundleFetch 'othree/html5.vim'
+NeoBundleFetch 'othree/javascript-libraries-syntax.vim'
+NeoBundleFetch 'octol/vim-cpp-enhanced-highlight'
+"NeoBundleFetch 'oranget/vim-csharp'
+NeoBundleFetch 'oscarh/vimerl'
+NeoBundleFetch 'osyo-manga/unite-quickfix'
+
+NeoBundleFetch 'plasticboy/vim-markdown'
+NeoBundleFetch 'pangloss/vim-javascript'
+"NeoBundleFetch 'phildawes/racer'
+NeoBundle 'racer-rust/vim-racer', {
+\   'build' : {
+\     'mac': 'cargo build --release',
+\     'unix': 'cargo build --release',
+\   }
+\ }
+NeoBundleFetch 'rust-lang/rust.vim'
+NeoBundleFetch 'rhysd/rust-doc.vim'
+NeoBundleFetch 'raichoo/haskell-vim'
+NeoBundleFetch 'rstacruz/sparkup'
+NeoBundleFetch 'rmartinho/vim-cpp11'
+
+NeoBundleFetch 'sjl/gundo.vim'
+NeoBundleFetch 'scrooloose/nerdtree'
+NeoBundleFetch 'scrooloose/nerdcommenter'
+NeoBundleFetch 'shawncplus/phpcomplete.vim' 
+NeoBundleFetch 'spf13/piv'
+NeoBundleFetch 'scrooloose/syntastic'
+NeoBundleFetch 'sirver/ultisnips'
+NeoBundleFetch 'skammer/vim-css-color'
+NeoBundleFetch 'shougo/unite-help'
+NeoBundleFetch 'shougo/unite-outline'
+NeoBundleFetch 'shougo/vimshell.vim'
+NeoBundleFetch 'shougo/unite.vim'
+NeoBundleFetch 'shougo/neomru.vim'
+NeoBundleFetch 'shougo/neocomplcache.vim'
 if has('lua')
-    Plugin 'shougo/neocomplete.vim'
-    Plugin 'shougo/neosnippet.vim'
+    NeoBundleFetch 'shougo/neocomplete.vim'
+    NeoBundleFetch 'shougo/neosnippet.vim'
 endif 
-Plugin 'shougo/neosnippet-snippets'
-Plugin 'shougo/vimproc.vim', { 'build' : { 'unix' : 'make -f make_unix.mak',  },  }
-Plugin 'cespare/vim-toml'
-Plugin 'justmao945/vim-clang'
-Plugin 'mtth/scratch.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
+NeoBundleFetch 'shougo/neosnippet-snippets'
+NeoBundleFetch 'shougo/vimproc.vim', { 'build' : { 'linux' : 'make','unix':'gmake','mac':'make',  },  }
+
+NeoBundleFetch 'tacahiroy/ctrlp-funky'
+NeoBundleFetch 'tomtom/tlib_vim'
+NeoBundleFetch 'tsukkee/unite-tag'
+NeoBundleFetch 'tpope/vim-fireplace'
+NeoBundleFetch 'tpope/vim-projectionist'
+NeoBundleFetch 'tpope/vim-speeddating'
+NeoBundleFetch 'tpope/vim-pathogen'
+NeoBundleFetch 'tpope/vim-rails'
+NeoBundleFetch 'tpope/vim-surround'
+NeoBundleFetch 'tpope/vim-git'
+NeoBundleFetch 'tpope/vim-fugitive'
 " commentary: 快速注释。
-Plugin 'tpope/vim-commentary'
-" matlab/matlab-fold: matlab 语法高亮及代码折叠插件。
-Plugin 'djoshea/vim-matlab'
-Plugin 'djoshea/vim-matlab-fold'
-Plugin 'omnisharp/omnisharp-vim'
-Plugin 'tpope/vim-dispatch.git'
-call vundle#end()
-filetype plugin indent on
+NeoBundleFetch 'tpope/vim-commentary'
+NeoBundleFetch 'tpope/vim-dispatch.git'
+NeoBundleFetch 'thinca/vim-themis'
+
+NeoBundleFetch 'udalov/kotlin-vim'
+
+NeoBundleFetch 'valloric/listtoggle'
+NeoBundle 'Valloric/YouCompleteMe', {
+     \ 'build'      : {
+        \ 'mac'     : './install.py',
+        \ 'unix'    : './install.py --clang-completer',
+        \ 'windows' : 'install.py',
+        \ 'cygwin'  : './install.py'
+        \ }
+     \ }
+NeoBundleFetch 'vim-scripts/Auto-Pairs'
+NeoBundleFetch 'vim-scripts/CaptureClipboard'
+NeoBundleFetch 'vim-scripts/ctrlp-modified.vim'
+NeoBundleFetch 'vim-scripts/ctrlp.vim'
+NeoBundleFetch 'vim-scripts/Django-Projects' 
+NeoBundleFetch 'vim-scripts/django_templates.vim' 
+NeoBundleFetch 'vim-scripts/fencview.vim' 
+NeoBundleFetch 'vim-scripts/FuzzyFinder'
+NeoBundleFetch 'vim-scripts/gtk-vim-syntax'
+NeoBundleFetch 'vim-scripts/javascript-omnicompletion-with-yui-and-j'
+NeoBundleFetch 'vim-scripts/jsbeautify' 
+NeoBundleFetch 'vim-scripts/jslint.vim'
+NeoBundleFetch 'vim-scripts/l9'
+NeoBundleFetch 'vim-scripts/last_edit_marker.vim'
+"""NeoBundleFetch 'vim-scripts/nimrod.vim' 
+NeoBundleFetch 'vim-scripts/python-imports.vim'
+NeoBundleFetch 'vim-scripts/synmark.vim'
+NeoBundleFetch 'vim-scripts/taglist.vim' 
+NeoBundleFetch 'vim-scripts/the-nerd-commenter' 
+NeoBundleFetch 'vim-scripts/vimclojure'
+NeoBundleFetch 'vim-perl/vim-perl'
+NeoBundleFetch 'vim-ruby/vim-ruby'
+NeoBundleFetch 'vim-scripts/vim-script-updater'
+NeoBundleFetch 'vimwiki/vimwiki'  
+NeoBundleFetch 'vim-scripts/autocomplpop'
+"NeoBundleFetch 'vim-scripts/sqlcomplete.vim'
+
+NeoBundleFetch 'wincent/command-t'
+NeoBundleFetch 'wlangstroth/vim-racket'
+NeoBundleFetch 'xml.vim'
+NeoBundleFetch 'xsbeats/vim-blade'
+NeoBundleFetch 'yggdroot/indentline'
+NeoBundleFetch 'zah/nim.vim'
+ call neobundle#end()
+
+ " Required:
+ filetype plugin indent on
+
+ " If there are uninstalled bundles found on startup,
+ " this will conveniently prompt you to install them.
+ NeoBundleCheck
+
+let g:neobundle#install_process_timeout = 1500
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
-autocmd filetype html,css emmetinstall
+let g:user_emmet_install_global = 0
+autocmd filetype html,css EmmetInstall
 
  """"""""""
 " 对部分语言设置单独的缩进
@@ -670,9 +740,9 @@ au bufread,bufnewfile *.h        setlocal ft=c
 au bufread,bufnewfile *.m        setlocal ft=objc
 au bufread,bufnewfile *.di       setlocal ft=d
 au bufread,bufnewfile *.cl       setlocal ft=lisp
-au bufread,bufnewfile *.phpt     setlocal ft=php
+au bufread,bufnewfile *.php      setlocal ft=php
 au bufread,bufnewfile *.inc      setlocal ft=php
-au bufread,bufnewfile *.sql      setlocal ft=mysql
+"au bufread,bufnewfile *.sql      setlocal ft=mysql
 au bufread,bufnewfile *.tpl      setlocal ft=smarty
 au bufread,bufnewfile *.txt      setlocal ft=txt
 au bufread,bufnewfile *.log      setlocal ft=conf
@@ -684,6 +754,7 @@ au bufread,bufnewfile *.ini      setlocal ft=dosini
 au bufread,bufnewfile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd
 au bufread,bufnewfile *.{go}   set filetype=go
 au bufread,bufnewfile *.{js}   set filetype=javascript
+au bufread,bufnewfile *.{html,htm,tpl} setlocal ft=html
 
 "golang
 "processing... % (ctrl+c to stop)
@@ -752,7 +823,7 @@ au filetype ruby     set iskeyword+=?
 autocmd filetype c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
 "代码补全 
 set completeopt=preview,menu 
-filetype plugin indent on 
+"filetype plugin indent on 
 " set mapleader
 let mapleader = ","
 
@@ -772,9 +843,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 "代码格式优化化
 
-map <f5> :call Formartsrc()<cr><cr>
+map <f5> :call FormartSrc()<cr><cr>
 
-:nmap <silent>  <f12> <esc>:Gundotoggle<return>
+:nmap <silent>  <f12> <esc>:GundoToggle<return>
 
 map <f7> :call Compile_Run_Code()<cr><cr>
 
@@ -995,13 +1066,19 @@ let NERDTreeIgnore=['\.pyc']
 
 "
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<s-tab>"
+let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<c-n>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
-let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
+"let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-
+"""YouCompleteMe
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+"nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_confirm_extra_conf=0    
+let g:ycm_collect_identifiers_from_tag_files = 1 "使用ctags生成的tags文件
 "let g:SuperTabDefaultCompletionType = "<c-n>"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""
@@ -1211,17 +1288,14 @@ call pathogen#helptags()
 call pymode#default('g:pymode_rope_autoimport', 0)
 let g:pymode_rope = 0 
 "新建.c,.h,.sh,.java文件，自动插入文件头 
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py,*.go exec ":call SetTitle()" 
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py,*.go,*.html exec ":call SetTitle()" 
 
-syntax on ""
-" 侦测文件类型
-filetype on
 " 载入文件类型插件
 filetype plugin on
 " 为特定文件类型载入相关缩进文件
 filetype indent on
 "Use local vimrc if available {
-if filereadable(expand("~/.vimrc.local"))
-    source ~/.vimrc.local 
+if filereadable(expand("~/.vim/local.vim"))
+    source ~/.vim/local.vim 
 endif 
 "}
