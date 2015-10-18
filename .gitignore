@@ -1,4 +1,3 @@
-vimrc.local
-updatebundle.sh
+local.vim
 tmp/
 bundle/
