@@ -105,7 +105,7 @@ set nobomb
 set autowriteall
 
 """colorscheme
-"colorscheme solarized
+colorscheme desert
 
 
 syntax on ""
