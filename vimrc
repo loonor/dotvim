@@ -105,8 +105,9 @@ set nobomb
 set autowriteall
 
 """colorscheme
-colorscheme desert
-
+colorscheme molokai
+let g:molokai_original = 1
+let g:rehash256 = 1
 
 syntax on ""
 " 侦测文件类型
@@ -137,7 +138,7 @@ if g:isWIN
 
 else
     
-    set guifont=DejaVu\ Sans\ Mono\ 13 
+    set guifont=DejaVu\ Sans\ Mono\ 15 
 
 endif
 
@@ -574,6 +575,7 @@ NeoBundleFetch 'fatih/vim-nginx'
 NeoBundleFetch 'godlygeek/tabular'
 NeoBundleFetch 'glench/vim-jinja2-syntax'
 NeoBundleFetch 'groenewege/vim-less'
+NeoBundleFetch 'garyburd/go-explorer'
 "NeoBundleFetch 'garbas/vim-snipmate'
 NeoBundleFetch 'hail2u/vim-css3-syntax'
 NeoBundleFetch 'honza/vim-snippets'
