@@ -763,7 +763,7 @@ au bufread,bufnewfile *.{html,htm,tpl} setlocal ft=html
 "golang
 "processing... % (ctrl+c to stop)
 let g:fencview_autodetect=0
-set rtp+=~/go/gopath/src/github.com/nsf/gocode/vim
+set rtp+=~/gopath/src/github.com/nsf/gocode/vim
 
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
