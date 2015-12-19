@@ -606,6 +606,7 @@ NeoBundleFetch 'mhinz/vim-startify'
 NeoBundleFetch 'mattn/emmet-vim'
 NeoBundleFetch 'mustache/vim-mustache-handlebars'
 NeoBundleFetch 'matthewsimo/angular-vim-snippets'
+NeoBundleFetch 'mikelue/vim-maven-plugin'
 
 NeoBundleFetch 'nathanaelkane/vim-indent-guides'
 NeoBundleFetch 'ninegrid/vim-livescript'
@@ -635,6 +636,7 @@ NeoBundleFetch 'rmartinho/vim-cpp11'
 
 NeoBundleFetch 'sjl/gundo.vim'
 NeoBundleFetch 'scrooloose/nerdtree'
+NeoBundleFetch 'Xuyuanp/nerdtree-git-plugin'
 NeoBundleFetch 'scrooloose/nerdcommenter'
 NeoBundleFetch 'shawncplus/phpcomplete.vim' 
 NeoBundleFetch 'spf13/piv'
@@ -831,6 +833,17 @@ set completeopt=preview,menu
 " set mapleader
 let mapleader = ","
 
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
 "列出当前目录文件  
 map <F6> :NERDTreeToggle<CR>
 imap <F6> <ESC> :NERDTreeToggle<CR>
@@ -843,8 +856,7 @@ endif
 "当打开vim且没有文件时自动打开NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
 " 只剩 NERDTree时自动关闭
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "代码格式优化化
 
 map <f5> :call FormartSrc()<cr><cr>
@@ -1130,7 +1142,7 @@ let g:go_fmt_command = "goimports"
 " ======= 自定义快捷键 ======= "
 " 保存在terminal模式下不好用,gvim时好使
 nmap <c-s> :update<CR>
-imap <c-s> <ESC>:update<CR>
+imap <c-s> <ESC><ESC>:update<CR>
 vmap <c-s> <ESC>:update<CR>
 
 " Ctrl + ]            tags选择性跳转
