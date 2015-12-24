@@ -559,6 +559,7 @@ NeoBundleFetch 'derekwyatt/vim-scala'
 NeoBundleFetch 'djoshea/vim-matlab'   " matlab/matlab-fold: matlab 语法高亮及代码折叠插件。
 NeoBundleFetch 'djoshea/vim-matlab-fold'
 "NeoBundleFetch 'dbext.vim'
+NeoBundleFetch 'dgrnbrg/vim-redl'
 
 NeoBundleFetch 'eagletmt/ghcmod-vim'
 NeoBundleFetch 'EasyGrep'
@@ -1303,6 +1304,8 @@ call pathogen#helptags()
 " 当前目录文件很多时，会导致第一次保存非常慢
 call pymode#default('g:pymode_rope_autoimport', 0)
 let g:pymode_rope = 0 
+let g:redl_use_vsplit = 1
+imap <silent> <C-S-K> <Plug>clj_repl_uphist.
 "新建.c,.h,.sh,.java文件，自动插入文件头 
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py,*.go,*.html exec ":call SetTitle()" 
 
