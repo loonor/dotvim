@@ -247,33 +247,6 @@ function AddCSSDict()
     endif
     set complete+=k
 endfunction
-"C，C++ 按F6编译运行
-"func! CompileRunGcc()
-"    exec "w"
-"    if &filetype == 'c'
-"        exec "!g++ % -o %<"
-"        exec "!time ./%<"
-"    elseif &filetype == 'cpp'
-"        exec "!g++ % -o %<"
-"        exec "!time ./%<"
-"    elseif &filetype == 'java' 
-"        exec "!javac %" 
-"        exec "!time java %<"
-"    elseif &filetype == 'sh'
-"        :!time bash %
-"    elseif &filetype == 'python'
-"        exec "!time python2.7 %"
-"    elseif &filetype == 'html'
-"        exec "!firefox % &"
-"    elseif &filetype == 'go'
-""        exec "!go build %<"
-"        exec "!time go run %"
-"    elseif &filetype == 'mkd'
-"        exec "!~/.vim/markdown.pl % > %.html &"
-"        exec "!firefox %.html &"
-"    endif
-"endfunc
-
 "<F8>C,C++的调试
 
 func! Rungdb()
@@ -608,7 +581,7 @@ NeoBundleFetch 'mattn/emmet-vim'
 NeoBundleFetch 'mustache/vim-mustache-handlebars'
 NeoBundleFetch 'matthewsimo/angular-vim-snippets'
 NeoBundleFetch 'mikelue/vim-maven-plugin'
-
+NeoBundleFetch 'mattreduce/vim-mix'
 NeoBundleFetch 'nathanaelkane/vim-indent-guides'
 NeoBundleFetch 'ninegrid/vim-livescript'
 
@@ -673,6 +646,7 @@ NeoBundleFetch 'tpope/vim-unimpaired'
 NeoBundleFetch 'tpope/vim-commentary'
 NeoBundleFetch 'tpope/vim-dispatch.git'
 NeoBundleFetch 'thinca/vim-themis'
+NeoBundleFetch 'thinca/vim-ref'
 
 NeoBundleFetch 'udalov/kotlin-vim'
 
@@ -1025,27 +999,6 @@ inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplete#enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplete#enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
