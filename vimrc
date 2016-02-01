@@ -438,6 +438,17 @@ func SetTitle()
         call append(line(".")+5, "")
         call append(line(".")+6, "</body>")
         call append(line(".")+7, "</html>")
+    elseif &filetype == 'php'
+        
+        call setline(1, "<?php ") 
+        call append(line("."),   "//  * File Name: ".expand("%")) 
+        call append(line(".")+1, "//  * Author: loonor") 
+        call append(line(".")+2, "//  * Mail: loonor@163.com") 
+        call append(line(".")+3, "//  * Created Time: ".strftime("%c"))
+        call append(line(".")+4, "//  * Discription:")
+        call append(line(".")+5, "") 
+        call append(line(".")+6, "//namespace ;")
+        call append(line(".")+7, "")
     else 
         call setline(1, "/* =========================================================*") 
         call append(line("."),   "  * File Name: ".expand("%")) 
@@ -451,7 +462,7 @@ func SetTitle()
     if expand("%:e") == 'cpp'
         call append(line(".")+6, "//#include <iostream>")
         call append(line(".")+7, "//using namespace std;")
-        call append(line(".")+8, "")
+        "call append(line(".")+8, "")
     endif
     if &filetype == 'c'
         call append(line(".")+6, "//#include <stdio.h>")
@@ -654,7 +665,7 @@ NeoBundleFetch 'valloric/listtoggle'
 NeoBundle 'Valloric/YouCompleteMe', {
      \ 'build'      : {
         \ 'mac'     : './install.py',
-        \ 'unix'    : './install.py --clang-completer',
+        \ 'unix'    : './install.py --clang-completer --tern-completer --system-libclang --system-boost',
         \ 'windows' : 'install.py',
         \ 'cygwin'  : './install.py'
         \ }
@@ -1253,6 +1264,10 @@ let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
 " assuming you want to use snipmate snippet engine
 
 let g:OmniSharp_selector_ui = 'unite'
+""" erlang 
+"let g:erlangManPath = '/usr/lib/erlang/man'
+"let g:erlangCompletionGrep='zgrep'
+"let g:erlangManSuffix='erl\.gz'
 
 call pathogen#infect()
 call pathogen#helptags()
@@ -1264,7 +1279,7 @@ let g:pymode_rope = 0
 let g:redl_use_vsplit = 1
 imap <silent> <C-S-K> <Plug>clj_repl_uphist.
 "新建.c,.h,.sh,.java文件，自动插入文件头 
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py,*.go,*.html exec ":call SetTitle()" 
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py,*.go,*.html,*.php exec ":call SetTitle()" 
 
 " 载入文件类型插件
 filetype plugin on
