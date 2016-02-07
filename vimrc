@@ -420,7 +420,7 @@ func SetTitle()
         call append(line("."), "") 
     elseif &filetype == 'python'
         call setline(1,"#!/usr/bin/env python")
-        call append(line("."),"# coding=utf-8")
+        call append(line("."),"# encoding=utf-8")
         call append(line(".")+1, "") 
 
     elseif &filetype == 'ruby'
@@ -549,7 +549,7 @@ NeoBundleFetch 'eagletmt/ghcmod-vim'
 NeoBundleFetch 'EasyGrep'
 NeoBundleFetch 'elixir-lang/vim-elixir'
 NeoBundleFetch 'edkolev/promptline.vim'
-"NeoBundleFetch 'ervandew/supertab'
+NeoBundleFetch 'ervandew/supertab'
 NeoBundleFetch 'evidens/vim-twig'
 
 "NeoBundleFetch 'fsharp/vim-fsharp'
@@ -633,7 +633,7 @@ NeoBundleFetch 'shougo/unite-outline'
 NeoBundleFetch 'shougo/vimshell.vim'
 NeoBundleFetch 'shougo/unite.vim'
 NeoBundleFetch 'shougo/neomru.vim'
-NeoBundleFetch 'shougo/neocomplcache.vim'
+"NeoBundleFetch 'shougo/neocomplcache.vim'
 if has('lua')
     NeoBundleFetch 'shougo/neocomplete.vim'
     NeoBundleFetch 'shougo/neosnippet.vim'
@@ -694,7 +694,7 @@ NeoBundleFetch 'vim-perl/vim-perl'
 NeoBundleFetch 'vim-ruby/vim-ruby'
 NeoBundleFetch 'vim-scripts/vim-script-updater'
 NeoBundleFetch 'vimwiki/vimwiki'  
-NeoBundleFetch 'vim-scripts/autocomplpop'
+"NeoBundleFetch 'vim-scripts/autocomplpop'
 NeoBundleFetch 'vim-erlang/vim-erlang-runtime'
 NeoBundleFetch 'vim-erlang/vim-erlang-tags'
 NeoBundleFetch 'vim-erlang/vim-erlang-compiler'
@@ -973,14 +973,14 @@ nmap tb :TagbarToggle<cr>
 
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
+"let g:acp_enableAtStartup = 0
 " Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
+"let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
-let g:neocomplete#enable_smart_case = 1
+"let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+"let g:neocomplete#sources#syntax#min_keyword_length = 3
+"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
@@ -1052,19 +1052,21 @@ let NERDTreeIgnore=['\.pyc']
 "
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<c-n>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 """YouCompleteMe
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 "nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:ycm_confirm_extra_conf=0    
 let g:ycm_collect_identifiers_from_tag_files = 1 "使用ctags生成的tags文件
-"let g:SuperTabDefaultCompletionType = "<c-n>"
+"let g:ycm_key_invoke_completion = '<C-Space>'
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""
 "fun! JumpToDef()
