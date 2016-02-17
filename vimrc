@@ -97,8 +97,9 @@ set matchtime=1
 
 set iskeyword+=.
 set termencoding=utf-8
-set encoding=utf8
-set fileencodings=utf8,gbk,cp936,gb2312,gb18030,latin-1
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,gbk,cp936,gb2312,gb18030,latin-1
 set nobomb
 
 """自动保存
@@ -523,6 +524,7 @@ endfunc
 NeoBundleFetch 'a.vim'
 NeoBundleFetch 'andreimaxim/vim-io'
 NeoBundleFetch 'bling/vim-airline'
+NeoBundleFetch 'vim-airline/vim-airline-themes'
 NeoBundleFetch 'bartlomiejdanek/vim-dart'
 NeoBundleFetch 'becaning/vimdoccn'
 "NeoBundleFetch 'bpdp/vim-java'
@@ -561,6 +563,7 @@ NeoBundleFetch 'godlygeek/tabular'
 NeoBundleFetch 'glench/vim-jinja2-syntax'
 NeoBundleFetch 'groenewege/vim-less'
 NeoBundleFetch 'garyburd/go-explorer'
+NeoBundleFetch 'gtags.vim'
 "NeoBundleFetch 'garbas/vim-snipmate'
 NeoBundleFetch 'hail2u/vim-css3-syntax'
 NeoBundleFetch 'honza/vim-snippets'
@@ -607,12 +610,12 @@ NeoBundleFetch 'osyo-manga/unite-quickfix'
 NeoBundleFetch 'plasticboy/vim-markdown'
 NeoBundleFetch 'pangloss/vim-javascript'
 "NeoBundleFetch 'phildawes/racer'
-NeoBundle 'racer-rust/vim-racer', {
-\   'build' : {
-\     'mac': 'cargo build --release',
-\     'unix': 'cargo build --release',
-\   }
-\ }
+"NeoBundle 'racer-rust/vim-racer', {
+"\   'build' : {
+"\     'mac': 'cargo build --release',
+"\     'unix': 'cargo build --release',
+"\   }
+"\ }
 NeoBundleFetch 'rust-lang/rust.vim'
 NeoBundleFetch 'rhysd/rust-doc.vim'
 NeoBundleFetch 'raichoo/haskell-vim'
@@ -638,6 +641,10 @@ if has('lua')
     NeoBundleFetch 'shougo/neocomplete.vim'
     NeoBundleFetch 'shougo/neosnippet.vim'
 endif 
+let g:make = 'gmake'
+if system('uname -o') =~ '^GNU/'
+        let g:make = 'make'
+endif
 NeoBundleFetch 'shougo/neosnippet-snippets'
 NeoBundleFetch 'shougo/vimproc.vim', { 'build' : { 'linux' : 'make','unix':'gmake','mac':'make',  },  }
 
@@ -917,7 +924,7 @@ let g:indent_guides_enable_on_vim_startup = 0  " 默认关闭
 let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 
 " airline             彩色状态栏
-let g:airline_theme = 'badwolf'                " 设置主题
+let g:airline_theme = 'luna'                " 设置主题
 
 " promptline          终端辅助工具
 let g:promptline_powerline_symbols = 0         " 关闭特殊符号
