@@ -17,7 +17,7 @@ set mouse=v
 set cul "高亮光标所在行
 set cuc
 set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
-set go=             " 不要图形按钮  
+"set go=             " 不要图形按钮  
 autocmd InsertEnter * se cul    " 用浅色高亮当前行  
 set ruler           " 显示标尺  
 set showcmd         " 输入的命令显示出来，看的清楚些  
@@ -119,6 +119,27 @@ filetype on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 方法{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("gui_running")
+    if has("gui_gtk2")
+        set guifont=Droid\ Sans\ Mono\ 12
+        " 比英文字体大一点，这样汉字的间距就不会太大了
+        set guifontwide=Droid\ Sans\ 13
+    elseif has("gui_kde")
+        "set guifont=Courier\ New/11/-1/5/50/0/0/0/1/0
+    elseif has("x11")
+        "set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
+    elseif has("gui_macvim")
+        set guifont=monofur\ for\ Powerline:h15
+        set guifontwide=STHeiti:h15
+    elseif has("gui_kde")
+        " todo
+    elseif has("gui_win32")
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h13
+        set guifontwide=Microsoft\ YaHei\ UI:h12
+    else
+        "set guifont=YaHei\ Consolas\ Hybrid:h10
+    endif
+endif
 """判断操作系统类型
 if(has("win32") || has("win64"))
     let g:isWIN = 1
@@ -507,11 +528,18 @@ endfunc
    endif
 
    " Required:
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
+   "set runtimepath+=~/.vim/bundle/neobundle.vim/
+    if has("win32")
+        set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
+        call neobundle#begin('$VIM/vimfiles/bundle')
+    else
+        set rtp+=~/.vim/bundle/neobundle.vim/
+        call neobundle#begin('~/.vim/bundle/')
+    endif
  endif
 
  " Required:
- call neobundle#begin(expand('~/.vim/bundle/'))
+ "call neobundle#begin(expand('~/.vim/bundle/'))
 
  " Let NeoBundle manage NeoBundle
  " Required:
@@ -591,6 +619,22 @@ NeoBundleFetch 'majutsushi/tagbar'
 NeoBundleFetch 'mileszs/ack.vim'
 NeoBundleFetch 'mhinz/vim-signify'
 NeoBundleFetch 'mhinz/vim-startify'
+let g:startify_custom_header = [
+                \ '   __      ___              _  _______     _________ ',
+                \ '   \ \    / (_)            | | | |____ \  | |_______|',
+                \ '    \ \  / / _ _ __ ___    | | | |    | \ | |_______ ',
+                \ '     \ \/ / | | `_ ` _ \   | | | |    | | | |_______|',
+                \ '      \  /  | | | | | | |  | | | |____| | | |_______ ',
+                \ '       \/   |_|_| |_| |_|  |_| |_|_____/  |_|_______|',
+                \ '',
+                \ '                                                     ',
+                \ '',
+                \ ]
+let g:startify_custom_footer = [
+                \ '',
+                \ '',
+                \ '                                                     ',
+                \ ]
 NeoBundleFetch 'mattn/emmet-vim'
 NeoBundleFetch 'mustache/vim-mustache-handlebars'
 NeoBundleFetch 'matthewsimo/angular-vim-snippets'
@@ -693,6 +737,7 @@ NeoBundleFetch 'vim-scripts/l9'
 NeoBundleFetch 'vim-scripts/last_edit_marker.vim'
 """NeoBundleFetch 'vim-scripts/nimrod.vim' 
 NeoBundleFetch 'vim-scripts/python-imports.vim'
+NeoBundleFetch 'vim-scripts/PDV--phpDocumentor-for-Vim'
 NeoBundleFetch 'vim-scripts/synmark.vim'
 NeoBundleFetch 'vim-scripts/taglist.vim' 
 NeoBundleFetch 'vim-scripts/the-nerd-commenter' 
@@ -803,22 +848,6 @@ au filetype perl,php set iskeyword-=-
 au filetype ruby     set iskeyword+=!
 au filetype ruby     set iskeyword+=?
 
-
-
-" 针对部分语言添加字典补全
-"au filetype c          call addcdict()
-"au filetype cpp        call addcppdict()
-"au filetype java       call addjavadict()
-"au filetype lua        call addluadict()
-"au filetype perl       call addperldict()
-"au filetype php        call addphpdict()
-"au filetype python     call addpythondict()
-"au filetype ruby       call addrubydict()
-"au filetype scala      call addscaladict()
-"au filetype javascript call addjavascriptdict()
-"au filetype css        call addcssdict()
-
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "键盘命令
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -925,7 +954,50 @@ let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 
 " airline             彩色状态栏
 let g:airline_theme = 'luna'                " 设置主题
+let g:airline_powerline_fonts = 1
+if g:airline_powerline_fonts == 0
+    if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+    endif
+    let g:airline_left_sep = '▶'
+    let g:airline_left_alt_sep = '❯'
+    let g:airline_right_sep = '◀'
+    let g:airline_right_alt_sep = '❮'
+    let g:airline_symbols.paste = 'ρ'
+    let g:airline_symbols.linenr = '¶'
+    let g:airline_symbols.branch = '§'
+    let g:airline_symbols.whitespace = 'Ξ'
+    let g:airline_symbols.readonly = ''
+endif
 
+let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : '标准',
+      \ 'i'  : '插入',
+      \ 'R'  : '替换',
+      \ 'c'  : '命令行',
+      \ 'v'  : '可视',
+      \ 'V'  : '可视',
+      \ '' : '可视',
+      \ 's'  : '选择',
+      \ 'S'  : '选择',
+      \ '' : '选择',
+      \ }
+
+set laststatus=2
+
+" airline-tabline扩展设计，若需要更专业的buffer列表显示插件，
+" 可以使用 techlivezheng/vim-plugin-minibufexpl 插件！
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#fnamemod = ':p:t' " 只显示文件名，不显示路径内容。
+
+if g:airline_powerline_fonts == 0
+    let g:airline#extensions#tabline#left_sep = '▶'
+    let g:airline#extensions#tabline#left_alt_sep = '❯'
+    let g:airline#extensions#tabline#right_sep = '◀'
+    let g:airline#extensions#tabline#right_alt_sep = '❮'
+endif
 " promptline          终端辅助工具
 let g:promptline_powerline_symbols = 0         " 关闭特殊符号
 let g:promptline_preset = {
