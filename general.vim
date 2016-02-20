@@ -15,7 +15,7 @@ set mouse=v
 set cul "高亮光标所在行
 set cuc
 set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
-"set go=             " 不要图形按钮  
+set go=             " 不要图形按钮  
 autocmd InsertEnter * se cul    " 用浅色高亮当前行  
 set ruler           " 显示标尺  
 set showcmd         " 输入的命令显示出来，看的清楚些  
@@ -66,6 +66,7 @@ set guioptions-=T           " 隐藏工具栏
 set guioptions-=m           " 隐藏菜单栏
 " 去掉输入错误的提示声音
 set noeb
+set vb t_vb=
 " 在处理未保存或只读文件的时候，弹出确认
 set confirm
 "禁止生成临时文件
@@ -118,9 +119,9 @@ if has("gui_running")
         " 比英文字体大一点，这样汉字的间距就不会太大了
         set guifontwide=Droid\ Sans\ 13
     elseif has("gui_kde")
-        "set guifont=Courier\ New/11/-1/5/50/0/0/0/1/0
+        set guifont=Courier\ New/11/-1/5/50/0/0/0/1/0
     elseif has("x11")
-        "set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
+        set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
     elseif has("gui_macvim")
         set guifont=monofur\ for\ Powerline:h15
         set guifontwide=STHeiti:h15
@@ -130,7 +131,7 @@ if has("gui_running")
         set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h13
         set guifontwide=Microsoft\ YaHei\ UI:h12
     else
-        "set guifont=YaHei\ Consolas\ Hybrid:h10
+        set guifont=YaHei\ Consolas\ Hybrid:h10
     endif
 endif
 """判断操作系统类型

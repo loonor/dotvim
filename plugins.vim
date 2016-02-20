@@ -99,8 +99,6 @@ NeoBundleFetch 'marcweber/vim-addon-mw-utils'
 NeoBundleFetch 'Mark--Karkat'
 NeoBundleFetch 'matchit.zip'
 NeoBundleFetch 'majutsushi/tagbar'
-map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
-map <Leader>. :TagbarToggle<CR>
 NeoBundleFetch 'mileszs/ack.vim'
 NeoBundleFetch 'mhinz/vim-signify'
 NeoBundleFetch 'mhinz/vim-startify'
