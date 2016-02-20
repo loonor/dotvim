@@ -150,6 +150,7 @@ NeoBundleFetch 'rstacruz/sparkup'
 NeoBundleFetch 'rmartinho/vim-cpp11'
 NeoBundleFetch 'rizzatti/funcoo.vim.git'
 NeoBundleFetch 'rizzatti/dash.vim.git'
+NeoBundleFetch 'Raimondi/delimitMate'
 nmap <Leader>qs <Plug>DashSearch
 nmap <Leader>qa <Plug>DashGlobalSearch
 NeoBundleFetch 'rking/ag.vim.git'
