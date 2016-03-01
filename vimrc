@@ -1,5 +1,5 @@
 " Compatible with both terminal dan GUI (neovim-qt)
-colorscheme lucius
+"colorscheme lucius
 
 source ~/.vim/general.vim
 source ~/.vim/plugins.vim

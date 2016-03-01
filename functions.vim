@@ -275,7 +275,7 @@ func SetTitle()
         call setline(1,"\#!/bin/bash") 
         call append(line("."), "") 
     elseif &filetype == 'python'
-        call setline(1,"#!/usr/bin/env python")
+        call setline(1,"#!/usr/bin/env python3")
         call append(line("."),"# encoding=utf-8")
         call append(line(".")+1, "") 
 
@@ -331,7 +331,7 @@ func SetTitle()
         call append(line(".")+11, "#endif")
     endif
     if &filetype == 'java'
-        call append(line(".")+6,"public class ".expand("%:r"))
+        call append(line(".")+6,"public class ")
         call append(line(".")+7,"")
     endif
     "新建文件后，自动定位到文件末尾

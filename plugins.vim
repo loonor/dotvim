@@ -1,22 +1,19 @@
 " Note: Skip initialization for vim-tiny or vim-small.
  if 0 | endif
 
- if has('vim_starting')
-   if &compatible
+if &compatible
      set nocompatible               " Be iMproved
-   endif
+endif
 
    " Required:
    "set runtimepath+=~/.vim/bundle/neobundle.vim/
-    if has("win32")
-        set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
-        call neobundle#begin('$VIM/vimfiles/bundle')
-    else
-        set rtp+=~/.vim/bundle/neobundle.vim/
-        call neobundle#begin('~/.vim/bundle/')
-    endif
- endif
-
+if has("win32")
+    set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
+    call neobundle#begin('$VIM/vimfiles/bundle')
+else
+    set rtp+=~/.vim/bundle/neobundle.vim/
+    call neobundle#begin('~/.vim/bundle/')
+endif
  " Required:
  "call neobundle#begin(expand('~/.vim/bundle/'))
 
@@ -69,6 +66,7 @@ NeoBundleFetch 'fatih/vim-nginx'
 NeoBundleFetch 'godlygeek/tabular'
 NeoBundleFetch 'glench/vim-jinja2-syntax'
 NeoBundleFetch 'groenewege/vim-less'
+NeoBundle 'grvcoelho/vim-javascript-snippets'
 NeoBundleFetch 'garyburd/go-explorer'
 NeoBundleFetch 'gtags.vim'
 "NeoBundleFetch 'garbas/vim-snipmate'
@@ -93,6 +91,8 @@ NeoBundleFetch 'leshill/vim-json'
 NeoBundleFetch 'Lokaltog/vim-easymotion'
 
 NeoBundleFetch 'mxw/vim-xhp'
+NeoBundle 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
 NeoBundleFetch 'hhvm/vim-hack'
 NeoBundleFetch 'mtth/scratch.vim'
 NeoBundleFetch 'marcweber/vim-addon-mw-utils'
@@ -123,6 +123,25 @@ NeoBundleFetch 'mustache/vim-mustache-handlebars'
 NeoBundleFetch 'matthewsimo/angular-vim-snippets'
 NeoBundleFetch 'mikelue/vim-maven-plugin'
 NeoBundleFetch 'mattreduce/vim-mix'
+NeoBundleFetch 'marijnh/tern_for_vim'
+NeoBundleFetch 'moll/vim-node'
+NeoBundle 'maksimr/vim-jsbeautify'
+map <c-f> :call JsBeautify()<cr>
+" or
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for json
+autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+" for jsx
+autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
+autocmd FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
+autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
 NeoBundleFetch 'nathanaelkane/vim-indent-guides'
 NeoBundleFetch 'ninegrid/vim-livescript'
 
@@ -137,12 +156,7 @@ NeoBundleFetch 'osyo-manga/unite-quickfix'
 NeoBundleFetch 'plasticboy/vim-markdown'
 NeoBundleFetch 'pangloss/vim-javascript'
 "NeoBundleFetch 'phildawes/racer'
-"NeoBundle 'racer-rust/vim-racer', {
-"\   'build' : {
-"\     'mac': 'cargo build --release',
-"\     'unix': 'cargo build --release',
-"\   }
-"\ }
+NeoBundleFetch 'racer-rust/vim-racer'
 NeoBundleFetch 'rust-lang/rust.vim'
 NeoBundleFetch 'rhysd/rust-doc.vim'
 NeoBundleFetch 'raichoo/haskell-vim'
@@ -150,9 +164,9 @@ NeoBundleFetch 'rstacruz/sparkup'
 NeoBundleFetch 'rmartinho/vim-cpp11'
 NeoBundleFetch 'rizzatti/funcoo.vim.git'
 NeoBundleFetch 'rizzatti/dash.vim.git'
-NeoBundleFetch 'Raimondi/delimitMate'
-nmap <Leader>qs <Plug>DashSearch
-nmap <Leader>qa <Plug>DashGlobalSearch
+"NeoBundleFetch 'Raimondi/delimitMate'
+"nmap <Leader>qs <Plug>DashSearch
+"nmap <Leader>qa <Plug>DashGlobalSearch
 NeoBundleFetch 'rking/ag.vim.git'
 
 NeoBundleFetch 'sjl/gundo.vim'
@@ -218,7 +232,7 @@ NeoBundleFetch 'valloric/listtoggle'
 NeoBundle 'Valloric/YouCompleteMe', {
      \ 'build'      : {
         \ 'mac'     : './install.py',
-        \ 'unix'    : './install.py --clang-completer --tern-completer --system-libclang --system-boost',
+        \ 'unix'    : './install.py --clang-completer --system-libclang --system-boost',
         \ 'windows' : 'install.py',
         \ 'cygwin'  : './install.py'
         \ }
@@ -270,7 +284,7 @@ NeoBundleFetch 'zah/nim.vim'
 
  " If there are uninstalled bundles found on startup,
  " this will conveniently prompt you to install them.
- NeoBundleCheck
+NeoBundleCheck
  
 let g:neobundle#install_process_timeout = 1500
 
@@ -523,8 +537,8 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:ycm_confirm_extra_conf=0    
 let g:go_fmt_command = "goimports"
 set hidden
-let g:racer_cmd = "$HOME/github/racer/target/release/racer"
-let $RUST_SRC_PATH="/home/loonor/github/rust/src/"
+let g:racer_cmd = "/home/loonor/github/racer/target/release/racer"
+let RUST_SRC_PATH="/home/loonor/github/rust/src"
 let g:rust_doc#downloaded_rust_doc_dir = '~/.multirust/toolchains/nightly'
 autocmd FileType apache set commentstring=#\ %s
 
