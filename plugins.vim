@@ -66,12 +66,13 @@ NeoBundleFetch 'fatih/vim-nginx'
 NeoBundleFetch 'godlygeek/tabular'
 NeoBundleFetch 'glench/vim-jinja2-syntax'
 NeoBundleFetch 'groenewege/vim-less'
-NeoBundle 'grvcoelho/vim-javascript-snippets'
+NeoBundleFetch 'grvcoelho/vim-javascript-snippets'
 NeoBundleFetch 'garyburd/go-explorer'
 NeoBundleFetch 'gtags.vim'
 "NeoBundleFetch 'garbas/vim-snipmate'
 NeoBundleFetch 'hail2u/vim-css3-syntax'
 NeoBundleFetch 'honza/vim-snippets'
+NeoBundleFetch 'jamescarr/snipmate-nodejs.git'
 NeoBundleFetch 'jceb/vim-orgmode'
 NeoBundleFetch 'jsfaint/gen_tags.vim'
 NeoBundleFetch 'jlanzarotta/bufexplorer'
@@ -82,6 +83,7 @@ NeoBundleFetch 'jason0x43/vim-js-indent'
 NeoBundleFetch 'justmao945/vim-clang'
 NeoBundleFetch 'jszakmeister/vim-togglecursor'
 
+NeoBundleFetch 'kchmck/vim-coffee-script.git'
 NeoBundleFetch 'kevinw/pyflakes-vim'
 NeoBundleFetch 'klen/python-mode'
 "NeoBundleFetch 'kballard/vim-swift'
@@ -125,7 +127,8 @@ NeoBundleFetch 'mikelue/vim-maven-plugin'
 NeoBundleFetch 'mattreduce/vim-mix'
 NeoBundleFetch 'marijnh/tern_for_vim'
 NeoBundleFetch 'moll/vim-node'
-NeoBundle 'maksimr/vim-jsbeautify'
+NeoBundleFetch 'myhere/vim-nodejs-complete.git'
+NeoBundleFetch 'maksimr/vim-jsbeautify'
 map <c-f> :call JsBeautify()<cr>
 " or
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
@@ -269,8 +272,9 @@ NeoBundleFetch 'vim-erlang/vim-erlang-runtime'
 NeoBundleFetch 'vim-erlang/vim-erlang-tags'
 NeoBundleFetch 'vim-erlang/vim-erlang-compiler'
 NeoBundleFetch 'vim-erlang/vim-erlang-omnicomplete'
-"NeoBundleFetch 'vim-scripts/sqlcomplete.vim'
-
+NeoBundleFetch 'vim-scripts/sqlcomplete.vim'
+NeoBundleFetch 'wavded/vim-stylus.git'
+NeoBundleFetch 'walm/jshint.vim'
 NeoBundleFetch 'wincent/command-t'
 NeoBundleFetch 'wlangstroth/vim-racket'
 NeoBundleFetch 'xml.vim'
@@ -535,6 +539,8 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:ycm_confirm_extra_conf=0    
+let g:ycm_server_use_vim_stdout = 1
+let g:ycm_server_log_level = 'debug'
 let g:go_fmt_command = "goimports"
 set hidden
 let g:racer_cmd = "/home/loonor/github/racer/target/release/racer"
