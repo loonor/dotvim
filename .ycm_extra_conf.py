@@ -81,20 +81,6 @@ flags = [
 './tests/gmock',
 '-isystem',
 './tests/gmock/include',
-'-isystem',
-'/usr/include',
-'-isystem',
-'/usr/include/c++/5.\*',
-'/usr/include/c++/v1',
-'-isystem',
-'/usr/include',
-'/usr/include/c++/5\*/x86_64-unknown-linux-gnu/32/bits/',
-'-isystem',
-'/usr/include/c++/5\*/x86_64-unknown-linux-gnu/32/ext/',
-'isystem',
-'/usr/include/c++/5\*/x86_64-unknown-linux-gnu/bits/',
-'isystem',
-'/usr/include/c++/5\*/x86_64-unknown-linux-gnu/ext/',
 ]
 
 
