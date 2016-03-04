@@ -92,7 +92,6 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\
 set showmatch
 " 匹配括号高亮的时间（单位是十分之一秒）
 set matchtime=1
-set sh=bash
 set term=xterm-256color
 set iskeyword+=.
 set termencoding=utf-8
@@ -113,27 +112,6 @@ syntax on ""
 " 侦测文件类型
 filetype on
 
-"if has("gui_running")
-"    if has("gui_gtk2")
-"        set guifont=Droid\ Sans\ Mono\ 12
-"        " 比英文字体大一点，这样汉字的间距就不会太大了
-"        set guifontwide=Droid\ Sans\ 13
-"    elseif has("gui_kde")
-"        set guifont=Courier\ New/11/-1/5/50/0/0/0/1/0
-"    elseif has("x11")
-"        set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
-"    elseif has("gui_macvim")
-"        set guifont=monofur\ for\ Powerline:h15
-"        set guifontwide=STHeiti:h15
-"    elseif has("gui_kde")
-"        " todo
-"    elseif has("gui_win32")
-"        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h13
-"        set guifontwide=Microsoft\ YaHei\ UI:h12
-"    else
-"        set guifont=YaHei\ Consolas\ Hybrid:h10
-"    endif
-"endif
 """判断操作系统类型
 if(has("win32") || has("win64"))
     let g:isWIN = 1
