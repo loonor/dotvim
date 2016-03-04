@@ -91,7 +91,7 @@ NeoBundleFetch 'klen/python-mode'
 NeoBundleFetch 'leafgarland/typescript-vim'
 NeoBundleFetch 'leshill/vim-json'
 NeoBundleFetch 'Lokaltog/vim-easymotion'
-
+NeoBundleFetch 'lilydjwg/fcitx.vim'
 NeoBundleFetch 'mxw/vim-xhp'
 NeoBundle 'mxw/vim-jsx'
 let g:jsx_ext_required = 0
