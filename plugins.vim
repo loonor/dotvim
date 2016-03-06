@@ -7,7 +7,7 @@ endif
 
    " Required:
    "set runtimepath+=~/.vim/bundle/neobundle.vim/
-if has("win32")
+if g:isWIN ""has("win32") || has("win64")
     set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
     call neobundle#begin('$VIM/vimfiles/bundle')
 else
@@ -624,7 +624,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 """YouCompleteMe
-if has("win32")
+if g:isWIN ""has("win32") || has("win64")
     let g:ycm_global_ycm_extra_conf = '$VIM/vimfiles/.ycm_extra_conf.py'
 else
     let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
