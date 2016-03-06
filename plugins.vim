@@ -24,24 +24,31 @@ endif
  " My Bundles here:
  " Refer to |:NeoBundle-examples|.
  " Note: You don't set neobundle setting in .gvimrc!
-
+"""afirst
 NeoBundleFetch 'a.vim'
 NeoBundleFetch 'andreimaxim/vim-io'
+NeoBundleFetch 'airblade/vim-gitgutter'
+NeoBundleFetch 'AndrewRadev/sideways.vim'
+"""bfirst
+NeoBundleFetch 'bogado/file-line'
+NeoBundleFetch 'bkad/CamelCaseMotion'
 NeoBundleFetch 'bling/vim-airline'
-NeoBundleFetch 'vim-airline/vim-airline-themes'
 NeoBundleFetch 'bartlomiejdanek/vim-dart'
 NeoBundleFetch 'becaning/vimdoccn'
-"NeoBundleFetch 'bpdp/vim-java'
+NeoBundleFetch 'bpdp/vim-java'
 NeoBundleFetch 'briancollins/vim-jst'
 NeoBundleFetch 'burnettk/vim-angular'
-
+NeoBundleFetch 'beloglazov/vim-online-thesaurus'
+"""cfirst
+NeoBundleFetch 'chase/vim-ansible-yaml'
 NeoBundleFetch 'claco/jasmine.vim'
 NeoBundleFetch 'cscope_macros.vim'
 NeoBundleFetch 'cakebaker/scss-syntax.vim'
 NeoBundleFetch 'chrisbra/csv.vim'
-NeoBundleFetch 'airblade/vim-gitgutter'
 NeoBundleFetch 'cespare/vim-toml'
-
+NeoBundleFetch 'christoomey/vim-tmux-navigator'
+NeoBundleFetch 'chriskempson/base16-shell'
+"""dfirst
 NeoBundleFetch 'dart-lang/dart-vim-plugin'
 NeoBundleFetch 'davidhalter/jedi-vim'
 NeoBundleFetch 'digitaltoad/vim-jade'
@@ -51,6 +58,8 @@ NeoBundleFetch 'djoshea/vim-matlab-fold'
 "NeoBundleFetch 'dbext.vim'
 NeoBundleFetch 'dgrnbrg/vim-redl'
 
+"efirst
+NeoBundleFetch 'ekalinin/Dockerfile.vim'
 NeoBundleFetch 'eagletmt/ghcmod-vim'
 NeoBundleFetch 'EasyGrep'
 NeoBundleFetch 'elixir-lang/vim-elixir'
@@ -61,7 +70,7 @@ NeoBundleFetch 'evidens/vim-twig'
 "NeoBundleFetch 'fsharp/vim-fsharp'
 NeoBundleFetch 'fatih/vim-go'
 NeoBundleFetch 'fatih/vim-nginx'
-
+"gfirst
 " tabular: 自动对齐
 NeoBundleFetch 'godlygeek/tabular'
 NeoBundleFetch 'glench/vim-jinja2-syntax'
@@ -69,9 +78,23 @@ NeoBundleFetch 'groenewege/vim-less'
 NeoBundleFetch 'grvcoelho/vim-javascript-snippets'
 NeoBundleFetch 'garyburd/go-explorer'
 NeoBundleFetch 'gtags.vim'
+NeoBundleFetch 'guns/xterm-color-table.vim'
 "NeoBundleFetch 'garbas/vim-snipmate'
+"hfirst
+NeoBundleFetch 'haya14busa/vim-asterisk'
+NeoBundleFetch 'haya14busa/incsearch.vim'
+NeoBundleFetch 'haya14busa/vim-operator-flashy'
+NeoBundleFetch 'hynek/vim-python-pep8-indent'
 NeoBundleFetch 'hail2u/vim-css3-syntax'
 NeoBundleFetch 'honza/vim-snippets'
+NeoBundleFetch 'hhvm/vim-hack'
+NeoBundleFetch 'heavenshell/vim-jsdoc'
+"ifirst
+NeoBundleFetch 'itchyny/vim-cursorword'
+NeoBundleFetch 'itchyny/vim-gitbranch'
+NeoBundleFetch 'itchyny/dictionary.vim'
+"jfirst
+NeoBundleFetch 'jstrater/mpvim'
 NeoBundleFetch 'jamescarr/snipmate-nodejs.git'
 NeoBundleFetch 'jceb/vim-orgmode'
 NeoBundleFetch 'jsfaint/gen_tags.vim'
@@ -82,20 +105,31 @@ NeoBundleFetch 'jdonaldson/vaxe'
 NeoBundleFetch 'jason0x43/vim-js-indent'
 NeoBundleFetch 'justmao945/vim-clang'
 NeoBundleFetch 'jszakmeister/vim-togglecursor'
-
+NeoBundleFetch 'junegunn/goyo.vim'
+NeoBundleFetch 'junegunn/limelight.vim'
+NeoBundleFetch 'joker1007/unite-pull-request'
+"kfirst
 NeoBundleFetch 'kchmck/vim-coffee-script.git'
 NeoBundleFetch 'kevinw/pyflakes-vim'
 NeoBundleFetch 'klen/python-mode'
-"NeoBundleFetch 'kballard/vim-swift'
-
+NeoBundleFetch 'kballard/vim-swift'
+NeoBundleFetch 'kshenoy/vim-signature'
+NeoBundleFetch 'kana/vim-niceblock'
+NeoBundleFetch 'kana/vim-operator-user'
+NeoBundleFetch 'kana/vim-operator-replace'
+NeoBundleFetch 'kana/vim-textobj-user'
+NeoBundleFetch 'Konfekt/FastFold'
+"lfirst
 NeoBundleFetch 'leafgarland/typescript-vim'
 NeoBundleFetch 'leshill/vim-json'
 NeoBundleFetch 'Lokaltog/vim-easymotion'
 NeoBundleFetch 'lilydjwg/fcitx.vim'
+NeoBundleFetch 'lambdalisue/vim-gita'
+"mfirst
+NeoBundleFetch 'mitsuhiko/vim-jinja'
 NeoBundleFetch 'mxw/vim-xhp'
-NeoBundle 'mxw/vim-jsx'
+NeoBundleFetch 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx']  }
 let g:jsx_ext_required = 0
-NeoBundleFetch 'hhvm/vim-hack'
 NeoBundleFetch 'mtth/scratch.vim'
 NeoBundleFetch 'marcweber/vim-addon-mw-utils'
 NeoBundleFetch 'Mark--Karkat'
@@ -121,6 +155,7 @@ let g:startify_custom_footer = [
                 \ '                                                     ',
                 \ ]
 NeoBundleFetch 'mattn/emmet-vim'
+NeoBundleFetch 'mattn/webapi-vim'
 NeoBundleFetch 'mustache/vim-mustache-handlebars'
 NeoBundleFetch 'matthewsimo/angular-vim-snippets'
 NeoBundleFetch 'mikelue/vim-maven-plugin'
@@ -147,35 +182,55 @@ autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
 autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
 NeoBundleFetch 'nathanaelkane/vim-indent-guides'
 NeoBundleFetch 'ninegrid/vim-livescript'
-
+"ofirst
 "NeoBundleFetch 'omnisharp/omnisharp-vim'
 NeoBundleFetch 'othree/html5.vim'
 NeoBundleFetch 'othree/javascript-libraries-syntax.vim'
+autocmd BufReadPre *.js let b:javascript_lib_use_jquery = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_backbone = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_prelude = 0
+autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 0
+NeoBundleFetch 'othree/csscomplete.vim'
+NeoBundleFetch 'othree/yajs.vim'
+NeoBundleFetch 'othree/jspc.vim'
 NeoBundleFetch 'octol/vim-cpp-enhanced-highlight'
 "NeoBundleFetch 'oranget/vim-csharp'
 NeoBundleFetch 'oscarh/vimerl'
 NeoBundleFetch 'osyo-manga/unite-quickfix'
-
+NeoBundleFetch 'osyo-manga/vim-monster'
+NeoBundleFetch 'osyo-manga/unite-filetype'
+NeoBundleFetch 'osyo-manga/vim-textobj-multiblock'
+"pfirst
+NeoBundleFetch 'PotatoesMaster/i3-vim-syntax'
 NeoBundleFetch 'plasticboy/vim-markdown'
-NeoBundleFetch 'pangloss/vim-javascript'
-"NeoBundleFetch 'phildawes/racer'
+NeoBundleFetch 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx']  }
+"""rfirst
+NeoBundleFetch 'rafi/awesome-vim-colorschemes'
+NeoBundleFetch 'rafi/vim-tagabana'
+NeoBundleFetch 'rafi/vim-tinyline'
+NeoBundleFetch 'rafi/vim-unite-issue'
 NeoBundleFetch 'racer-rust/vim-racer'
 NeoBundleFetch 'rust-lang/rust.vim'
 NeoBundleFetch 'rhysd/rust-doc.vim'
+NeoBundleFetch 'rhysd/clever-f.vim'
+NeoBundleFetch 'rhysd/committia.vim'
+NeoBundleFetch 'rhysd/vim-operator-surround'
 NeoBundleFetch 'raichoo/haskell-vim'
 NeoBundleFetch 'rstacruz/sparkup'
 NeoBundleFetch 'rmartinho/vim-cpp11'
 NeoBundleFetch 'rizzatti/funcoo.vim.git'
 NeoBundleFetch 'rizzatti/dash.vim.git'
+NeoBundleFetch 'rayburgemeestre/phpfolding.vim'
 "NeoBundleFetch 'Raimondi/delimitMate'
 "nmap <Leader>qs <Plug>DashSearch
 "nmap <Leader>qa <Plug>DashGlobalSearch
 NeoBundleFetch 'rking/ag.vim.git'
-
+"""sfirst
+NeoBundleFetch 'StanAngeloff/php.vim'
 NeoBundleFetch 'sjl/gundo.vim'
 NeoBundleFetch 'scrooloose/nerdtree'
 let NERDTreeHiJackNetrw = 0
-NeoBundleFetch 'Xuyuanp/nerdtree-git-plugin'
 NeoBundleFetch 'scrooloose/nerdcommenter'
 NeoBundleFetch 'shawncplus/phpcomplete.vim' 
 NeoBundleFetch 'spf13/piv'
@@ -185,8 +240,17 @@ NeoBundleFetch 'skammer/vim-css-color'
 NeoBundleFetch 'shougo/unite-help'
 NeoBundleFetch 'shougo/unite-outline'
 NeoBundleFetch 'shougo/vimshell.vim'
+NeoBundleFetch 'Shougo/vimfiler.vim'
 NeoBundleFetch 'shougo/unite.vim'
+NeoBundleFetch 'Shougo/junkfile.vim'
+NeoBundleFetch 'Shougo/unite-build'
 NeoBundleFetch 'shougo/neomru.vim'
+NeoBundleFetch 'Shougo/vinarise.vim'
+NeoBundleFetch 'Shougo/neossh.vim'
+NeoBundleFetch 'Shougo/echodoc.vim'
+NeoBundleFetch 'Shougo/neopairs.vim'
+NeoBundleFetch 'Shougo/context_filetype.vim'
+NeoBundleFetch 'Shougo/tabpagebuffer.vim'
 "NeoBundleFetch 'shougo/neocomplcache.vim'
 if has('lua')
     NeoBundleFetch 'shougo/neocomplete.vim'
@@ -198,9 +262,13 @@ if system('uname -o') =~ '^GNU/'
 endif
 NeoBundleFetch 'shougo/neosnippet-snippets'
 NeoBundleFetch 'shougo/vimproc.vim', { 'build' : { 'linux' : 'make','unix':'gmake','mac':'make',  },  }
-
+"""tfirst
+NeoBundleFetch 't9md/vim-choosewin'
+NeoBundleFetch 'tacroe/unite-mark'
+NeoBundleFetch 'tmux-plugins/vim-tmux'
 NeoBundleFetch 'tacahiroy/ctrlp-funky'
 NeoBundleFetch 'terryma/vim-multiple-cursors.git'
+NeoBundleFetch 'terryma/vim-expand-region'
 NeoBundleFetch 'tomtom/tlib_vim'
 NeoBundleFetch 'tomtom/tcomment_vim'
 NeoBundleFetch 'tsukkee/unite-tag'
@@ -226,11 +294,18 @@ NeoBundleFetch 'tpope/vim-abolish'
 " commentary: 快速注释。
 NeoBundleFetch 'tpope/vim-commentary'
 NeoBundleFetch 'tpope/vim-dispatch.git'
+NeoBundleFetch 'thinca/vim-localrc'
 NeoBundleFetch 'thinca/vim-themis'
 NeoBundleFetch 'thinca/vim-ref'
-
+NeoBundleFetch 'thinca/vim-quickrun'
+NeoBundleFetch 'thinca/vim-prettyprint'
+NeoBundleFetch 'thinca/vim-unite-history'
+NeoBundleFetch 'tyru/caw.vim'
+"ufirst
 NeoBundleFetch 'udalov/kotlin-vim'
-
+NeoBundleFetch 'ujihisa/unite-colorscheme'
+"""vfirst
+NeoBundleFetch 'vim-airline/vim-airline-themes'
 NeoBundleFetch 'valloric/listtoggle'
 NeoBundle 'Valloric/YouCompleteMe', {
      \ 'build'      : {
@@ -267,21 +342,32 @@ NeoBundleFetch 'vim-scripts/vim-script-updater'
 NeoBundleFetch 'vim-scripts/ZoomWin.git'
 map <Leader>z :ZoomWin<CR>
 NeoBundleFetch 'vimwiki/vimwiki'  
-"NeoBundleFetch 'vim-scripts/autocomplpop'
+NeoBundleFetch 'vim-scripts/autocomplpop'
 NeoBundleFetch 'vim-erlang/vim-erlang-runtime'
 NeoBundleFetch 'vim-erlang/vim-erlang-tags'
 NeoBundleFetch 'vim-erlang/vim-erlang-compiler'
 NeoBundleFetch 'vim-erlang/vim-erlang-omnicomplete'
 NeoBundleFetch 'vim-scripts/sqlcomplete.vim'
+"wfirst
 NeoBundleFetch 'wavded/vim-stylus.git'
 NeoBundleFetch 'walm/jshint.vim'
 NeoBundleFetch 'wincent/command-t'
 NeoBundleFetch 'wlangstroth/vim-racket'
+"xfirst
+NeoBundleFetch 'Xuyuanp/nerdtree-git-plugin'
 NeoBundleFetch 'xml.vim'
 NeoBundleFetch 'xsbeats/vim-blade'
 NeoBundleFetch 'yggdroot/indentline'
 NeoBundleFetch 'zah/nim.vim'
- call neobundle#end()
+"if $VIM_MINIMAL == 1
+"    NeoBundleFetch 'Shougo/neco-vim'
+"    NeoBundleFetch 'Shougo/neco-syntax'
+"    NeoBundleFetch 'Shougo/neoinclude.vim'
+"    NeoBundleFetch 'zchee/deoplete-go'
+"    NeoBundleFetch 'zchee/deoplete-jedi'
+"    NeoBundleFetch 'carlitux/deoplete-ternjs'
+"endif
+call neobundle#end()
 
  " Required:
  filetype plugin indent on
@@ -328,8 +414,9 @@ au bufread,bufnewfile *.{html,htm,tpl} setlocal ft=html
 "golang
 "processing... % (ctrl+c to stop)
 let g:fencview_autodetect=0
-set rtp+=~/gopath/src/github.com/nsf/gocode/vim
-
+"if g:isWIN
+    set rtp+=$GOPATH/src/github.com/nsf/gocode/vim
+"endif
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
     \ 'kinds'     : [
@@ -399,7 +486,11 @@ endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " 加载pathogen插件管理器
 execute pathogen#infect()
-let g:snippets_dir = '~/.vim/bundle/vim-snippets/snippets/'
+if g:isWIN
+    let g:snippets_dir = '$VIM/vimfiles/bundle/vim-snippets/snippets/'
+else
+    let g:snippets_dir = '~/.vim/bundle/vim-snippets/snippets/'
+endif
 " nerd_commenter      注释处理插件
 let nerdspacedelims = 1                        " 自动添加前置空格
 
@@ -547,9 +638,15 @@ let g:ycm_server_use_vim_stdout = 1
 let g:ycm_server_log_level = 'debug'
 let g:go_fmt_command = "goimports"
 set hidden
-let g:racer_cmd = "/home/loonor/github/racer/target/release/racer"
-let RUST_SRC_PATH="/home/loonor/github/rust/src"
-let g:rust_doc#downloaded_rust_doc_dir = '~/.multirust/toolchains/nightly'
+if g:isWIN
+    let g:racer_cmd=$RACER_CMD
+    let RUST_SRC_PATH=$RUST_SRC_PATH
+    let g:rust_doc#downloaded_rust_doc_dir ="$MULTIRUST/toolchains/nightly"
+else
+    let g:racer_cmd = $RACER_CMD """/home/loonor/github/racer/target/release/racer"
+    let RUST_SRC_PATH=$RUST_SRC_PATH"""/home/loonor/github/rust/src"
+    let g:rust_doc#downloaded_rust_doc_dir = "$MULTIRUST/toolchains/nightly"
+endif
 autocmd FileType apache set commentstring=#\ %s
 
 augroup VimCSS3Syntax
@@ -558,10 +655,10 @@ augroup VimCSS3Syntax
   autocmd FileType css setlocal iskeyword+=-
 augroup END
 
-if has('vim_starting')
-  set nocompatible
-  set runtimepath+=~/.vim/bundle/dart-vim-plugin
-endif
+"if has('vim_starting')
+"  set nocompatible
+"  set runtimepath+=~/.vim/bundle/dart-vim-plugin
+"endif
 
 let g:ghcmod_ghc_options = ['-idir1', '-idir2']
 let g:ghcmod_open_quickfix_function = 'GhcModQuickFix'
@@ -586,15 +683,10 @@ call pymode#default('g:pymode_rope_autoimport', 0)
 let g:pymode_rope = 0 
 let g:redl_use_vsplit = 1
 
-"新建.c,.h,.sh,.java文件，自动插入文件头 
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py,*.go,*.html,*.php exec ":call SetTitle()" 
-
 " 载入文件类型插件
 filetype plugin on
 " 为特定文件类型载入相关缩进文件
 filetype indent on
-"Use local vimrc if available {
-if filereadable(expand("~/.vim/local.vim"))
-    source ~/.vim/local.vim 
-endif 
-"}
+"新建.c,.h,.sh,.java文件，自动插入文件头 
+"autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py,*.go,*.html,*.php exec ":call SetTitle()" 
+

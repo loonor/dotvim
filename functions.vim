@@ -1,108 +1,108 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function AddCDict()
-    if g:isWIN
-        set dict+=$VIM/vimfiles/dict/c.txt
-    else
-        set dict+=~/.vim/dict/c.txt
-    endif
-    set complete+=k
-endfunction
+"function AddCDict()
+"    if g:isWIN
+"        set dict+=$VIM/vimfiles/dict/c.txt
+"    else
+"        set dict+=~/.vim/dict/c.txt
+"    endif
+"    set complete+=k
+"endfunction
 
-function AddCPPDict()
-    if g:isWIN
-        set dict+=$VIM/vimfiles/dict/c.txt
-        set dict+=$VIM/vimfiles/dict/cpp-stdlib.txt
-        set dict+=$VIM/vimfiles/dict/cpp-boost.txt
-    else
-        set dict+=~/.vim/dict/c.txt
-        set dict+=~/.vim/dict/cpp-stdlib.txt
-        set dict+=~/.vim/dict/cpp-boost.txt
-    endif
-    set complete+=k
-endfunction
-
-function AddJavaDict()
-    if g:isWIN
-        set dict+=$VIM/vimfiles/dict/java.txt
-    else
-        set dict+=~/.vim/dict/java.txt
-    endif
-    set complete+=k
-endfunction
-
-function AddLuaDict()
-    if g:isWIN
-        set dict+=$VIM/vimfiles/dict/lua.txt
-    else
-        set dict+=~/.vim/dict/lua.txt
-    endif
-    set complete+=k
-endfunction
-
-function AddPerlDict()
-    if g:isWIN
-        set dict+=$VIM/vimfiles/dict/perl.txt
-    else
-        set dict+=~/.vim/dict/perl.txt
-    endif
-    set complete+=k
-endfunction
-
-function AddPHPDict()
-    if g:isWIN
-        set dict+=$VIM/vimfiles/dict/php.txt
-    else
-        set dict+=~/.vim/dict/php.txt
-    endif
-    set complete+=k
-endfunction
-
-function AddPythonDict()
-    if g:isWIN
-        set dict+=$VIM/vimfiles/dict/python.txt
-    else
-        set dict+=~/.vim/dict/python.txt
-    endif
-    set complete+=k
-endfunction
-
-function AddRubyDict()
-    if g:isWIN
-        set dict+=$VIM/vimfiles/dict/ruby.txt
-    else
-        set dict+=~/.vim/dict/ruby.txt
-    endif
-    set complete+=k
-endfunction
-
-function AddScalaDict()
-    if g:isWIN
-        set dict+=$VIM/vimfiles/dict/scala.txt
-    else
-        set dict+=~/.vim/dict/scala.txt
-    endif
-    set complete+=k
-endfunction
-
-function AddJavaScriptDict()
-    if g:isWIN
-        set dict+=$VIM/vimfiles/dict/javascript.txt
-        set dict+=$VIM/vimfiles/dict/node.txt
-    else
-        set dict+=~/.vim/dict/javascript.txt
-        set dict+=~/.vim/dict/node.txt
-    endif
-    set complete+=k
-endfunction
-
-function AddCSSDict()
-    if g:isWIN
-        set dict+=$VIM/vimfiles/dict/css.txt
-    else
-        set dict+=~/.vim/dict/css.txt
-    endif
-    set complete+=k
-endfunction
+"function AddCPPDict()
+"    if g:isWIN
+"        set dict+=$VIM/vimfiles/dict/c.txt
+"        set dict+=$VIM/vimfiles/dict/cpp-stdlib.txt
+"        set dict+=$VIM/vimfiles/dict/cpp-boost.txt
+"    else
+"        set dict+=~/.vim/dict/c.txt
+"        set dict+=~/.vim/dict/cpp-stdlib.txt
+"        set dict+=~/.vim/dict/cpp-boost.txt
+"    endif
+"    set complete+=k
+"endfunction
+"
+"function AddJavaDict()
+"    if g:isWIN
+"        set dict+=$VIM/vimfiles/dict/java.txt
+"    else
+"        set dict+=~/.vim/dict/java.txt
+"    endif
+"    set complete+=k
+"endfunction
+"
+"function AddLuaDict()
+"    if g:isWIN
+"        set dict+=$VIM/vimfiles/dict/lua.txt
+"    else
+"        set dict+=~/.vim/dict/lua.txt
+"    endif
+"    set complete+=k
+"endfunction
+"
+"function AddPerlDict()
+"    if g:isWIN
+"        set dict+=$VIM/vimfiles/dict/perl.txt
+"    else
+"        set dict+=~/.vim/dict/perl.txt
+"    endif
+"    set complete+=k
+"endfunction
+"
+"function AddPHPDict()
+"    if g:isWIN
+"        set dict+=$VIM/vimfiles/dict/php.txt
+"    else
+"        set dict+=~/.vim/dict/php.txt
+"    endif
+"    set complete+=k
+"endfunction
+"
+"function AddPythonDict()
+"    if g:isWIN
+"        set dict+=$VIM/vimfiles/dict/python.txt
+"    else
+"        set dict+=~/.vim/dict/python.txt
+"    endif
+"    set complete+=k
+"endfunction
+"
+"function AddRubyDict()
+"    if g:isWIN
+"        set dict+=$VIM/vimfiles/dict/ruby.txt
+"    else
+"        set dict+=~/.vim/dict/ruby.txt
+"    endif
+"    set complete+=k
+"endfunction
+"
+"function AddScalaDict()
+"    if g:isWIN
+"        set dict+=$VIM/vimfiles/dict/scala.txt
+"    else
+"        set dict+=~/.vim/dict/scala.txt
+"    endif
+"    set complete+=k
+"endfunction
+"
+"function AddJavaScriptDict()
+"    if g:isWIN
+"        set dict+=$VIM/vimfiles/dict/javascript.txt
+"        set dict+=$VIM/vimfiles/dict/node.txt
+"    else
+"        set dict+=~/.vim/dict/javascript.txt
+"        set dict+=~/.vim/dict/node.txt
+"    endif
+"    set complete+=k
+"endfunction
+"
+"function AddCSSDict()
+"    if g:isWIN
+"        set dict+=$VIM/vimfiles/dict/css.txt
+"    else
+"        set dict+=~/.vim/dict/css.txt
+"    endif
+"    set complete+=k
+"endfunction
 "<F8>C,C++的调试
 
 func! Rungdb()
@@ -269,74 +269,74 @@ func! Compile_Run_Code()
 endfunc
 
 ""定义函数SetTitle，自动插入文件头 
-func SetTitle() 
-    "如果文件类型为.sh文件 
-    if &filetype == 'sh' 
-        call setline(1,"\#!/bin/bash") 
-        call append(line("."), "") 
-    elseif &filetype == 'python'
-        call setline(1,"#!/usr/bin/env python3")
-        call append(line("."),"# encoding=utf-8")
-        call append(line(".")+1, "") 
-
-    elseif &filetype == 'ruby'
-        call setline(1,"#!/usr/bin/env ruby")
-        call append(line("."),"# encoding: utf-8")
-        call append(line(".")+1, "")
-
-    elseif &filetype == 'html'
-        call setline(1,"<!DOCTYPE html>")
-        call append(line("."), "<html>")
-        call append(line(".")+1, "<head>")
-        call append(line(".")+2, "<title>   </title>")
-        call append(line(".")+3, "</head>")
-        call append(line(".")+4, "<body>")
-        call append(line(".")+5, "")
-        call append(line(".")+6, "</body>")
-        call append(line(".")+7, "</html>")
-    elseif &filetype == 'php'
-        
-        call setline(1, "<?php ") 
-        call append(line("."),   "//  * File Name: ".expand("%")) 
-        call append(line(".")+1, "//  * Author: loonor") 
-        call append(line(".")+2, "//  * Mail: loonor@163.com") 
-        call append(line(".")+3, "//  * Created Time: ".strftime("%c"))
-        call append(line(".")+4, "//  * Discription:")
-        call append(line(".")+5, "") 
-        call append(line(".")+6, "//namespace ;")
-        call append(line(".")+7, "")
-    else 
-        call setline(1, "/* =========================================================*") 
-        call append(line("."),   "  * File Name: ".expand("%")) 
-        call append(line(".")+1, "  * Author: loonor") 
-        call append(line(".")+2, "  * Mail: loonor@163.com") 
-        call append(line(".")+3, "  * Created Time: ".strftime("%c"))
-        call append(line(".")+4, "  * Discription:")
-        call append(line(".")+5, "  *=========================================================*/") 
-        call append(line(".")+6, "")
-    endif
-    if expand("%:e") == 'cpp'
-        call append(line(".")+6, "//#include <iostream>")
-        call append(line(".")+7, "//using namespace std;")
-        "call append(line(".")+8, "")
-    endif
-    if &filetype == 'c'
-        call append(line(".")+6, "//#include <stdio.h>")
-        call append(line(".")+7, "") 
-    endif
-    if expand("%:e") == 'h'
-        call append(line(".")+8, "#ifndef _".toupper(expand("%:r"))."_H")
-        call append(line(".")+9, "#define _".toupper(expand("%:r"))."_H")
-        call append(line(".")+10,"")
-        call append(line(".")+11, "#endif")
-    endif
-    if &filetype == 'java'
-        call append(line(".")+6,"public class ")
-        call append(line(".")+7,"")
-    endif
-    "新建文件后，自动定位到文件末尾
-    autocmd BufNewFile * normal G
-endfunc 
+"func SetTitle() 
+"    "如果文件类型为.sh文件 
+"    if &filetype == 'sh' 
+"        call setline(1,"\#!/bin/bash") 
+"        call append(line("."), "") 
+"    elseif &filetype == 'python'
+"        call setline(1,"#!/usr/bin/env python3")
+"        call append(line("."),"# encoding=utf-8")
+"        call append(line(".")+1, "") 
+"
+"    elseif &filetype == 'ruby'
+"        call setline(1,"#!/usr/bin/env ruby")
+"        call append(line("."),"# encoding: utf-8")
+"        call append(line(".")+1, "")
+"
+"    elseif &filetype == 'html'
+"        call setline(1,"<!DOCTYPE html>")
+"        call append(line("."), "<html>")
+"        call append(line(".")+1, "<head>")
+"        call append(line(".")+2, "<title>   </title>")
+"        call append(line(".")+3, "</head>")
+"        call append(line(".")+4, "<body>")
+"        call append(line(".")+5, "")
+"        call append(line(".")+6, "</body>")
+"        call append(line(".")+7, "</html>")
+"    elseif &filetype == 'php'
+"        
+"        call setline(1, "<?php ") 
+"        call append(line("."),   "//  * File Name: ".expand("%")) 
+"        call append(line(".")+1, "//  * Author: loonor") 
+"        call append(line(".")+2, "//  * Mail: loonor@163.com") 
+"        call append(line(".")+3, "//  * Created Time: ".strftime("%c"))
+"        call append(line(".")+4, "//  * Discription:")
+"        call append(line(".")+5, "") 
+"        call append(line(".")+6, "//namespace ;")
+"        call append(line(".")+7, "")
+"    else 
+"        call setline(1, "/* =========================================================*") 
+"        call append(line("."),   "  * File Name: ".expand("%")) 
+"        call append(line(".")+1, "  * Author: loonor") 
+"        call append(line(".")+2, "  * Mail: loonor@163.com") 
+"        call append(line(".")+3, "  * Created Time: ".strftime("%c"))
+"        call append(line(".")+4, "  * Discription:")
+"        call append(line(".")+5, "  *=========================================================*/") 
+"        call append(line(".")+6, "")
+"    endif
+"    if expand("%:e") == 'cpp'
+"        call append(line(".")+6, "//#include <iostream>")
+"        call append(line(".")+7, "//using namespace std;")
+"        "call append(line(".")+8, "")
+"    endif
+"    if &filetype == 'c'
+"        call append(line(".")+6, "//#include <stdio.h>")
+"        call append(line(".")+7, "") 
+"    endif
+"    if expand("%:e") == 'h'
+"        call append(line(".")+8, "#ifndef _".toupper(expand("%:r"))."_H")
+"        call append(line(".")+9, "#define _".toupper(expand("%:r"))."_H")
+"        call append(line(".")+10,"")
+"        call append(line(".")+11, "#endif")
+"    endif
+"    if &filetype == 'java'
+"        call append(line(".")+6,"public class ")
+"        call append(line(".")+7,"")
+"    endif
+"    "新建文件后，自动定位到文件末尾
+"    autocmd BufNewFile * normal G
+"endfunc 
 function! GhcModQuickFix()
   " for unite.vim and unite-quickfix
   :Unite -no-empty quickfix
