@@ -125,6 +125,7 @@ NeoBundleFetch 'leshill/vim-json'
 NeoBundleFetch 'Lokaltog/vim-easymotion'
 NeoBundleFetch 'lilydjwg/fcitx.vim'
 NeoBundleFetch 'lambdalisue/vim-gita'
+NeoBundleFetch 'lambdalisue/vim-django-support'
 "mfirst
 NeoBundleFetch 'mitsuhiko/vim-jinja'
 NeoBundleFetch 'mxw/vim-xhp'
@@ -222,7 +223,7 @@ NeoBundleFetch 'rmartinho/vim-cpp11'
 NeoBundleFetch 'rizzatti/funcoo.vim.git'
 NeoBundleFetch 'rizzatti/dash.vim.git'
 NeoBundleFetch 'rayburgemeestre/phpfolding.vim'
-"NeoBundleFetch 'Raimondi/delimitMate'
+NeoBundleFetch 'Raimondi/delimitMate'
 "nmap <Leader>qs <Plug>DashSearch
 "nmap <Leader>qa <Plug>DashGlobalSearch
 NeoBundleFetch 'rking/ag.vim.git'
@@ -231,6 +232,16 @@ NeoBundleFetch 'StanAngeloff/php.vim'
 NeoBundleFetch 'sjl/gundo.vim'
 NeoBundleFetch 'scrooloose/nerdtree'
 let NERDTreeHiJackNetrw = 0
+" 设置NERDTree子窗口宽度
+let NERDTreeWinSize=30
+" 设置NERDTree子窗口位置
+let NERDTreeWinPos="left"
+" 显示隐藏文件
+let NERDTreeShowHidden=0
+" NERDTree 子窗口中不显示冗余帮助信息
+let NERDTreeMinimalUI=1
+" 删除文件时自动删除文件对应 buffer
+let NERDTreeAutoDeleteBuffer=1
 NeoBundleFetch 'scrooloose/nerdcommenter'
 NeoBundleFetch 'shawncplus/phpcomplete.vim' 
 NeoBundleFetch 'spf13/piv'
