@@ -49,6 +49,7 @@ NeoBundleFetch 'cespare/vim-toml'
 NeoBundleFetch 'christoomey/vim-tmux-navigator'
 NeoBundleFetch 'chriskempson/base16-shell'
 """dfirst
+NeoBundleFetch 'dleonard0/pony-vim-syntax'
 NeoBundleFetch 'dart-lang/dart-vim-plugin'
 NeoBundleFetch 'davidhalter/jedi-vim'
 NeoBundleFetch 'digitaltoad/vim-jade'
@@ -66,7 +67,7 @@ NeoBundleFetch 'elixir-lang/vim-elixir'
 NeoBundleFetch 'edkolev/promptline.vim'
 NeoBundleFetch 'ervandew/supertab'
 NeoBundleFetch 'evidens/vim-twig'
-
+NeoBundleFetch 'ElmCast/elm-vim'
 "NeoBundleFetch 'fsharp/vim-fsharp'
 NeoBundleFetch 'fatih/vim-go'
 NeoBundleFetch 'fatih/vim-nginx'
@@ -111,6 +112,7 @@ NeoBundleFetch 'joker1007/unite-pull-request'
 "kfirst
 NeoBundleFetch 'kchmck/vim-coffee-script.git'
 NeoBundleFetch 'kevinw/pyflakes-vim'
+let g:pyflakes_use_quickfix = 0
 NeoBundleFetch 'klen/python-mode'
 NeoBundleFetch 'kballard/vim-swift'
 NeoBundleFetch 'kshenoy/vim-signature'
@@ -126,6 +128,11 @@ NeoBundleFetch 'Lokaltog/vim-easymotion'
 NeoBundleFetch 'lilydjwg/fcitx.vim'
 NeoBundleFetch 'lambdalisue/vim-gita'
 NeoBundleFetch 'lambdalisue/vim-django-support'
+NeoBundleFetch 'lambdatoast/elm.vim'
+nnoremap <leader>el :ElmEvalLine<CR>
+vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
+nnoremap <leader>em :ElmMakeCurrentFile<CR>
+
 "mfirst
 NeoBundleFetch 'mitsuhiko/vim-jinja'
 NeoBundleFetch 'mxw/vim-xhp'
@@ -421,7 +428,40 @@ au bufread,bufnewfile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd
 au bufread,bufnewfile *.{go}   set filetype=go
 au bufread,bufnewfile *.{js}   set filetype=javascript
 au bufread,bufnewfile *.{html,htm,tpl} setlocal ft=html
+if g:isWIN
+    au FileType php setlocal dict+=$VIM/vimfiles/dict/php_funclist.dict
+    au FileType css setlocal dict+=$VIM/vimfiles/dict/css.dict
+    au FileType c setlocal dict+=$VIM/vimfiles/dict/c.dict
+    au FileType cpp setlocal dict+=$VIM/vimfiles/dict/cpp.dict
+    au FileType scale setlocal dict+=$VIM/vimfiles/dict/scale.dict
+    au FileType javascript setlocal dict+=$VIM/vimfiles/dict/javascript.dict
+    au FileType html setlocal dict+=$VIM/vimfiles/dict/javascript.dict
+    au FileType html setlocal dict+=$VIM/vimfiles/dict/css.dict
+else
+    au FileType php setlocal dict+=~/.vim/dict/php_funclist.dict
+    au FileType php setlocal dict+=$HOME/.vim/dict/php.txt
+    au FileType css setlocal dict+=~/.vim/dict/css.dict
+    au FileType css setlocal dict+=~/.vim/dict/css.txt
+    au FileType css setlocal dict+=~/.vim/dict/css2.1.dict
+    au FileType c setlocal dict+=~/.vim/dict/c.dict
+    au FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
+    au FileType cpp setlocal dict+=~/.vim/dict/cpp-stdlib.txt
+    au FileType cpp setlocal dict+=~/.vim/dict/cpp-boost.txt
+    au FileType scala setlocal dict+=~/.vim/dict/scala.txt
+    au FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
+    au FileType java setlocal dict+=~/.vim/dict/java.dict
+    au FileType html setlocal dict+=~/.vim/dict/javascript.dict
+    au FileType html setlocal dict+=~/.vim/dict/css.dict
+    au FileType lua setlocal dict+=~/.vim/dict/lua.dict
+    au FileType ocaml setlocal dict+=~/.vim/dict/ocaml.dict
+    au FileType perl setlocal dict+=~/.vim/dict/perl.txt
+    au FileType python setlocal dict+=~/.vim/dict/python.txt
+    au FileType ruby setlocal dict+=~/.vim/dict/ruby.txt
+    au FileType vim setlocal dict+=~/.vim/dict/vim.dict
+    au FileType scheme setlocal dict+=~/.vim/dict/scheme.dict
+    au FileType haskell setlocal dict+=~/.vim/dict/haskell.txt
 
+endif
 "golang
 "processing... % (ctrl+c to stop)
 let g:fencview_autodetect=0
