@@ -35,7 +35,7 @@ NeoBundleFetch 'bkad/CamelCaseMotion'
 NeoBundleFetch 'bling/vim-airline'
 NeoBundleFetch 'bartlomiejdanek/vim-dart'
 NeoBundleFetch 'becaning/vimdoccn'
-NeoBundleFetch 'bpdp/vim-java'
+"NeoBundleFetch 'bpdp/vim-java'
 NeoBundleFetch 'briancollins/vim-jst'
 NeoBundleFetch 'burnettk/vim-angular'
 NeoBundleFetch 'beloglazov/vim-online-thesaurus'
@@ -53,7 +53,7 @@ NeoBundleFetch 'dleonard0/pony-vim-syntax'
 NeoBundleFetch 'dart-lang/dart-vim-plugin'
 NeoBundleFetch 'davidhalter/jedi-vim'
 NeoBundleFetch 'digitaltoad/vim-jade'
-NeoBundleFetch 'derekwyatt/vim-scala'
+"NeoBundleFetch 'derekwyatt/vim-scala'
 NeoBundleFetch 'djoshea/vim-matlab'   " matlab/matlab-fold: matlab 语法高亮及代码折叠插件。
 NeoBundleFetch 'djoshea/vim-matlab-fold'
 "NeoBundleFetch 'dbext.vim'
@@ -111,8 +111,8 @@ NeoBundleFetch 'junegunn/limelight.vim'
 NeoBundleFetch 'joker1007/unite-pull-request'
 "kfirst
 NeoBundleFetch 'kchmck/vim-coffee-script.git'
-NeoBundleFetch 'kevinw/pyflakes-vim'
-let g:pyflakes_use_quickfix = 0
+"NeoBundleFetch 'kevinw/pyflakes-vim'
+"let g:pyflakes_use_quickfix = 0
 NeoBundleFetch 'klen/python-mode'
 NeoBundleFetch 'kballard/vim-swift'
 NeoBundleFetch 'kshenoy/vim-signature'
@@ -134,7 +134,7 @@ vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
 nnoremap <leader>em :ElmMakeCurrentFile<CR>
 
 "mfirst
-NeoBundleFetch 'mitsuhiko/vim-jinja'
+"NeoBundleFetch 'mitsuhiko/vim-jinja'
 NeoBundleFetch 'mxw/vim-xhp'
 NeoBundleFetch 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx']  }
 let g:jsx_ext_required = 0
@@ -430,13 +430,27 @@ au bufread,bufnewfile *.{js}   set filetype=javascript
 au bufread,bufnewfile *.{html,htm,tpl} setlocal ft=html
 if g:isWIN
     au FileType php setlocal dict+=$VIM/vimfiles/dict/php_funclist.dict
+    au FileType php setlocal dict+=$VIM/vimfiles/dict/php.txt
     au FileType css setlocal dict+=$VIM/vimfiles/dict/css.dict
+    au FileType css setlocal dict+=$VIM/vimfiles/dict/css.txt
+    au FileType css setlocal dict+=$VIM/vimfiles/dict/css2.1.dict
     au FileType c setlocal dict+=$VIM/vimfiles/dict/c.dict
     au FileType cpp setlocal dict+=$VIM/vimfiles/dict/cpp.dict
-    au FileType scale setlocal dict+=$VIM/vimfiles/dict/scale.dict
+    au FileType cpp setlocal dict+=$VIM/vimfiles/dict/cpp-stdlib.txt
+    au FileType cpp setlocal dict+=$VIM/vimfiles/dict/cpp-boost.txt
+    au FileType scala setlocal dict+=$VIM/vimfiles/dict/scala.txt
     au FileType javascript setlocal dict+=$VIM/vimfiles/dict/javascript.dict
+    au FileType java setlocal dict+=$VIM/vimfiles/dict/java.dict
     au FileType html setlocal dict+=$VIM/vimfiles/dict/javascript.dict
     au FileType html setlocal dict+=$VIM/vimfiles/dict/css.dict
+    au FileType lua setlocal dict+=$VIM/vimfiles/dict/lua.dict
+    au FileType ocaml setlocal dict+=$VIM/vimfiles/dict/ocaml.dict
+    au FileType perl setlocal dict+=$VIM/vimfiles/dict/perl.txt
+    au FileType python setlocal dict+=$VIM/vimfiles/dict/python.txt
+    au FileType ruby setlocal dict+=$VIM/vimfiles/dict/ruby.txt
+    au FileType vim setlocal dict+=$VIM/vimfiles/dict/vim.dict
+    au FileType scheme setlocal dict+=$VIM/vimfiles/dict/scheme.dict
+    au FileType haskell setlocal dict+=$VIM/vimfiles/dict/haskell.txt
 else
     au FileType php setlocal dict+=~/.vim/dict/php_funclist.dict
     au FileType php setlocal dict+=$HOME/.vim/dict/php.txt
@@ -449,6 +463,7 @@ else
     au FileType cpp setlocal dict+=~/.vim/dict/cpp-boost.txt
     au FileType scala setlocal dict+=~/.vim/dict/scala.txt
     au FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
+    au FileType javascript setlocal dict+=~/.vim/dict/node.txt
     au FileType java setlocal dict+=~/.vim/dict/java.dict
     au FileType html setlocal dict+=~/.vim/dict/javascript.dict
     au FileType html setlocal dict+=~/.vim/dict/css.dict
