@@ -3,14 +3,8 @@
 code:
 go rust haskell php python elixir ...
 vim setting
-
-script:
-$ wget -qO- https://github.com/loonor/dotvim/blob/master/install.sh | sh -x
-or 
-$ curl -sSf https://github.com/loonor/dotvim/blob/master/install.sh | sh
-
-or git to install  
-$ git clone https://github.com/loonor/dotvim.git ~/.vim #if you win git it to
+install  
+$ git clone https://github.com/loonor/dotvim ~/.vim #if you win git it to
 $VIM/vimfiles
 Set up Vundle:
 Vundle
