@@ -4,7 +4,7 @@ export VIM_DIR="${HOME}/.vim"
 export NEOBUNDLE_DIR="${VIM_DIR}/bundle/neobundle.vim"
 export NEOBUNDLE_REPO="https://github.com/Shougo/neobundle.vim"
 
-if [-d $VIM_DIR]; then
+if [-d $VIM_DIR] then
   mv -f "$HOME/.vim_bak"
 fi 
 
