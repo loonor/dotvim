@@ -37,6 +37,7 @@ else
 endif
 
 filetype plugin indent on
+" 在gvim在会出现zsh乱码问题,还不知道原因
 if has("gui_running")
     set sh=bash
 endif
