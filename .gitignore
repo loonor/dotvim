@@ -2,4 +2,4 @@ local.vim
 .directory
 *.pyc
 tmp/
-bundle/
+bundle/*

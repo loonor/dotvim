@@ -71,7 +71,8 @@ else
     NeoBundle 'Valloric/YouCompleteMe', {
             \'build': {
             \ 'linux': './install.py --clang-completer --gocode-completer  --tern-completer --system-libclang',
-            \ 'windows': 'install.py'}}
+            \ 'mac': './install.py',
+            \ 'Unix': './install.py'}}
 endif
 " git
 " fugitive
