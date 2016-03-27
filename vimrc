@@ -1,4 +1,4 @@
-"修改leader键
+﻿"修改leader键
 let mapleader = ','
 let g:mapleader = ','
 
@@ -20,7 +20,7 @@ else
 endif
 "设置字体
 if g:isWIN
-    set guifont=Microsoft\ Yahei\ 13,WenQuanYi\ Zen\ Hei\ 13
+    set guifont=Courier_New:h15
 else
     set guifont=DejaVu\ Sans\ Mono\ 15 
 endif
@@ -37,10 +37,6 @@ else
 endif
 
 filetype plugin indent on
-" 在gvim在会出现zsh乱码问题,还不知道原因
-if has("gui_running")
-    set sh=bash
-endif
 "general settings
 "
 "
@@ -616,10 +612,8 @@ endif
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guifont=DejaVu\ Sans\ Mono\ h14 "Monaco:h14
-    if has("gui_gtk2")   "GTK2
-        set guifont=DejaVu\ Sans\ Mono\ 14,Monospace\ 12
-    endif
+" 在gvim在会出现zsh乱码问题,还不知道原因
+    set sh=bash
     set guioptions-=T
     set guioptions+=e
     set guioptions-=r

@@ -63,7 +63,16 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'unblevable/quick-scope'
 NeoBundle 'vim-scripts/matchit.zip'
 "代码自动补全
-NeoBundle 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer --gocode-completer  --tern-completer --system-libclang'}
+if has("win64")
+    NeoBundle 'snakeleon/YouCompleteMe-x64'
+elseif has("win32")
+    NeoBundle 'snakeleon/YouCompleteMe-x86'
+else
+    NeoBundle 'Valloric/YouCompleteMe', {
+            \'build': {
+            \ 'linux': './install.py --clang-completer --gocode-completer  --tern-completer --system-libclang',
+            \ 'windows': 'install.py'}}
+endif
 " git
 " fugitive
 NeoBundle 'tpope/vim-fugitive'
@@ -268,9 +277,15 @@ if count(g:bundle_groups, 'rust')
     NeoBundle 'rust-lang/rust.vim'
     NeoBundle 'rhysd/rust-doc.vim'
     NeoBundle 'cespare/vim-toml'
-    let g:racer_cmd=$RACER_CMD
-    let RUST_SRC_PATH=$RUST_SRC_PATH
-    let g:rust_doc#downloaded_rust_doc_dir="$MULTIRUST/toolchains/nightly"
+    if g:isWIN
+        let g:racer_cmd="d:/App/msys64/home/loonor/.multirust/toolchains/nightly/cargo/bin/racer.exe"
+        let g:RUST_SRC_PATH="d:/App/msys64/home/loonor/github/rust/src"
+        let g:rust_doc#downloaded_rust_doc_dir="d:/App/msys64/home/loonor/.multirust/toolchains/nightly"
+    else 
+        let g:racer_cmd=$RACER_CMD
+        let RUST_SRC_PATH=$RUST_SRC_PATH
+        let g:rust_doc#downloaded_rust_doc_dir="$MULTIRUST/toolchains/nightly"
+    endif
 endif
 
 if count(g:bundle_groups, 'elixir')
@@ -421,12 +436,18 @@ let g:neobundle#install_process_timeout = 1500
 
     " 引入，可以补全系统，以及python的第三方包 针对新老版本YCM做了兼容
     " old version
-    if !empty(glob("~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"))
-        let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
-    endif
+    if has("win64")
+        let g:ycm_global_ycm_extra_conf = $VIM.'/vimfiles/bundle/YouCompleteMe-x64/python/.ycm_extra_conf.py'
+    elseif has("win32")
+        let g:ycm_global_ycm_extra_conf = $VIM.'/vimfiles/bundle/YouCompleteMe-x86/python/.ycm_extra_conf.py'
+    else
+        if !empty(glob("~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"))
+            let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
+        endif
     " new version
-    if !empty(glob("~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"))
-        let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+        if !empty(glob("~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"))
+            let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+        endif
     endif
 
     " 直接触发自动补全 insert模式下
@@ -639,6 +660,7 @@ let g:neobundle#install_process_timeout = 1500
 " ################### 显示增强 ###################
 
 " airline {{{
+if g:isWIN =~ 0
     if !exists('g:airline_symbols')
         let g:airline_symbols = {}
     endif
@@ -648,6 +670,7 @@ let g:neobundle#install_process_timeout = 1500
     let g:airline_right_alt_sep = '❮'
     let g:airline_symbols.linenr = '¶'
     let g:airline_symbols.branch = '⎇'
+endif
     " 是否打开tabline
     " let g:airline#extensions#tabline#enabled = 1
 " }}}
