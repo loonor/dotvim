@@ -219,7 +219,7 @@ if count(g:bundle_groups, 'javascript')
     " for javascript 自动补全, 配合YCM, 需要安装全局环境的（非nvm中) node.js&npm
     " 安装完成后还需要在 bundle/tern_for_vim 下执行 npm install 安装依赖
     " see https://github.com/marijnh/tern_for_vim
-    " NeoBundle 'marijnh/tern_for_vim'
+    NeoBundle 'marijnh/tern_for_vim'
 endif
 
 
@@ -278,6 +278,7 @@ if count(g:bundle_groups, 'rust')
     NeoBundle 'rust-lang/rust.vim'
     NeoBundle 'rhysd/rust-doc.vim'
     NeoBundle 'cespare/vim-toml'
+    let g:rust_autosave = 1
     if g:isWIN
         let g:racer_cmd="d:/App/msys64/home/loonor/.multirust/toolchains/nightly/cargo/bin/racer.exe"
         let g:RUST_SRC_PATH="d:/App/msys64/home/loonor/github/rust/src"
@@ -327,6 +328,11 @@ if count(g:bundle_groups, 'clojure')
     NeoBundle 'vimclojure'
     NeoBundle 'guns/vim-clojure-static'
     NeoBundle 'tpope/vim-fireplace'
+endif
+
+if count(g:bundle_groups, 'scala')
+    NeoBundle 'derekwyatt/vim-scala'
+    NeoBundle 'ktvoelker/sbt-vim'
 endif
 call neobundle#end()
 
