@@ -15,6 +15,10 @@ else
 endif
 
 NeoBundle 'Shougo/neobundle.vim'
+" 缓冲区插件
+NeoBundle 'bsdelf/bufferhint'
+nnoremap - :call bufferhint#Popup()<CR>
+"nnoremap \ :call bufferhint#LoadPrevious()<CR>
 " 快速去行尾空格 [, + <Space>]
 NeoBundle 'bronson/vim-trailing-whitespace'
 " quick locate file or function
@@ -156,7 +160,8 @@ NeoBundle 'vim-scripts/FuzzyFinder'
 NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'vimwiki/vimwiki'
 NeoBundle 'vim-scripts/ZoomWin.git'
-
+NeoBundle 'vim-scripts/winmanager'
+NeoBundle 'pthrasher/conqueterm-vim'
 if count(g:bundle_groups, 'tmux')
     " tmux
     " For tmux navigator Ctrl-hjkl
@@ -165,12 +170,14 @@ endif
 
 if count(g:bundle_groups, 'markdown')
     NeoBundle 'plasticboy/vim-markdown', {'for': 'md'}
+    " NeoBundle 'tpope/vim-markdown'
+    autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     " https://github.com/suan/vim-instant-markdown
     " npm -g install instant-markdown-d
-    " NeoBundle 'suan/vim-instant-markdown'
-    " let g:instant_markdown_slow = 1
-    " let g:instant_markdown_autostart = 0
-    " map <F12> :InstantMarkdownPreview<CR>
+    NeoBundle 'suan/vim-instant-markdown'
+    let g:instant_markdown_slow = 1
+    let g:instant_markdown_autostart = 0
+    map <F12> :InstantMarkdownPreview<CR>
 endif
 
 if count(g:bundle_groups, 'golang')
