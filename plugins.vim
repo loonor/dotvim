@@ -1,7 +1,7 @@
 ""自定义插件组
 if !exists('g:bundle_groups')
 ""    let g:bundle_groups = ['python', 'markdown'] ""不需要可以注释掉
-    let g:bundle_groups=['python', 'javascript', 'markdown', 'html', 'css', 'tmux', 'beta', 'json', 'nginx', 'golang', 'ruby', 'less', 'php', 'coffeescript', 'rust', 'elixir', 'haskell', 'orgmode', 'clojure']
+    let g:bundle_groups=['python', 'javascript', 'markdown', 'html', 'css', 'tmux', 'beta', 'json', 'nginx', 'golang', 'ruby', 'less', 'php', 'coffeescript', 'rust', 'elixir', 'haskell', 'orgmode', 'clojure','java', 'scala']
 endif
 if &compatible
      set nocompatible               " Be iMproved
@@ -46,6 +46,7 @@ NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'Raimondi/delimitMate'
 " syntastic
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/nerdcommenter'
 "代码片段快速插入
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
@@ -102,8 +103,8 @@ NeoBundle 'altercation/vim-colors-solarized'
 " molokai
 " 主题 molokai
 NeoBundle 'tomasr/molokai'
-
-
+" 括号匹配
+NeoBundle 'jiangmiao/auto-pairs'
 " nav
 " nerdtree nerdtreetabs
 NeoBundle 'scrooloose/nerdtree'
@@ -162,6 +163,9 @@ NeoBundle 'vimwiki/vimwiki'
 NeoBundle 'vim-scripts/ZoomWin.git'
 NeoBundle 'vim-scripts/winmanager'
 NeoBundle 'pthrasher/conqueterm-vim'
+" Changes Vim working directory to project root (identified by presence of
+" known directory or file)
+NeoBundle 'airblade/vim-rooter'
 if count(g:bundle_groups, 'tmux')
     " tmux
     " For tmux navigator Ctrl-hjkl
@@ -340,6 +344,47 @@ endif
 if count(g:bundle_groups, 'scala')
     NeoBundle 'derekwyatt/vim-scala'
     NeoBundle 'ktvoelker/sbt-vim'
+    NeoBundle 'ensime/ensime-vim'
+    NeoBundle 'ensime/ensime-vim'
+    autocmd BufWritePost *.scala :EnTypeCheck
+endif
+
+if count(g:bundle_groups, 'java')
+    NeoBundle 'artur-shaik/vim-javacomplete2'
+    autocmd FileType java setlocal omnifunc=javacomplete#Complete
+    nmap <F6> <Plug>(JavaComplete-Imports-AddSmart)
+
+    imap <F6> <Plug>(JavaComplete-Imports-AddSmart)
+    nmap <F7> <Plug>(JavaComplete-Imports-AddMissing)
+
+    imap <F7> <Plug>(JavaComplete-Imports-AddMissing)
+    nmap <F8> <Plug>(JavaComplete-Imports-RemoveUnused)
+
+    imap <F8> <Plug>(JavaComplete-Imports-RemoveUnused)
+    NeoBundle 'tpope/vim-classpath'
+    NeoBundle 'akhaku/vim-java-unused-imports'
+    NeoBundle 'yuratomo/java-api-complete'
+    NeoBundle 'yuratomo/java-api-javax'
+    NeoBundle 'yuratomo/java-api-org'
+    NeoBundle 'yuratomo/java-api-sun'
+    NeoBundle 'yuratomo/java-api-servlet2.3'
+    NeoBundle 'yuratomo/java-api-android'
+    NeoBundle 'yuratomo/java-api-junit'
+    au BufNewFile,BufRead *.java    setl omnifunc=javaapi#complete
+    if has("balloon_eval") && has("balloon_multiline") 
+      au BufNewFile,BufRead *.java  setl bexpr=javaapi#balloon()
+      au BufNewFile,BufRead *.java  setl ballooneval
+    endif
+    let g:javaapi#delay_dirs = [
+      \ 'java-api-javax',
+      \ 'java-api-org',
+      \ 'java-api-sun',
+      \ 'java-api-servlet2.3',
+      \ 'java-api-android',
+      \ ]
+    NeoBundle 'wsdjeg/JavaUnit.vim'
+    NeoBundle 'Dinduks/vim-java-get-set'
+    NeoBundle 'mikelue/vim-maven-plugin'
 endif
 call neobundle#end()
 

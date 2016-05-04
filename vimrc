@@ -179,10 +179,6 @@ endfun
 " 缩进配置
 " Smart indent
 set smartindent
-" 打开自动缩进
-" never add copyindent, case error   " copy the previous indentation on autoindenting
-set autoindent
-
 " tab相关变更
 " 设置Tab键的宽度        [等同的空格个数]
 set tabstop=4
@@ -191,12 +187,19 @@ set shiftwidth=4
 " 按退格键时可以一次删掉 4 个空格
 set softtabstop=4
 " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
-set smarttab
+"set smarttab
 " 将Tab自动转化成空格[需要输入真正的Tab键时，使用 Ctrl+V + Tab]
 set expandtab
 " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
 set shiftround
 
+" 打开自动缩进
+" never add copyindent, case error   " copy the previous indentation on autoindenting
+set autoindent
+"set cindent
+"set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s
+"inoremap { {}<ESC>i
+"inoremap {<CR> {<CR>}<ESC>O
 " A buffer becomes hidden when it is abandoned
 set hidden
 set wildmode=list:longest
@@ -307,7 +310,7 @@ nnoremap gk k
 nnoremap j gj
 nnoremap gj j
 
-" F1 - F6 设置
+" F1 - F5 设置
 
 " F1 废弃这个键,防止调出系统帮助
 " I can type :help on my own, thanks.  Protect your fat fingers from the evils of <F1>
@@ -331,19 +334,14 @@ nnoremap <F3> :set list! list?<CR>
 " F4 换行开关
 nnoremap <F4> :set wrap! wrap?<CR>
 
-" F6 语法开关，关闭语法可以加快大文件的展示
-nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+" F5 语法开关，关闭语法可以加快大文件的展示
+nnoremap <F5> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
-set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
-                                "    paste mode, where you can paste mass data
-                                "    that won't be autoindented
 
 " disbale paste mode when leaving insert mode
 au InsertLeave * set nopaste
 
-" F5 set paste问题已解决, 粘贴代码前不需要按F5了
-" F5 粘贴模式paste_mode开关,用于有格式的代码粘贴
-" Automatically set paste mode in Vim when pasting in insert mode
+
 function! XTermPasteBegin()
   set pastetoggle=<Esc>[201~
   set paste
@@ -613,7 +611,7 @@ endif
 " Set extra options when running in GUI mode
 if has("gui_running")
 " 在gvim在会出现zsh乱码问题,还不知道原因
-    set sh=bash
+    " set sh=bash
     set guioptions-=T
     set guioptions+=e
     set guioptions-=r
