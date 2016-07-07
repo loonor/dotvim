@@ -7,178 +7,179 @@ if &compatible
      set nocompatible               " Be iMproved
 endif
 if g:isWIN ""has("win32") || has("win64")
-    set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
-    call neobundle#begin('$VIM/vimfiles/bundle')
+    "set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
+    "call neobundle#begin('$VIM/vimfiles/bundle')
+    call plug#begin('$VIM/vimfiles/plugged')
 else
-    set rtp+=~/.vim/bundle/neobundle.vim/
-    call neobundle#begin('~/.vim/bundle/')
+    "set rtp+=~/.vim/bundle/neobundle.vim/
+    "call neobundle#begin('~/.vim/bundle/')
+    call plug#begin('~/.vim/plugged')
 endif
-
-NeoBundle 'Shougo/neobundle.vim'
+"Plug 'Shougo/neobundle.vim'
 " 缓冲区插件
-NeoBundle 'bsdelf/bufferhint'
-nnoremap - :call bufferhint#Popup()<CR>
+"Plug 'bsdelf/bufferhint'
+" nnoremap - :call bufferhint#Popup()<CR>
 "nnoremap \ :call bufferhint#LoadPrevious()<CR>
 " 快速去行尾空格 [, + <Space>]
-NeoBundle 'bronson/vim-trailing-whitespace'
+Plug 'bronson/vim-trailing-whitespace'
 " quick locate file or function
 " 文件搜索
 " change to https://github.com/ctrlpvim/ctrlp.vim
 " ctrlp ctrlpfunky
-NeoBundle 'ctrlpvim/ctrlp.vim' 
-NeoBundle 'tacahiroy/ctrlp-funky'
+Plug 'ctrlpvim/ctrlp.vim' 
+Plug 'tacahiroy/ctrlp-funky'
 " 自动补全html/xml标签
-NeoBundle 'docunext/closetag.vim'
+Plug 'docunext/closetag.vim'
 " quick movement
 " easymotion
 "更高效的移动 [,, + w/fx/h/j/k/l]
-NeoBundle 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 " 快速赋值语句对齐
-NeoBundle 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align'
 " signature
 " 显示marks - 方便自己进行标记和跳转
 " m[a-zA-Z] add mark
 " '[a-zA-Z] go to mark
 " m<Space>  del all marks
 " m/        list all marks
-NeoBundle 'kshenoy/vim-signature'
+Plug 'kshenoy/vim-signature'
 " 自动补全单引号，双引号等
-NeoBundle 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 " syntastic
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdcommenter'
 "代码片段快速插入
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 " 快速加入修改环绕字符
 " for repeat -> enhance surround.vim, . to repeat command
-NeoBundle 'tpope/vim-repeat' 
-NeoBundle 'tpope/vim-surround'
+Plug 'tpope/vim-repeat' 
+Plug 'tpope/vim-surround'
 " quick selection and edit
 " expandregion
 " 选中区块
-NeoBundle 'terryma/vim-expand-region'
+Plug 'terryma/vim-expand-region'
 " 多光标选中编辑
 " multiplecursors
-NeoBundle 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 " quickrun
-NeoBundle 'thinca/vim-quickrun'
+Plug 'thinca/vim-quickrun'
 " 更高效的行内移动, f/F/t/T, 才触发
 " quickscope
-NeoBundle 'unblevable/quick-scope'
-NeoBundle 'vim-scripts/matchit.zip'
+Plug 'unblevable/quick-scope'
+Plug 'vim-scripts/matchit.zip'
 "代码自动补全
 if has("win64")
-    NeoBundle 'snakeleon/YouCompleteMe-x64'
+    Plug 'snakeleon/YouCompleteMe-x64'
 elseif has("win32")
-    NeoBundle 'snakeleon/YouCompleteMe-x86'
+    Plug 'snakeleon/YouCompleteMe-x86'
 else
-    NeoBundle 'Valloric/YouCompleteMe', {
-            \'build': {
-            \ 'linux': './install.py --clang-completer --gocode-completer  --tern-completer --system-libclang',
-            \ 'mac': './install.py',
-            \ 'Unix': './install.py'}}
+    Plug 'Valloric/YouCompleteMe',{'do': './install.py --clang-completer --gocode-completer  --tern-completer'} "{
+            "\'build': {
+            "\ 'linux': './install.py --clang-completer --gocode-completer  --tern-completer',
+            "\ 'mac': './install.py',
+            "\ 'Unix': './install.py'}}
 endif
 " git
 " fugitive
-NeoBundle 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " gitgutter
-NeoBundle 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 " gundo
 " edit history, 可以查看回到某个历史状态
-NeoBundle 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim'
 
 " view
 " airline
 " 状态栏增强展示
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " rainbow_parentheses
 " 括号显示增强
-NeoBundle 'kien/rainbow_parentheses.vim'
+Plug 'kien/rainbow_parentheses.vim'
 " 主题 solarized
 " solarized
-NeoBundle 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 " molokai
 " 主题 molokai
-NeoBundle 'tomasr/molokai'
+Plug 'tomasr/molokai'
 " 括号匹配
-NeoBundle 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 " nav
 " nerdtree nerdtreetabs
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'jistr/vim-nerdtree-tabs'
 " ctrlspace
-NeoBundle 'szw/vim-ctrlspace'
+Plug 'szw/vim-ctrlspace'
 " tagbar
-NeoBundle 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 
 " text object
 " 支持自定义文本对象
-NeoBundle 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-user'
 " 增加行文本对象: l   dal yal cil
-NeoBundle 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-line'
 " 增加文件文本对象: e   dae yae cie
-NeoBundle 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-entire'
 " 增加缩进文本对象: i   dai yai cii - 相同缩进属于同一块
-NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'shougo/vimproc.vim', { 'build' : { 'linux' : 'make','unix':'gmake','mac':'make',  },  }
+Plug 'kana/vim-textobj-indent'
+Plug 'shougo/vimproc.vim', {'do': 'make'} "" { 'build' : { 'linux' : 'make','unix':'gmake','mac':'make',  },  }
  "调换参数,如(item1,item2),光标在item2,然后:SidewaysLeft,item2与item1位置调换"
-NeoBundle 'AndrewRadev/sideways.vim'
+Plug 'AndrewRadev/sideways.vim'
 "重命名当前文件 :Rename othername
-NeoBundle 'danro/rename.vim'
-NeoBundle 'bash-support.vim'
+Plug 'danro/rename.vim'
+Plug 'bash-support.vim'
 "vim中文帮助
-NeoBundle 'becaning/vimdoccn'
+Plug 'becaning/vimdoccn'
 "other
-NeoBundle 'chriskempson/base16-shell'
-NeoBundle 'digitaltoad/vim-pug'
-NeoBundle 'EasyGrep'
-NeoBundle 'Lokaltog/vim-powerline'
-NeoBundle 'edkolev/promptline.vim'
-NeoBundle 'ervandew/supertab' 
-NeoBundle 'fholgado/minibufexpl.vim'
+Plug 'chriskempson/base16-shell'
+Plug 'digitaltoad/vim-pug'
+Plug 'EasyGrep'
+Plug 'Lokaltog/vim-powerline'
+Plug 'edkolev/promptline.vim'
+Plug 'ervandew/supertab' 
+"Plug 'fholgado/minibufexpl.vim'
  " tabular: 自动对齐
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'gtags.vim'
+Plug 'godlygeek/tabular'
+Plug 'gtags.vim'
 "颜色查看 :XtermColorTable Press #/t/f
-NeoBundle 'guns/xterm-color-table.vim'
-NeoBundle 'cscope_macros.vim'
-NeoBundle 'mkitt/tabline.vim'
-NeoBundle 'mtth/scratch.vim'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'rafi/awesome-vim-colorschemes'
-NeoBundle 'pbrisbin/vim-mkdir'
-NeoBundle 'mhinz/vim-signify'
-NeoBundle 'mhinz/vim-startify'
-NeoBundle 'shougo/unite.vim'
-NeoBundle 'shougo/vimshell.vim'
-NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'vim-scripts/fencview.vim' 
-NeoBundle 'vim-scripts/l9'
-NeoBundle 'vim-scripts/FuzzyFinder'
-NeoBundle 'vim-scripts/taglist.vim'
-NeoBundle 'vimwiki/vimwiki'
-NeoBundle 'vim-scripts/ZoomWin.git'
-NeoBundle 'vim-scripts/winmanager'
-NeoBundle 'pthrasher/conqueterm-vim'
+Plug 'guns/xterm-color-table.vim'
+Plug 'cscope_macros.vim'
+Plug 'mkitt/tabline.vim'
+Plug 'mtth/scratch.vim'
+Plug 'mileszs/ack.vim'
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'pbrisbin/vim-mkdir'
+Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-startify'
+Plug 'shougo/unite.vim'
+Plug 'shougo/vimshell.vim'
+Plug 'Shougo/vimfiler.vim'
+Plug 'vim-scripts/fencview.vim' 
+Plug 'vim-scripts/l9'
+Plug 'vim-scripts/FuzzyFinder'
+Plug 'vim-scripts/taglist.vim'
+Plug 'vimwiki/vimwiki'
+Plug 'vim-scripts/ZoomWin.git'
+Plug 'vim-scripts/winmanager'
+Plug 'pthrasher/conqueterm-vim'
 " Changes Vim working directory to project root (identified by presence of
 " known directory or file)
-NeoBundle 'airblade/vim-rooter'
+Plug 'airblade/vim-rooter'
 if count(g:bundle_groups, 'tmux')
     " tmux
     " For tmux navigator Ctrl-hjkl
-    NeoBundle 'christoomey/vim-tmux-navigator'
+    Plug 'christoomey/vim-tmux-navigator'
 endif
 
 if count(g:bundle_groups, 'markdown')
-    NeoBundle 'plasticboy/vim-markdown', {'for': 'md'}
-    " NeoBundle 'tpope/vim-markdown'
+    Plug 'plasticboy/vim-markdown', {'for': 'md'}
+    " Plug 'tpope/vim-markdown'
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     " https://github.com/suan/vim-instant-markdown
     " npm -g install instant-markdown-d
-    NeoBundle 'suan/vim-instant-markdown'
+    Plug 'suan/vim-instant-markdown'
     let g:instant_markdown_slow = 1
     let g:instant_markdown_autostart = 0
     map <F12> :InstantMarkdownPreview<CR>
@@ -188,90 +189,91 @@ if count(g:bundle_groups, 'golang')
     " 1. vim a.go
     " 2. :GoInstallBinaries
     " vimgo
-    NeoBundle 'fatih/vim-go'
-    NeoBundle 'garyburd/go-explorer'
-    set rtp+=$GOPATH/src/github.com/nsf/gocode/vim
+    Plug 'fatih/vim-go', {'tag': '*'}
+    Plug 'garyburd/go-explorer'
+    "set rtp+=$GOPATH/src/github.com/nsf/gocode/vim
+    Plug 'nsf/gocode', {'rtp': 'vim'}
 endif
 
 
 if count(g:bundle_groups, 'python')
     " for python.vim syntax highlight
     " pythonsyntax
-    NeoBundle 'hdima/python-syntax'
-    NeoBundle 'hynek/vim-python-pep8-indent'
-    NeoBundle 'Glench/Vim-Jinja2-Syntax'
+    Plug 'hdima/python-syntax'
+    Plug 'hynek/vim-python-pep8-indent'
+    Plug 'Glench/Vim-Jinja2-Syntax'
 endif
 
 if count(g:bundle_groups, 'php')
-    NeoBundle 'spf13/PIV'
+    Plug 'spf13/PIV'
 endif
 
 if count(g:bundle_groups, 'ruby')
-    NeoBundle 'vim-ruby/vim-ruby'
-    NeoBundle 'tpope/vim-rails'
+    Plug 'vim-ruby/vim-ruby'
+    Plug 'tpope/vim-rails'
     " dir / dar
-    NeoBundle 'nelstrom/vim-textobj-rubyblock'
+    Plug 'nelstrom/vim-textobj-rubyblock'
 
     " 有bug, 和当前有冲突, 尚未解决, 不要打开
-    " NeoBundle 'tpope/vim-endwise'
+    " Plug 'tpope/vim-endwise'
 endif
 
 if count(g:bundle_groups, 'javascript')
     " javascript
     " 注意: syntax这个插件要放前面
-    NeoBundle 'othree/yajs.vim'
-    NeoBundle 'pangloss/vim-javascript'
-    " NeoBundle 'jelera/vim-javascript-syntax' | NeoBundle 'pangloss/vim-javascript'
+    Plug 'othree/yajs.vim'
+    Plug 'pangloss/vim-javascript'
+    " Plug 'jelera/vim-javascript-syntax' | Plug 'pangloss/vim-javascript'
 
     " TODO: jquery? for, remove or keep
-    NeoBundle 'othree/javascript-libraries-syntax.vim'
+    Plug 'othree/javascript-libraries-syntax.vim'
     let g:used_javascript_libs = 'jquery,underscore,backbone'
 
     " for javascript 自动补全, 配合YCM, 需要安装全局环境的（非nvm中) node.js&npm
     " 安装完成后还需要在 bundle/tern_for_vim 下执行 npm install 安装依赖
     " see https://github.com/marijnh/tern_for_vim
-    NeoBundle 'marijnh/tern_for_vim'
+    Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 endif
 
 
 if count(g:bundle_groups, 'coffeescript')
-    NeoBundle 'kchmck/vim-coffee-script'
+    Plug 'kchmck/vim-coffee-script'
 endif
 
 if count(g:bundle_groups, 'json')
     " json
-    NeoBundle 'elzr/vim-json'
+    Plug 'elzr/vim-json'
 endif
 
 if count(g:bundle_groups, 'css')
     " css
     " not work in iterm2 which termianl selection is not xterm-256, and it slow
-    " NeoBundle 'ap/vim-css-color'
+    " Plug 'ap/vim-css-color'
 
     " 这个有坑, see issue https://github.com/wklken/k-vim/issues/49
-    " NeoBundle 'gorodinskiy/vim-coloresque'
+    " Plug 'gorodinskiy/vim-coloresque'
 endif
 
 if count(g:bundle_groups, 'less')
     " ###### vim.less : less 自动更新##########
-    " NeoBundle 'groenewege/vim-less'
+    " Plug 'groenewege/vim-less'
     " autocmd BufWritePost *.less :!lessc % > %:p:r.css
 endif
 
 if count(g:bundle_groups, 'html')
     " ###### emmet HTML complete #########
-    " NeoBundle "mattn/emmet-vim"
+    " Plug "mattn/emmet-vim"
 endif
 
 if count(g:bundle_groups, 'nginx')
-    " NeoBundle 'evanmiller/nginx-vim-syntax'
+    " Plug 'evanmiller/nginx-vim-syntax'
 endif
 
 
 " this is just for beta version
 if count(g:bundle_groups, 'beta')
     " indent
-    NeoBundle 'nathanaelkane/vim-indent-guides'
+    Plug 'nathanaelkane/vim-indent-guides'
     " <leader>ig to trigger
     let g:indent_guides_start_level = 2
     let g:indent_guides_guide_size = 1
@@ -285,10 +287,10 @@ endif
 " Add plugins to &runtimepath
 if count(g:bundle_groups, 'rust')
     "for rust language
-    NeoBundle 'racer-rust/vim-racer'
-    NeoBundle 'rust-lang/rust.vim'
-    NeoBundle 'rhysd/rust-doc.vim'
-    NeoBundle 'cespare/vim-toml'
+    Plug 'racer-rust/vim-racer'
+    Plug 'rust-lang/rust.vim'
+    Plug 'rhysd/rust-doc.vim'
+    Plug 'cespare/vim-toml'
     let g:rust_autosave = 1
     if g:isWIN
         let g:racer_cmd="d:/App/msys64/home/loonor/.multirust/toolchains/nightly/cargo/bin/racer.exe"
@@ -303,24 +305,24 @@ endif
 
 if count(g:bundle_groups, 'elixir')
     "for elixir erlang
-    NeoBundle 'mattreduce/vim-mix'
-    NeoBundle 'elixir-lang/vim-elixir'
-    NeoBundle 'carlosgaldino/elixir-snippets'
+    Plug 'mattreduce/vim-mix'
+    Plug 'elixir-lang/vim-elixir'
+    Plug 'carlosgaldino/elixir-snippets'
     au BufNewFile,BufRead *.exs set ft=elixir
-    NeoBundle 'sanmiguel/helpex.vim'
-    NeoBundle 'vim-erlang/vim-erlang-runtime'
-    NeoBundle 'vim-erlang/vim-erlang-tags'
-    NeoBundle 'vim-erlang/vim-erlang-compiler'
-    NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
+    Plug 'sanmiguel/helpex.vim'
+    Plug 'vim-erlang/vim-erlang-runtime'
+    Plug 'vim-erlang/vim-erlang-tags'
+    Plug 'vim-erlang/vim-erlang-compiler'
+    Plug 'vim-erlang/vim-erlang-omnicomplete'
 endif
 if count(g:bundle_groups, 'haskell')
     "for haskell 
-    NeoBundle 'neovimhaskell/haskell-vim'
-    NeoBundle 'enomsg/vim-haskellConcealPlus' 
-    NeoBundle 'eagletmt/ghcmod-vim' 
-    NeoBundle 'eagletmt/neco-ghc' 
-    NeoBundle 'Twinside/vim-hoogle' 
-    NeoBundle 'mpickering/hlint-refactor-vim' 
+    Plug 'neovimhaskell/haskell-vim'
+    Plug 'enomsg/vim-haskellConcealPlus' 
+    Plug 'eagletmt/ghcmod-vim' 
+    Plug 'eagletmt/neco-ghc' 
+    Plug 'Twinside/vim-hoogle' 
+    Plug 'mpickering/hlint-refactor-vim' 
     let g:ghcmod_ghc_options = ['-idir1', '-idir2']
     let g:ghcmod_open_quickfix_function = 'GhcModQuickFix'
     
@@ -332,25 +334,26 @@ if count(g:bundle_groups, 'haskell')
     let g:haskell_enable_static_pointers = 1 ""to enable highlighting of static
 endif
 if count(g:bundle_groups, 'orgmode')
-    NeoBundle 'jceb/vim-orgmode'
+    Plug 'jceb/vim-orgmode'
 endif
 
 if count(g:bundle_groups, 'clojure')
-    NeoBundle 'vimclojure'
-    NeoBundle 'guns/vim-clojure-static'
-    NeoBundle 'tpope/vim-fireplace'
+    Plug 'vimclojure', {'for': 'clojure'}
+    Plug 'guns/vim-clojure-static', {'for': 'clojure'}
+    Plug 'tpope/vim-fireplace', {'for': 'clojure'}
+    Plug 'kovisoft/paredit', {'for': ['clojre', 'scheme']}
 endif
 
 if count(g:bundle_groups, 'scala')
-    NeoBundle 'derekwyatt/vim-scala'
-    NeoBundle 'ktvoelker/sbt-vim'
-    NeoBundle 'ensime/ensime-vim'
-    NeoBundle 'ensime/ensime-vim'
+    Plug 'derekwyatt/vim-scala'
+    Plug 'ktvoelker/sbt-vim'
+    Plug 'ensime/ensime-vim'
+    Plug 'ensime/ensime-vim'
     autocmd BufWritePost *.scala :EnTypeCheck
 endif
 
 if count(g:bundle_groups, 'java')
-    NeoBundle 'artur-shaik/vim-javacomplete2'
+    Plug 'artur-shaik/vim-javacomplete2'
     autocmd FileType java setlocal omnifunc=javacomplete#Complete
     nmap <F6> <Plug>(JavaComplete-Imports-AddSmart)
 
@@ -361,15 +364,15 @@ if count(g:bundle_groups, 'java')
     nmap <F8> <Plug>(JavaComplete-Imports-RemoveUnused)
 
     imap <F8> <Plug>(JavaComplete-Imports-RemoveUnused)
-    NeoBundle 'tpope/vim-classpath'
-    NeoBundle 'akhaku/vim-java-unused-imports'
-    NeoBundle 'yuratomo/java-api-complete'
-    NeoBundle 'yuratomo/java-api-javax'
-    NeoBundle 'yuratomo/java-api-org'
-    NeoBundle 'yuratomo/java-api-sun'
-    NeoBundle 'yuratomo/java-api-servlet2.3'
-    NeoBundle 'yuratomo/java-api-android'
-    NeoBundle 'yuratomo/java-api-junit'
+    Plug 'tpope/vim-classpath'
+    Plug 'akhaku/vim-java-unused-imports'
+    Plug 'yuratomo/java-api-complete'
+    Plug 'yuratomo/java-api-javax'
+    Plug 'yuratomo/java-api-org'
+    Plug 'yuratomo/java-api-sun'
+    Plug 'yuratomo/java-api-servlet2.3'
+    Plug 'yuratomo/java-api-android'
+    Plug 'yuratomo/java-api-junit'
     au BufNewFile,BufRead *.java    setl omnifunc=javaapi#complete
     if has("balloon_eval") && has("balloon_multiline") 
       au BufNewFile,BufRead *.java  setl bexpr=javaapi#balloon()
@@ -382,17 +385,17 @@ if count(g:bundle_groups, 'java')
       \ 'java-api-servlet2.3',
       \ 'java-api-android',
       \ ]
-    NeoBundle 'wsdjeg/JavaUnit.vim'
-    NeoBundle 'Dinduks/vim-java-get-set'
-    NeoBundle 'mikelue/vim-maven-plugin'
+    Plug 'wsdjeg/JavaUnit.vim'
+    Plug 'Dinduks/vim-java-get-set'
+    Plug 'mikelue/vim-maven-plugin'
 endif
-call neobundle#end()
-
+"call neobundle#end()
+call plug#end()
 filetype plugin indent on
 
-NeoBundleCheck
+"NeoBundleCheck
 
-let g:neobundle#install_process_timeout = 1500
+"let g:neobundle#install_process_timeout = 1500
 
 " syntastic {{{
     " dependence
@@ -496,16 +499,16 @@ let g:neobundle#install_process_timeout = 1500
     " 引入，可以补全系统，以及python的第三方包 针对新老版本YCM做了兼容
     " old version
     if has("win64")
-        let g:ycm_global_ycm_extra_conf = $VIM.'/vimfiles/bundle/YouCompleteMe-x64/python/.ycm_extra_conf.py'
+        let g:ycm_global_ycm_extra_conf = $VIM.'/vimfiles/plugged/YouCompleteMe-x64/python/.ycm_extra_conf.py'
     elseif has("win32")
-        let g:ycm_global_ycm_extra_conf = $VIM.'/vimfiles/bundle/YouCompleteMe-x86/python/.ycm_extra_conf.py'
+        let g:ycm_global_ycm_extra_conf = $VIM.'/vimfiles/plugged/YouCompleteMe-x86/python/.ycm_extra_conf.py'
     else
-        if !empty(glob("~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"))
-            let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
+        if !empty(glob("~/.vim/plugged/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"))
+            let g:ycm_global_ycm_extra_conf = "~/.vim/plugged/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
         endif
     " new version
-        if !empty(glob("~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"))
-            let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+        if !empty(glob("~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"))
+            let g:ycm_global_ycm_extra_conf = "~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
         endif
     endif
 

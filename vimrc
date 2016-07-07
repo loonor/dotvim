@@ -67,7 +67,7 @@ set nobackup
 " 关闭交换文件
 set noswapfile
 
-set wildignore=*.swp,*.bak,*.pyc,*.class,.svn
+" set wildignore=*.swp,*.bak,*.pyc,*.class,.svn
 
 " 突出显示当前列
 set cursorcolumn
@@ -422,8 +422,8 @@ autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
 nnoremap [b :bprevious<cr>
 nnoremap ]b :bnext<cr>
 " 使用方向键切换buffer
-noremap <left> :bp<CR>
-noremap <right> :bn<CR>
+"noremap <left> :bp<CR>
+"noremap <right> :bn<CR>
 
 
 " tab 操作

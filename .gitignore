@@ -3,3 +3,5 @@ local.vim
 *.pyc
 tmp/
 bundle/*
+plugged/
+font/
