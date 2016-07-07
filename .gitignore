@@ -4,4 +4,7 @@ local.vim
 tmp/
 bundle/*
 plugged/
-font/
+fonts/
+dict/
+view/
+.editconfig
