@@ -8,3 +8,4 @@ fonts/
 dict/
 view/
 .editconfig
+autoload/plug.vim.old
