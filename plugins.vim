@@ -1,7 +1,7 @@
 ""自定义插件组
 if !exists('g:bundle_groups')
 ""    let g:bundle_groups = ['python', 'markdown'] ""不需要可以注释掉
-    let g:bundle_groups=['python', 'javascript', 'markdown', 'html', 'css', 'tmux', 'beta', 'json', 'nginx', 'golang', 'ruby', 'less', 'php', 'coffeescript', 'rust', 'elixir', 'haskell', 'orgmode', 'clojure','java', 'scala']
+    let g:bundle_groups=['python', 'javascript', 'markdown', 'html', 'css', 'tmux', 'beta', 'json', 'nginx', 'golang', 'ruby', 'less', 'php', 'coffeescript', 'rust', 'elixir', 'haskell', 'orgmode', 'clojure','java', 'scala', 'swift','julia']
 endif
 if &compatible
      set nocompatible               " Be iMproved
@@ -161,7 +161,7 @@ Plug 'vim-scripts/l9'
 Plug 'vim-scripts/FuzzyFinder'
 Plug 'vim-scripts/taglist.vim'
 Plug 'vimwiki/vimwiki'
-Plug 'vim-scripts/ZoomWin.git'
+" Plug 'vim-scripts/ZoomWin.git'
 Plug 'vim-scripts/winmanager'
 Plug 'pthrasher/conqueterm-vim'
 " Changes Vim working directory to project root (identified by presence of
@@ -336,12 +336,22 @@ endif
 if count(g:bundle_groups, 'orgmode')
     Plug 'jceb/vim-orgmode'
 endif
+if count(g:bundle_groups, 'swift')
+    Plug 'toyamarinyon/vim-swift'
+    Plug 'keith/swift.vim'
+    let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
+endif
 
 if count(g:bundle_groups, 'clojure')
     Plug 'vimclojure', {'for': 'clojure'}
     Plug 'guns/vim-clojure-static', {'for': 'clojure'}
     Plug 'tpope/vim-fireplace', {'for': 'clojure'}
     Plug 'kovisoft/paredit', {'for': ['clojre', 'scheme']}
+    if g:isWIN
+        let vimclojure#NailgunClient = "/path/to/your/ng"
+    else
+        let vimclojure#NailgunClient = "/home/loonor/tool/vimclojure-nailgun-client/ng"
+    endif
 endif
 
 if count(g:bundle_groups, 'scala')
@@ -355,6 +365,7 @@ endif
 if count(g:bundle_groups, 'java')
     Plug 'artur-shaik/vim-javacomplete2'
     autocmd FileType java setlocal omnifunc=javacomplete#Complete
+    if &filetype == 'java'
     nmap <F6> <Plug>(JavaComplete-Imports-AddSmart)
 
     imap <F6> <Plug>(JavaComplete-Imports-AddSmart)
@@ -364,6 +375,7 @@ if count(g:bundle_groups, 'java')
     nmap <F8> <Plug>(JavaComplete-Imports-RemoveUnused)
 
     imap <F8> <Plug>(JavaComplete-Imports-RemoveUnused)
+endif
     Plug 'tpope/vim-classpath'
     Plug 'akhaku/vim-java-unused-imports'
     Plug 'yuratomo/java-api-complete'
@@ -388,6 +400,16 @@ if count(g:bundle_groups, 'java')
     Plug 'wsdjeg/JavaUnit.vim'
     Plug 'Dinduks/vim-java-get-set'
     Plug 'mikelue/vim-maven-plugin'
+endif
+
+if count(g:bundle_groups, 'julia')
+    Plug 'JuliaEditorSupport/julia-vim'
+    if &filetype == 'julia'
+        noremap <expr> <F7> LaTeXtoUnicode#Toggle()
+        inoremap <expr> <F7> LaTeXtoUnicode#Toggle()
+    endif
+    Plug 'benekastah/neomake'
+    Plug 'zyedidia/julialint.vim'
 endif
 "call neobundle#end()
 call plug#end()
