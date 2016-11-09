@@ -1,7 +1,7 @@
 ""自定义插件组
 if !exists('g:bundle_groups')
 ""    let g:bundle_groups = ['python', 'markdown'] ""不需要可以注释掉
-    let g:bundle_groups=['python', 'javascript', 'markdown', 'html', 'css', 'tmux', 'beta', 'json', 'nginx', 'golang', 'ruby', 'less', 'php', 'coffeescript', 'rust', 'elixir', 'haskell', 'orgmode', 'clojure','java', 'scala', 'swift','julia']
+    let g:bundle_groups=['python', 'javascript', 'markdown', 'html', 'css', 'tmux', 'beta', 'json', 'nginx', 'golang', 'ruby', 'less', 'php', 'coffeescript', 'rust', 'elixir', 'haskell', 'orgmode', 'clojure', 'scala', 'swift','julia', 'java']
 endif
 if &compatible
      set nocompatible               " Be iMproved
@@ -365,41 +365,44 @@ endif
 if count(g:bundle_groups, 'java')
     Plug 'artur-shaik/vim-javacomplete2'
     autocmd FileType java setlocal omnifunc=javacomplete#Complete
-    if &filetype == 'java'
-    nmap <F6> <Plug>(JavaComplete-Imports-AddSmart)
-
-    imap <F6> <Plug>(JavaComplete-Imports-AddSmart)
-    nmap <F7> <Plug>(JavaComplete-Imports-AddMissing)
-
-    imap <F7> <Plug>(JavaComplete-Imports-AddMissing)
-    nmap <F8> <Plug>(JavaComplete-Imports-RemoveUnused)
-
-    imap <F8> <Plug>(JavaComplete-Imports-RemoveUnused)
-endif
-    Plug 'tpope/vim-classpath'
-    Plug 'akhaku/vim-java-unused-imports'
-    Plug 'yuratomo/java-api-complete'
-    Plug 'yuratomo/java-api-javax'
-    Plug 'yuratomo/java-api-org'
-    Plug 'yuratomo/java-api-sun'
-    Plug 'yuratomo/java-api-servlet2.3'
-    Plug 'yuratomo/java-api-android'
-    Plug 'yuratomo/java-api-junit'
-    au BufNewFile,BufRead *.java    setl omnifunc=javaapi#complete
-    if has("balloon_eval") && has("balloon_multiline") 
-      au BufNewFile,BufRead *.java  setl bexpr=javaapi#balloon()
-      au BufNewFile,BufRead *.java  setl ballooneval
-    endif
-    let g:javaapi#delay_dirs = [
-      \ 'java-api-javax',
-      \ 'java-api-org',
-      \ 'java-api-sun',
-      \ 'java-api-servlet2.3',
-      \ 'java-api-android',
-      \ ]
-    Plug 'wsdjeg/JavaUnit.vim'
-    Plug 'Dinduks/vim-java-get-set'
-    Plug 'mikelue/vim-maven-plugin'
+    let g:JavaComplete_JavaviLogLevel = 0
+    let g:JavaComplete_JavaviLogfileDirectory = '$HOME'
+    let g:JavaComplete_JavaviDebug = 0
+"    if $filetype == 'java'
+"    nmap <F6> <Plug>(JavaComplete-Imports-AddSmart)
+"
+"    imap <F6> <Plug>(JavaComplete-Imports-AddSmart)
+"    nmap <F7> <Plug>(JavaComplete-Imports-AddMissing)
+"
+"    imap <F7> <Plug>(JavaComplete-Imports-AddMissing)
+"    nmap <F8> <Plug>(JavaComplete-Imports-RemoveUnused)
+"
+"    imap <F8> <Plug>(JavaComplete-Imports-RemoveUnused)
+"    endif
+"    Plug 'tpope/vim-classpath'
+"    Plug 'akhaku/vim-java-unused-imports'
+"    Plug 'yuratomo/java-api-complete'
+"    Plug 'yuratomo/java-api-javax'
+"    Plug 'yuratomo/java-api-org'
+"    Plug 'yuratomo/java-api-sun'
+"    Plug 'yuratomo/java-api-servlet2.3'
+"    Plug 'yuratomo/java-api-android'
+"    Plug 'yuratomo/java-api-junit'
+"    au BufNewFile,BufRead *.java    setl omnifunc=javaapi#complete
+"    if has("balloon_eval") && has("balloon_multiline") 
+"      au BufNewFile,BufRead *.java  setl bexpr=javaapi#balloon()
+"      au BufNewFile,BufRead *.java  setl ballooneval
+"    endif
+"    let g:javaapi#delay_dirs = [
+"      \ 'java-api-javax',
+"      \ 'java-api-org',
+"      \ 'java-api-sun',
+"      \ 'java-api-servlet2.3',
+"      \ 'java-api-android',
+"      \ ]
+"    Plug 'wsdjeg/JavaUnit.vim'
+"    Plug 'Dinduks/vim-java-get-set'
+"    Plug 'mikelue/vim-maven-plugin'
 endif
 
 if count(g:bundle_groups, 'julia')
