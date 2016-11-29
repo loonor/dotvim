@@ -346,12 +346,28 @@ if count(g:bundle_groups, 'clojure')
     Plug 'vimclojure', {'for': 'clojure'}
     Plug 'guns/vim-clojure-static', {'for': 'clojure'}
     Plug 'tpope/vim-fireplace', {'for': 'clojure'}
+    Plug 'guns/vim-clojure-highlight', {'for': 'clojure'}
+    Plug 'venantius/vim-cljfmt'
+    Plug 'dgrnbrg/vim-redl', {'for': 'clojure'}
+    Plug 'MailOnline/vim-cljrefactor'
     Plug 'kovisoft/paredit', {'for': ['clojre', 'scheme']}
+    let g:clojure_syntax_keywords = {
+                \ 'clojureMacro': ["defproject", "defcustom"],
+                \ 'clojureFunc': ["string/join", "string/replace"]
+                \}
     if g:isWIN
         let vimclojure#NailgunClient = "/path/to/your/ng"
     else
         let vimclojure#NailgunClient = "/home/loonor/tool/vimclojure-nailgun-client/ng"
+        "let vimclojure#WantNailgun = 1
     endif
+    let g:clojure_fuzzy_indent = 1
+    let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
+    let g:clojure_fuzzy_indent_blacklist = ['-fn$', '\v^with-%(meta|out-str|loading-context)$']
+    let g:clojure_fuzzy_indent_patterns = 'with.*,def.*,let.*'
+    autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
+    let g:clj_fmt_autosave = 1
+    let g:redl_use_vsplit = 1
 endif
 
 if count(g:bundle_groups, 'scala')
