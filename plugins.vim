@@ -83,6 +83,8 @@ endif
 " git
 " fugitive
 Plug 'tpope/vim-fugitive'
+" use CTRL-A/CTRL-X to increment dates,time ...
+Plug 'tpope/vim-speeddating'
 " gitgutter
 Plug 'airblade/vim-gitgutter'
 
