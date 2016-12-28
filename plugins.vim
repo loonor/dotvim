@@ -348,6 +348,7 @@ if count(g:bundle_groups, 'clojure')
     Plug 'vimclojure', {'for': 'clojure'}
     Plug 'guns/vim-clojure-static', {'for': 'clojure'}
     Plug 'tpope/vim-fireplace', {'for': 'clojure'}
+    Plug 'tpope/vim-classpath'
     Plug 'guns/vim-clojure-highlight', {'for': 'clojure'}
     Plug 'venantius/vim-cljfmt'
     Plug 'dgrnbrg/vim-redl', {'for': 'clojure'}
@@ -366,9 +367,9 @@ if count(g:bundle_groups, 'clojure')
     let g:clojure_fuzzy_indent = 1
     let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
     let g:clojure_fuzzy_indent_blacklist = ['-fn$', '\v^with-%(meta|out-str|loading-context)$']
-    let g:clojure_fuzzy_indent_patterns = 'with.*,def.*,let.*'
+    "let g:clojure_fuzzy_indent_patterns = 'with.*,def.*,let.*'
     autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
-    let g:clj_fmt_autosave = 1
+    "let g:clj_fmt_autosave = 1
     let g:redl_use_vsplit = 1
 endif
 
