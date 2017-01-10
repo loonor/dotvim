@@ -74,7 +74,7 @@ if has("win64")
 elseif has("win32")
     Plug 'snakeleon/YouCompleteMe-x86'
 else
-    Plug 'Valloric/YouCompleteMe',{'do': './install.py --clang-completer --gocode-completer  --tern-completer'} "{
+    Plug 'Valloric/YouCompleteMe',{'do': 'git submodule update --init --recursive && ./install.py --clang-completer --gocode-completer  --tern-completer'} "{
             "\'build': {
             "\ 'linux': './install.py --clang-completer --gocode-completer  --tern-completer',
             "\ 'mac': './install.py',
@@ -301,7 +301,7 @@ if count(g:bundle_groups, 'rust')
     else 
         let g:racer_cmd=$RACER_CMD
         let RUST_SRC_PATH=$RUST_SRC_PATH
-        let g:rust_doc#downloaded_rust_doc_dir="$MULTIRUST/toolchains/nightly"
+        let g:rust_doc#downloaded_rust_doc_dir="$RUSTUP/toolchains/nightly-x86_64-unknown-linux-gnu"
     endif
 endif
 
