@@ -26,7 +26,7 @@ Plug 'bronson/vim-trailing-whitespace'
 " 文件搜索
 " change to https://github.com/ctrlpvim/ctrlp.vim
 " ctrlp ctrlpfunky
-Plug 'ctrlpvim/ctrlp.vim' 
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 " 自动补全html/xml标签
 Plug 'docunext/closetag.vim'
@@ -53,7 +53,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " 快速加入修改环绕字符
 " for repeat -> enhance surround.vim, . to repeat command
-Plug 'tpope/vim-repeat' 
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 " quick selection and edit
 " expandregion
@@ -112,11 +112,14 @@ Plug 'jiangmiao/auto-pairs'
 " nerdtree nerdtreetabs
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " ctrlspace
 Plug 'szw/vim-ctrlspace'
 " tagbar
 Plug 'majutsushi/tagbar'
-
+Plug 'jacoborus/tender.vim'
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'lvht/fzf-mru'|Plug 'junegunn/fzf'
 " text object
 " 支持自定义文本对象
 Plug 'kana/vim-textobj-user'
@@ -140,10 +143,12 @@ Plug 'digitaltoad/vim-pug'
 Plug 'EasyGrep'
 Plug 'Lokaltog/vim-powerline'
 Plug 'edkolev/promptline.vim'
-Plug 'ervandew/supertab' 
+Plug 'ervandew/supertab'
 "Plug 'fholgado/minibufexpl.vim'
  " tabular: 自动对齐
 Plug 'godlygeek/tabular'
+Plug 'Townk/vim-autoclose'
+Plug 'tomtom/tcomment_vim'
 Plug 'gtags.vim'
 "颜色查看 :XtermColorTable Press #/t/f
 Plug 'guns/xterm-color-table.vim'
@@ -158,7 +163,7 @@ Plug 'mhinz/vim-signify'
 Plug 'shougo/unite.vim'
 Plug 'shougo/vimshell.vim'
 Plug 'Shougo/vimfiler.vim'
-Plug 'vim-scripts/fencview.vim' 
+Plug 'vim-scripts/fencview.vim'
 Plug 'vim-scripts/l9'
 Plug 'vim-scripts/FuzzyFinder'
 Plug 'vim-scripts/taglist.vim'
@@ -182,6 +187,7 @@ if count(g:bundle_groups, 'markdown')
     " https://github.com/suan/vim-instant-markdown
     " npm -g install instant-markdown-d
     Plug 'suan/vim-instant-markdown'
+    Plug 'lvht/tagbar-markdown'
     let g:instant_markdown_slow = 1
     let g:instant_markdown_autostart = 0
     map <F12> :InstantMarkdownPreview<CR>
@@ -208,6 +214,10 @@ endif
 
 if count(g:bundle_groups, 'php')
     Plug 'spf13/PIV'
+    Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
+    Plug 'phpvim/phpcd.vim', { 'do': 'composer update' }
+    Plug 'phpvim/phpfold.vim', { 'for': 'php', 'do': 'composer update' }
+    Plug 'xsbeats/vim-blade'
 endif
 
 if count(g:bundle_groups, 'ruby')
@@ -226,15 +236,17 @@ if count(g:bundle_groups, 'javascript')
     Plug 'othree/yajs.vim'
     Plug 'pangloss/vim-javascript'
     " Plug 'jelera/vim-javascript-syntax' | Plug 'pangloss/vim-javascript'
-
+    Plug 'gavocanov/vim-js-indent', { 'for': 'javascript' }
     " TODO: jquery? for, remove or keep
     Plug 'othree/javascript-libraries-syntax.vim'
+    Plug 'mxw/vim-jsx'
     let g:used_javascript_libs = 'jquery,underscore,backbone'
 
     " for javascript 自动补全, 配合YCM, 需要安装全局环境的（非nvm中) node.js&npm
     " 安装完成后还需要在 bundle/tern_for_vim 下执行 npm install 安装依赖
     " see https://github.com/marijnh/tern_for_vim
-    Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+    Plug 'marijnh/tern_for_vim', {'do': 'npm install', 'for': 'javascript'}
+    Plug 'wavded/vim-stylus'
 endif
 
 
@@ -244,6 +256,7 @@ endif
 
 if count(g:bundle_groups, 'json')
     " json
+    Plug 'justinmk/vim-syntax-extra'
     Plug 'elzr/vim-json'
 endif
 
@@ -254,17 +267,22 @@ if count(g:bundle_groups, 'css')
 
     " 这个有坑, see issue https://github.com/wklken/k-vim/issues/49
     " Plug 'gorodinskiy/vim-coloresque'
+    Plug 'ap/vim-css-color'
+    Plug 'cakebaker/scss-syntax.vim'
+    Plug 'hail2u/vim-css3-syntax'
 endif
 
 if count(g:bundle_groups, 'less')
     " ###### vim.less : less 自动更新##########
-    " Plug 'groenewege/vim-less'
+    Plug 'groenewege/vim-less'
     " autocmd BufWritePost *.less :!lessc % > %:p:r.css
 endif
 
 if count(g:bundle_groups, 'html')
     " ###### emmet HTML complete #########
-    " Plug "mattn/emmet-vim"
+    Plug 'mattn/emmet-vim'
+    Plug 'othree/html5-syntax.vim', { 'for': 'html' }
+    Plug 'othree/html5.vim', { 'for': 'html' }
 endif
 
 if count(g:bundle_groups, 'nginx')
@@ -298,7 +316,7 @@ if count(g:bundle_groups, 'rust')
         let g:racer_cmd="d:/App/msys64/home/loonor/.multirust/toolchains/nightly/cargo/bin/racer.exe"
         let g:RUST_SRC_PATH="d:/App/msys64/home/loonor/github/rust/src"
         let g:rust_doc#downloaded_rust_doc_dir="d:/App/msys64/home/loonor/.multirust/toolchains/nightly"
-    else 
+    else
         let g:racer_cmd=$RACER_CMD
         let RUST_SRC_PATH=$RUST_SRC_PATH
         let g:rust_doc#downloaded_rust_doc_dir="$RUSTUP/toolchains/nightly-x86_64-unknown-linux-gnu"
@@ -318,16 +336,16 @@ if count(g:bundle_groups, 'elixir')
     Plug 'vim-erlang/vim-erlang-omnicomplete'
 endif
 if count(g:bundle_groups, 'haskell')
-    "for haskell 
+    "for haskell
     Plug 'neovimhaskell/haskell-vim'
-    Plug 'enomsg/vim-haskellConcealPlus' 
-    Plug 'eagletmt/ghcmod-vim' 
-    Plug 'eagletmt/neco-ghc' 
-    Plug 'Twinside/vim-hoogle' 
-    Plug 'mpickering/hlint-refactor-vim' 
+    Plug 'enomsg/vim-haskellConcealPlus'
+    Plug 'eagletmt/ghcmod-vim'
+    Plug 'eagletmt/neco-ghc'
+    Plug 'Twinside/vim-hoogle'
+    Plug 'mpickering/hlint-refactor-vim'
     let g:ghcmod_ghc_options = ['-idir1', '-idir2']
     let g:ghcmod_open_quickfix_function = 'GhcModQuickFix'
-    
+
     let g:haskell_enable_quantification = 1 ""to enable highlighting of forall
     let g:haskell_enable_recursivedo = 1 ""to enable highlighting of mdo and rec
     let g:haskell_enable_arrowsyntax = 1 ""to enable highlighting of proc
@@ -408,7 +426,7 @@ if count(g:bundle_groups, 'java')
 "    Plug 'yuratomo/java-api-android'
 "    Plug 'yuratomo/java-api-junit'
 "    au BufNewFile,BufRead *.java    setl omnifunc=javaapi#complete
-"    if has("balloon_eval") && has("balloon_multiline") 
+"    if has("balloon_eval") && has("balloon_multiline")
 "      au BufNewFile,BufRead *.java  setl bexpr=javaapi#balloon()
 "      au BufNewFile,BufRead *.java  setl ballooneval
 "    endif
@@ -829,20 +847,48 @@ endif
 " }}}
 
 " ################### 快速导航 ###################
+" deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#file#enable_buffer_path = 1
+let g:deoplete#sources = { '_': ['buffer', 'file'] }
 
+let g:ackprg = 'ag --vimgrep'
+nnoremap <silent> <C-p> :FZF<CR>
+nnoremap <silent> <C-u> :FZFMru<CR>
+
+" bison {{{
+function! GoToYaccRule()
+	let name = expand('<cword>')
+	let pattern = "^".name.":"
+	call search(pattern, "swp")
+endfunction
+autocmd FileType yacc nnoremap <C-]> :call GoToYaccRule()<CR>
+" }}}
+
+let g:fzf_mru_file_list_size = 100
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'tender'
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 " nerdtree nerdtreetabs {{{
     map <leader>n :NERDTreeToggle<CR>
     let NERDTreeHighlightCursorline=1
     let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
     "close vim if the only window left open is a NERDTree
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
     " s/v 分屏打开文件
     let g:NERDTreeMapOpenSplit = 's'
     let g:NERDTreeMapOpenVSplit = 'v'
 
 
     " nerdtreetabs
-    map <Leader>n <plug>NERDTreeTabsToggle<CR>
+    " NERD Tree
+    nnoremap <silent> <leader>e :NERDTreeToggle<CR>
+    nnoremap <silent> <leader>f :NERDTreeFind<CR>
+    let NERDTreeMinimalUI = 1
     " 关闭同步
     let g:nerdtree_tabs_synchronize_view=0
     let g:nerdtree_tabs_synchronize_focus=0

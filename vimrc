@@ -22,7 +22,7 @@ endif
 if g:isWIN
     set guifont=Courier_New:h15
 else
-    set guifont=DejaVu\ Sans\ Mono\ 15 
+    set guifont=DejaVu\ Sans\ Mono\ 15
 endif
 
 "插件 plugins
@@ -261,16 +261,10 @@ noremap L $
 nnoremap ; :
 
 
-" 命令行模式增强，ctrl - a到行首， -e 到行尾
-cnoremap <C-j> <t_kd>
-cnoremap <C-k> <t_ku>
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-
 
 " 搜索相关
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> / 
+map <space> /
 " 进入搜索Use sane regexes"
 " nnoremap / /\v
 " vnoremap / /\v
@@ -353,7 +347,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " y$ -> Y Make Y behave like other capitals
-map Y y$
+map Y "+y
 
 " 复制选中区到系统剪切板中
 vnoremap <leader>y "+y
@@ -407,13 +401,28 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 "==========================================
 
 " 具体编辑文件类型的一般设置，比如不要 tab 等
-autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
-autocmd FileType ruby,javascript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
 autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
 autocmd BufRead,BufNewFile *.part set filetype=html
 " disable showmatch when use > in php
 au BufWinEnter *.php set mps-=<:>
+autocmd FileType vim setlocal foldmethod=marker
+autocmd FileType json setlocal foldmethod=syntax
+autocmd FileType json setlocal foldlevel=1
+autocmd BufRead composer.lock setlocal ft=json
+autocmd BufRead *.phpt setlocal ft=php
+autocmd BufRead *.phtml setlocal ft=html
+" 将光标跳转到上次打开当前文件的位置 {{{
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
+			\ execute "normal! g`\"" |
+			\ endif " }}}
+" 清理行尾空白字符，md 文件除外 {{{
+autocmd BufWritePre * if &filetype != 'markdown' |
+			\ :%s/\s\+$//e |
+			\ endif " }}}
 
+" Tagbar
+nnoremap <silent> <leader>t :TagbarToggle<CR>
+let g:tagbar_compact = 1
 
 
 " 保存python文件时删除多余空格
@@ -488,7 +497,7 @@ endif
 " Set extra options when running in GUI mode
 if has("gui_running")
 " 在gvim在会出现zsh乱码问题,还不知道原因
-    " set sh=bash
+    set sh=/usr/bin/bash
     set guioptions-=T
     set guioptions+=e
     set guioptions-=r
@@ -593,7 +602,9 @@ nnoremap gj j
 noremap <C-Tab> <Esc>"
 
 " F2 行号开关，用于鼠标复制代码用
-" 为方便复制，用<F2>开启/关闭行号显示:
+" l :set list! list?
+"l :set list! list?
+"方便复制，用<F2>开启/关闭行号显示:
 function! HideNumber()
   if(&relativenumber == &number)
     set relativenumber! number!
