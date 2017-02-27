@@ -174,6 +174,11 @@ Plug 'pthrasher/conqueterm-vim'
 " Changes Vim working directory to project root (identified by presence of
 " known directory or file)
 Plug 'airblade/vim-rooter'
+" 异步检测
+Plug 'w0rp/ale'
+Plug 'google/yapf'
+autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
+
 if count(g:bundle_groups, 'tmux')
     " tmux
     " For tmux navigator Ctrl-hjkl
@@ -210,6 +215,8 @@ if count(g:bundle_groups, 'python')
     Plug 'hdima/python-syntax'
     Plug 'hynek/vim-python-pep8-indent'
     Plug 'Glench/Vim-Jinja2-Syntax'
+    Plug 'timothycrosley/isort'
+    autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
 endif
 
 if count(g:bundle_groups, 'php')
