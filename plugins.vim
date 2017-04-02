@@ -165,6 +165,7 @@ Plug 'pthrasher/conqueterm-vim'
 Plug 'airblade/vim-rooter'
 " 异步检测
 Plug 'w0rp/ale'
+let g:ale_emit_conflict_warnings = 0
 Plug 'google/yapf'
 autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
 "插件 plugins
@@ -173,8 +174,8 @@ if g:isWIN
         source $VIM/vimfiles/local.vim
     endif
 else
-    if filereadable(expand("$HOME/.vim/local.vim"))
-        source $HOME/.vim/local.vim
+    if filereadable(expand("$VIM/local.vim"))
+        source $VIM/local.vim
     endif
 endif
 "call neobundle#end()
