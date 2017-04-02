@@ -1,0 +1,10 @@
+"for elixir erlang
+Plug 'mattreduce/vim-mix'
+Plug 'elixir-lang/vim-elixir'
+Plug 'carlosgaldino/elixir-snippets'
+au BufNewFile,BufRead *.exs set ft=elixir
+Plug 'sanmiguel/helpex.vim'
+Plug 'vim-erlang/vim-erlang-runtime'
+Plug 'vim-erlang/vim-erlang-tags'
+Plug 'vim-erlang/vim-erlang-compiler'
+Plug 'vim-erlang/vim-erlang-omnicomplete'

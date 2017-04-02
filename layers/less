@@ -1,0 +1,3 @@
+" ###### vim.less : less 自动更新##########
+Plug 'groenewege/vim-less'
+" autocmd BufWritePost *.less :!lessc % > %:p:r.css

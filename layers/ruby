@@ -1,0 +1,5 @@
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+" dir / dar
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'tpope/vim-endwise'

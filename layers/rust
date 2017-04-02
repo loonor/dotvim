@@ -1,0 +1,15 @@
+"for rust language
+Plug 'racer-rust/vim-racer'
+Plug 'rust-lang/rust.vim'
+Plug 'rhysd/rust-doc.vim'
+Plug 'cespare/vim-toml'
+let g:rust_autosave = 1
+if g:isWIN
+let g:racer_cmd="$HOME/.multirust/toolchains/nightly/cargo/bin/racer.exe"
+let g:RUST_SRC_PATH=""
+let g:rust_doc#downloaded_rust_doc_dir="$HOME/.multirust/toolchains/nightly"
+else
+let g:racer_cmd=$RACER_CMD
+let RUST_SRC_PATH=$RUST_SRC_PATH
+let g:rust_doc#downloaded_rust_doc_dir="$RUSTUP/toolchains/nightly-x86_64-unknown-linux-gnu"
+endif

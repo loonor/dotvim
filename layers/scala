@@ -1,0 +1,5 @@
+Plug 'derekwyatt/vim-scala'
+Plug 'ktvoelker/sbt-vim'
+Plug 'ensime/ensime-vim'
+Plug 'ensime/ensime-vim'
+autocmd BufWritePost *.scala :EnTypeCheck

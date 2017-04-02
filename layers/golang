@@ -1,0 +1,7 @@
+" 1. vim a.go
+" 2. :GoInstallBinaries
+" vimgo
+Plug 'fatih/vim-go', {'tag': '*'}
+Plug 'garyburd/go-explorer'
+"set rtp+=$GOPATH/src/github.com/nsf/gocode/vim
+Plug 'nsf/gocode', {'rtp': 'vim'}

@@ -1,25 +1,15 @@
-""自定义插件组
-if !exists('g:bundle_groups')
-""    let g:bundle_groups = ['python', 'markdown'] ""不需要可以注释掉
-    let g:bundle_groups=['python', 'javascript', 'markdown', 'html', 'css', 'tmux', 'beta', 'json', 'nginx', 'golang', 'ruby', 'less', 'php', 'coffeescript', 'rust', 'elixir', 'haskell', 'orgmode', 'clojure', 'scala', 'swift','julia', 'java']
-endif
 if &compatible
      set nocompatible               " Be iMproved
 endif
 if g:isWIN ""has("win32") || has("win64")
-    "set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
-    "call neobundle#begin('$VIM/vimfiles/bundle')
     call plug#begin('$VIM/vimfiles/plugged')
 else
-    "set rtp+=~/.vim/bundle/neobundle.vim/
-    "call neobundle#begin('~/.vim/bundle/')
     call plug#begin('~/.vim/plugged')
 endif
-"Plug 'Shougo/neobundle.vim'
 " 缓冲区插件
-"Plug 'bsdelf/bufferhint'
-" nnoremap - :call bufferhint#Popup()<CR>
-"nnoremap \ :call bufferhint#LoadPrevious()<CR>
+Plug 'bsdelf/bufferhint'
+nnoremap - :call bufferhint#Popup()<CR>
+nnoremap \ :call bufferhint#LoadPrevious()<CR>
 " 快速去行尾空格 [, + <Space>]
 Plug 'bronson/vim-trailing-whitespace'
 " quick locate file or function
@@ -156,7 +146,6 @@ Plug 'cscope_macros.vim'
 Plug 'mkitt/tabline.vim'
 Plug 'mtth/scratch.vim'
 Plug 'mileszs/ack.vim'
-Plug 'rafi/awesome-vim-colorschemes'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'mhinz/vim-signify'
 " Plug 'mhinz/vim-startify'
@@ -178,285 +167,15 @@ Plug 'airblade/vim-rooter'
 Plug 'w0rp/ale'
 Plug 'google/yapf'
 autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
-
-if count(g:bundle_groups, 'tmux')
-    " tmux
-    " For tmux navigator Ctrl-hjkl
-    Plug 'christoomey/vim-tmux-navigator'
-endif
-
-if count(g:bundle_groups, 'markdown')
-    Plug 'plasticboy/vim-markdown', {'for': 'md'}
-    " Plug 'tpope/vim-markdown'
-    autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-    " https://github.com/suan/vim-instant-markdown
-    " npm -g install instant-markdown-d
-    Plug 'suan/vim-instant-markdown'
-    Plug 'lvht/tagbar-markdown'
-    let g:instant_markdown_slow = 1
-    let g:instant_markdown_autostart = 0
-    map <F12> :InstantMarkdownPreview<CR>
-endif
-
-if count(g:bundle_groups, 'golang')
-    " 1. vim a.go
-    " 2. :GoInstallBinaries
-    " vimgo
-    Plug 'fatih/vim-go', {'tag': '*'}
-    Plug 'garyburd/go-explorer'
-    "set rtp+=$GOPATH/src/github.com/nsf/gocode/vim
-    Plug 'nsf/gocode', {'rtp': 'vim'}
-endif
-
-
-if count(g:bundle_groups, 'python')
-    " for python.vim syntax highlight
-    " pythonsyntax
-    Plug 'hdima/python-syntax'
-    Plug 'hynek/vim-python-pep8-indent'
-    Plug 'Glench/Vim-Jinja2-Syntax'
-    Plug 'timothycrosley/isort'
-    autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
-endif
-
-if count(g:bundle_groups, 'php')
-    Plug 'spf13/PIV'
-    Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
-    Plug 'phpvim/phpcd.vim', { 'do': 'composer update' }
-    Plug 'phpvim/phpfold.vim', { 'for': 'php', 'do': 'composer update' }
-    Plug 'xsbeats/vim-blade'
-endif
-
-if count(g:bundle_groups, 'ruby')
-    Plug 'vim-ruby/vim-ruby'
-    Plug 'tpope/vim-rails'
-    " dir / dar
-    Plug 'nelstrom/vim-textobj-rubyblock'
-
-    " 有bug, 和当前有冲突, 尚未解决, 不要打开
-    " Plug 'tpope/vim-endwise'
-endif
-
-if count(g:bundle_groups, 'javascript')
-    " javascript
-    " 注意: syntax这个插件要放前面
-    Plug 'othree/yajs.vim'
-    Plug 'pangloss/vim-javascript'
-    " Plug 'jelera/vim-javascript-syntax' | Plug 'pangloss/vim-javascript'
-    Plug 'gavocanov/vim-js-indent', { 'for': 'javascript' }
-    " TODO: jquery? for, remove or keep
-    Plug 'othree/javascript-libraries-syntax.vim'
-    Plug 'mxw/vim-jsx'
-    let g:used_javascript_libs = 'jquery,underscore,backbone'
-
-    " for javascript 自动补全, 配合YCM, 需要安装全局环境的（非nvm中) node.js&npm
-    " 安装完成后还需要在 bundle/tern_for_vim 下执行 npm install 安装依赖
-    " see https://github.com/marijnh/tern_for_vim
-    Plug 'marijnh/tern_for_vim', {'do': 'npm install', 'for': 'javascript'}
-    Plug 'wavded/vim-stylus'
-endif
-
-
-if count(g:bundle_groups, 'coffeescript')
-    Plug 'kchmck/vim-coffee-script'
-endif
-
-if count(g:bundle_groups, 'json')
-    " json
-    Plug 'justinmk/vim-syntax-extra'
-    Plug 'elzr/vim-json'
-endif
-
-if count(g:bundle_groups, 'css')
-    " css
-    " not work in iterm2 which termianl selection is not xterm-256, and it slow
-    " Plug 'ap/vim-css-color'
-
-    " 这个有坑, see issue https://github.com/wklken/k-vim/issues/49
-    " Plug 'gorodinskiy/vim-coloresque'
-    Plug 'ap/vim-css-color'
-    Plug 'cakebaker/scss-syntax.vim'
-    Plug 'hail2u/vim-css3-syntax'
-endif
-
-if count(g:bundle_groups, 'less')
-    " ###### vim.less : less 自动更新##########
-    Plug 'groenewege/vim-less'
-    " autocmd BufWritePost *.less :!lessc % > %:p:r.css
-endif
-
-if count(g:bundle_groups, 'html')
-    " ###### emmet HTML complete #########
-    Plug 'mattn/emmet-vim'
-    Plug 'othree/html5-syntax.vim', { 'for': 'html' }
-    Plug 'othree/html5.vim', { 'for': 'html' }
-endif
-
-if count(g:bundle_groups, 'nginx')
-    " Plug 'evanmiller/nginx-vim-syntax'
-endif
-
-
-" this is just for beta version
-if count(g:bundle_groups, 'beta')
-    " indent
-    Plug 'nathanaelkane/vim-indent-guides'
-    " <leader>ig to trigger
-    let g:indent_guides_start_level = 2
-    let g:indent_guides_guide_size = 1
-    let g:indent_guides_auto_colors = 0
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=black
-
-endif
-
-
-" Add plugins to &runtimepath
-if count(g:bundle_groups, 'rust')
-    "for rust language
-    Plug 'racer-rust/vim-racer'
-    Plug 'rust-lang/rust.vim'
-    Plug 'rhysd/rust-doc.vim'
-    Plug 'cespare/vim-toml'
-    let g:rust_autosave = 1
-    if g:isWIN
-        let g:racer_cmd="d:/App/msys64/home/loonor/.multirust/toolchains/nightly/cargo/bin/racer.exe"
-        let g:RUST_SRC_PATH="d:/App/msys64/home/loonor/github/rust/src"
-        let g:rust_doc#downloaded_rust_doc_dir="d:/App/msys64/home/loonor/.multirust/toolchains/nightly"
-    else
-        let g:racer_cmd=$RACER_CMD
-        let RUST_SRC_PATH=$RUST_SRC_PATH
-        let g:rust_doc#downloaded_rust_doc_dir="$RUSTUP/toolchains/nightly-x86_64-unknown-linux-gnu"
+"插件 plugins
+if g:isWIN
+    if filereadable(expand("$VIM/vimfiles/local.vim"))
+        source $VIM/vimfiles/local.vim
     endif
-endif
-
-if count(g:bundle_groups, 'elixir')
-    "for elixir erlang
-    Plug 'mattreduce/vim-mix'
-    Plug 'elixir-lang/vim-elixir'
-    Plug 'carlosgaldino/elixir-snippets'
-    au BufNewFile,BufRead *.exs set ft=elixir
-    Plug 'sanmiguel/helpex.vim'
-    Plug 'vim-erlang/vim-erlang-runtime'
-    Plug 'vim-erlang/vim-erlang-tags'
-    Plug 'vim-erlang/vim-erlang-compiler'
-    Plug 'vim-erlang/vim-erlang-omnicomplete'
-endif
-if count(g:bundle_groups, 'haskell')
-    "for haskell
-    Plug 'neovimhaskell/haskell-vim'
-    Plug 'enomsg/vim-haskellConcealPlus'
-    Plug 'eagletmt/ghcmod-vim'
-    Plug 'eagletmt/neco-ghc'
-    Plug 'Twinside/vim-hoogle'
-    Plug 'mpickering/hlint-refactor-vim'
-    let g:ghcmod_ghc_options = ['-idir1', '-idir2']
-    let g:ghcmod_open_quickfix_function = 'GhcModQuickFix'
-
-    let g:haskell_enable_quantification = 1 ""to enable highlighting of forall
-    let g:haskell_enable_recursivedo = 1 ""to enable highlighting of mdo and rec
-    let g:haskell_enable_arrowsyntax = 1 ""to enable highlighting of proc
-    let g:haskell_enable_pattern_synonyms = 1 ""to enable highlighting of pattern
-    let g:haskell_enable_typeroles = 1 ""to enable highlighting of type roles
-    let g:haskell_enable_static_pointers = 1 ""to enable highlighting of static
-endif
-if count(g:bundle_groups, 'orgmode')
-    Plug 'jceb/vim-orgmode'
-endif
-if count(g:bundle_groups, 'swift')
-    Plug 'toyamarinyon/vim-swift'
-    Plug 'keith/swift.vim'
-    let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
-endif
-
-if count(g:bundle_groups, 'clojure')
-    Plug 'vimclojure', {'for': 'clojure'}
-    Plug 'guns/vim-clojure-static', {'for': 'clojure'}
-    Plug 'tpope/vim-fireplace', {'for': 'clojure'}
-    Plug 'tpope/vim-classpath'
-    Plug 'guns/vim-clojure-highlight', {'for': 'clojure'}
-    Plug 'venantius/vim-cljfmt'
-    Plug 'dgrnbrg/vim-redl', {'for': 'clojure'}
-    Plug 'MailOnline/vim-cljrefactor'
-    Plug 'kovisoft/paredit', {'for': ['clojre', 'scheme']}
-    let g:clojure_syntax_keywords = {
-                \ 'clojureMacro': ["defproject", "defcustom"],
-                \ 'clojureFunc': ["string/join", "string/replace"]
-                \}
-    if g:isWIN
-        let vimclojure#NailgunClient = "/path/to/your/ng"
-    else
-        let vimclojure#NailgunClient = "/home/loonor/tool/vimclojure-nailgun-client/ng"
-        "let vimclojure#WantNailgun = 1
+else
+    if filereadable(expand("$HOME/.vim/local.vim"))
+        source $HOME/.vim/local.vim
     endif
-    let g:clojure_fuzzy_indent = 1
-    let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
-    let g:clojure_fuzzy_indent_blacklist = ['-fn$', '\v^with-%(meta|out-str|loading-context)$']
-    "let g:clojure_fuzzy_indent_patterns = 'with.*,def.*,let.*'
-    autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
-    "let g:clj_fmt_autosave = 1
-    let g:redl_use_vsplit = 1
-endif
-
-if count(g:bundle_groups, 'scala')
-    Plug 'derekwyatt/vim-scala'
-    Plug 'ktvoelker/sbt-vim'
-    Plug 'ensime/ensime-vim'
-    Plug 'ensime/ensime-vim'
-    autocmd BufWritePost *.scala :EnTypeCheck
-endif
-
-if count(g:bundle_groups, 'java')
-    Plug 'artur-shaik/vim-javacomplete2'
-    autocmd FileType java setlocal omnifunc=javacomplete#Complete
-    let g:JavaComplete_JavaviLogLevel = 0
-    let g:JavaComplete_JavaviLogfileDirectory = '$HOME'
-    let g:JavaComplete_JavaviDebug = 0
-"    if $filetype == 'java'
-"    nmap <F6> <Plug>(JavaComplete-Imports-AddSmart)
-"
-"    imap <F6> <Plug>(JavaComplete-Imports-AddSmart)
-"    nmap <F7> <Plug>(JavaComplete-Imports-AddMissing)
-"
-"    imap <F7> <Plug>(JavaComplete-Imports-AddMissing)
-"    nmap <F8> <Plug>(JavaComplete-Imports-RemoveUnused)
-"
-"    imap <F8> <Plug>(JavaComplete-Imports-RemoveUnused)
-"    endif
-"    Plug 'tpope/vim-classpath'
-"    Plug 'akhaku/vim-java-unused-imports'
-"    Plug 'yuratomo/java-api-complete'
-"    Plug 'yuratomo/java-api-javax'
-"    Plug 'yuratomo/java-api-org'
-"    Plug 'yuratomo/java-api-sun'
-"    Plug 'yuratomo/java-api-servlet2.3'
-"    Plug 'yuratomo/java-api-android'
-"    Plug 'yuratomo/java-api-junit'
-"    au BufNewFile,BufRead *.java    setl omnifunc=javaapi#complete
-"    if has("balloon_eval") && has("balloon_multiline")
-"      au BufNewFile,BufRead *.java  setl bexpr=javaapi#balloon()
-"      au BufNewFile,BufRead *.java  setl ballooneval
-"    endif
-"    let g:javaapi#delay_dirs = [
-"      \ 'java-api-javax',
-"      \ 'java-api-org',
-"      \ 'java-api-sun',
-"      \ 'java-api-servlet2.3',
-"      \ 'java-api-android',
-"      \ ]
-"    Plug 'wsdjeg/JavaUnit.vim'
-"    Plug 'Dinduks/vim-java-get-set'
-"    Plug 'mikelue/vim-maven-plugin'
-endif
-
-if count(g:bundle_groups, 'julia')
-    Plug 'JuliaEditorSupport/julia-vim'
-    if &filetype == 'julia'
-        noremap <expr> <F7> LaTeXtoUnicode#Toggle()
-        inoremap <expr> <F7> LaTeXtoUnicode#Toggle()
-    endif
-    Plug 'benekastah/neomake'
-    Plug 'zyedidia/julialint.vim'
 endif
 "call neobundle#end()
 call plug#end()

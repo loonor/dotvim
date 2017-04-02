@@ -1,0 +1,9 @@
+" css
+" not work in iterm2 which termianl selection is not xterm-256, and it slow
+" Plug 'ap/vim-css-color'
+
+" 这个有坑, see issue https://github.com/wklken/k-vim/issues/49
+" Plug 'gorodinskiy/vim-coloresque'
+Plug 'ap/vim-css-color'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'hail2u/vim-css3-syntax'

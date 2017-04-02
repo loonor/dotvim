@@ -1,0 +1,3 @@
+" json
+Plug 'justinmk/vim-syntax-extra'
+Plug 'elzr/vim-json'

@@ -1,0 +1,3 @@
+" tmux
+" For tmux navigator Ctrl-hjkl
+Plug 'christoomey/vim-tmux-navigator'

@@ -1,0 +1,4 @@
+" ###### emmet HTML complete #########
+Plug 'mattn/emmet-vim'
+Plug 'othree/html5-syntax.vim', { 'for': 'html' }
+Plug 'othree/html5.vim', { 'for': 'html' }

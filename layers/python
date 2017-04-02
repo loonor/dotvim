@@ -1,0 +1,7 @@
+" for python.vim syntax highlight
+" pythonsyntax
+Plug 'hdima/python-syntax'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'timothycrosley/isort'
+autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>

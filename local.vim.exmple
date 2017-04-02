@@ -1,0 +1,7 @@
+""自定义插件组
+if !exists('g:bundle_groups')
+    let g:bundle_groups=['python', 'javascript', 'markdown', 'html', 'css', 'tmux', 'json', 'nginx', 'golang', 'php', 'rust', 'orgmode', 'clojure', 'scala', 'java']
+endif
+for $group in g:bundle_groups
+    source $VIM/layers/$group
+endfor

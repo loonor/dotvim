@@ -1,0 +1,7 @@
+Plug 'JuliaEditorSupport/julia-vim'
+if &filetype == 'julia'
+    noremap <expr> <F7> LaTeXtoUnicode#Toggle()
+    inoremap <expr> <F7> LaTeXtoUnicode#Toggle()
+endif
+Plug 'benekastah/neomake'
+Plug 'zyedidia/julialint.vim'
