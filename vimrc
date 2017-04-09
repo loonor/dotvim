@@ -10,7 +10,6 @@ if(has("win32") || has("win64"))
     let g:isWIN = 1
     let g:isMAC = 0
 else
-    let $VIM = "$HOME/.vim"
     if system("uname") =~ "Darwin"
         let g:isWIN = 0
         let g:isMAC = 1

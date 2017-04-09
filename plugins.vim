@@ -4,7 +4,7 @@ endif
 if g:isWIN ""has("win32") || has("win64")
     call plug#begin('$VIM/vimfiles/plugged')
 else
-    call plug#begin('~/.vim/plugged')
+    call plug#begin('$HOME/.vim/plugged')
 endif
 " 缓冲区插件
 Plug 'bsdelf/bufferhint'
@@ -174,8 +174,8 @@ if g:isWIN
         source $VIM/vimfiles/local.vim
     endif
 else
-    if filereadable(expand("$VIM/local.vim"))
-        source $VIM/local.vim
+    if filereadable(expand("$HOME/.vim/local.vim"))
+        source $HOME/.vim/local.vim
     endif
 endif
 "call neobundle#end()
@@ -293,11 +293,11 @@ filetype plugin indent on
         let g:ycm_global_ycm_extra_conf = $VIM.'/vimfiles/plugged/YouCompleteMe-x86/python/.ycm_extra_conf.py'
     else
         if !empty(glob("~/.vim/plugged/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"))
-            let g:ycm_global_ycm_extra_conf = "~/.vim/plugged/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
+            let g:ycm_global_ycm_extra_conf = "$HOME/.vim/plugged/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
         endif
     " new version
         if !empty(glob("~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"))
-            let g:ycm_global_ycm_extra_conf = "~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+            let g:ycm_global_ycm_extra_conf = "$HOME/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
         endif
     endif
 
