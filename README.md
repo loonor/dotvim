@@ -2,9 +2,4 @@ unix/linux
 
 git clone https://github.com/loonor/dotvim ~/.vim
 
-
-Launch vim (maybe run :NeoBundleInstall)
-
-To install from command line: vim +NeoBundleInstall +qall
-
-
+运行vim，命令模式：PlugUpdate安装插件
