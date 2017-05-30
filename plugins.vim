@@ -11,7 +11,7 @@ Plug 'bsdelf/bufferhint'
 nnoremap - :call bufferhint#Popup()<CR>
 nnoremap \ :call bufferhint#LoadPrevious()<CR>
 " 快速去行尾空格 [, + <Space>]
-Plug 'bronson/vim-trailing-whitespace'
+" Plug 'bronson/vim-trailing-whitespace'
 " quick locate file or function
 " 文件搜索
 " change to https://github.com/ctrlpvim/ctrlp.vim
@@ -19,11 +19,11 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 " 自动补全html/xml标签
-Plug 'docunext/closetag.vim'
+" Plug 'docunext/closetag.vim'
 " quick movement
 " easymotion
 "更高效的移动 [,, + w/fx/h/j/k/l]
-Plug 'Lokaltog/vim-easymotion'
+" Plug 'Lokaltog/vim-easymotion'
 " 快速赋值语句对齐
 Plug 'junegunn/vim-easy-align'
 " signature
@@ -32,7 +32,7 @@ Plug 'junegunn/vim-easy-align'
 " '[a-zA-Z] go to mark
 " m<Space>  del all marks
 " m/        list all marks
-Plug 'kshenoy/vim-signature'
+" Plug 'kshenoy/vim-signature'
 " 自动补全单引号，双引号等
 Plug 'Raimondi/delimitMate'
 " syntastic
@@ -48,16 +48,16 @@ Plug 'tpope/vim-surround'
 " quick selection and edit
 " expandregion
 " 选中区块
-Plug 'terryma/vim-expand-region'
+" Plug 'terryma/vim-expand-region'
 " 多光标选中编辑
 " multiplecursors
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 " quickrun
-Plug 'thinca/vim-quickrun'
+" Plug 'thinca/vim-quickrun'
 " 更高效的行内移动, f/F/t/T, 才触发
 " quickscope
-Plug 'unblevable/quick-scope'
-Plug 'vim-scripts/matchit.zip'
+" Plug 'unblevable/quick-scope'
+" Plug 'vim-scripts/matchit.zip'
 "代码自动补全
 if has("win64")
     Plug 'snakeleon/YouCompleteMe-x64'
@@ -109,27 +109,28 @@ Plug 'szw/vim-ctrlspace'
 Plug 'majutsushi/tagbar'
 Plug 'jacoborus/tender.vim'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'lvht/fzf-mru'|Plug 'junegunn/fzf'
+Plug 'lvht/fzf-mru'
+Plug 'junegunn/fzf'
 " text object
 " 支持自定义文本对象
-Plug 'kana/vim-textobj-user'
+"Plug 'kana/vim-textobj-user'
 " 增加行文本对象: l   dal yal cil
-Plug 'kana/vim-textobj-line'
+"Plug 'kana/vim-textobj-line'
 " 增加文件文本对象: e   dae yae cie
-Plug 'kana/vim-textobj-entire'
+"Plug 'kana/vim-textobj-entire'
 " 增加缩进文本对象: i   dai yai cii - 相同缩进属于同一块
-Plug 'kana/vim-textobj-indent'
+"Plug 'kana/vim-textobj-indent'
 Plug 'shougo/vimproc.vim', {'do': 'make'} "" { 'build' : { 'linux' : 'make','unix':'gmake','mac':'make',  },  }
  "调换参数,如(item1,item2),光标在item2,然后:SidewaysLeft,item2与item1位置调换"
-Plug 'AndrewRadev/sideways.vim'
+"Plug 'AndrewRadev/sideways.vim'
 "重命名当前文件 :Rename othername
 Plug 'danro/rename.vim'
 Plug 'bash-support.vim'
 "vim中文帮助
 Plug 'becaning/vimdoccn'
 "other
-Plug 'chriskempson/base16-shell'
-Plug 'digitaltoad/vim-pug'
+"Plug 'chriskempson/base16-shell'
+"Plug 'digitaltoad/vim-pug'
 Plug 'EasyGrep'
 Plug 'Lokaltog/vim-powerline'
 Plug 'edkolev/promptline.vim'
@@ -141,13 +142,13 @@ Plug 'Townk/vim-autoclose'
 Plug 'tomtom/tcomment_vim'
 Plug 'gtags.vim'
 "颜色查看 :XtermColorTable Press #/t/f
-Plug 'guns/xterm-color-table.vim'
-Plug 'cscope_macros.vim'
-Plug 'mkitt/tabline.vim'
+"Plug 'guns/xterm-color-table.vim'
+"Plug 'cscope_macros.vim'
+"Plug 'mkitt/tabline.vim'
 Plug 'mtth/scratch.vim'
 Plug 'mileszs/ack.vim'
 Plug 'pbrisbin/vim-mkdir'
-Plug 'mhinz/vim-signify'
+"Plug 'mhinz/vim-signify'
 " Plug 'mhinz/vim-startify'
 Plug 'shougo/unite.vim'
 Plug 'shougo/vimshell.vim'
@@ -158,11 +159,11 @@ Plug 'vim-scripts/FuzzyFinder'
 Plug 'vim-scripts/taglist.vim'
 Plug 'vimwiki/vimwiki'
 " Plug 'vim-scripts/ZoomWin.git'
-Plug 'vim-scripts/winmanager'
-Plug 'pthrasher/conqueterm-vim'
+"Plug 'vim-scripts/winmanager'
+"Plug 'pthrasher/conqueterm-vim'
 " Changes Vim working directory to project root (identified by presence of
 " known directory or file)
-Plug 'airblade/vim-rooter'
+"Plug 'airblade/vim-rooter'
 " 异步检测
 Plug 'w0rp/ale'
 let g:ale_emit_conflict_warnings = 0
